@@ -1,0 +1,43 @@
+{
+  "started_at_utc": "2026-11-04T04:28:17.860252+00:00",
+  "finished_at_utc": "2026-11-04T04:28:20.375264+00:00",
+  "command": [
+    "/Users/shenghangwang/.codex/visualizations/2026/11/04/01a1a475-c70b-7342-89b1-f642577c991c/everflow-foundation/.venv/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-v"
+  ],
+  "working_directory": "/Users/shenghangwang/.codex/visualizations/2026/11/04/01a1a475-c70b-7342-89b1-f642577c991c/everflow-foundation",
+  "exit_code": 0,
+  "test_count": 62,
+  "revision": "56705066d27ed1a7ae010538ed82064639d00703",
+  "files_sha256": {
+    "backend/__init__.py": "b0dd23c9d4f5b80f1315ce0a20c8b1ea82429240d038c5b8685f06380510a6a2",
+    "backend/app.py": "3801be5ba60bce79c3cebf955677d5af1af3471633131f4353c9e0253694fdcc",
+    "backend/domain.py": "9ab621b92188f0c5b163445d876a9e6a378e897ed626b14c69930186900c1022",
+    "backend/fixtures/generic.json": "a96d9f10e96557e543ad1dace80591027ed51f40ee3d2634e3d88f3bf1043b44",
+    "backend/fixtures/reconciliation.json": "1ec3d5b0cb1588267a7cabe5afc7d4c1e60c6e386dcf6db6ee429ff13eb91809",
+    "backend/fixtures/source_stress.json": "e96a0f1d042771d68bb2b6d0b855b36aeda69cd539f119265efef99d5f5fe558",
+    "backend/inference.py": "890093025356330d13b7c711dc604bced25d26e0bc05fcfe817d7e681c12ac44",
+    "backend/reconciliation.py": "a414d5a85bd7ef221d91f77c5cad247514795ce368c849c8c77afe0af076bd42",
+    "backend/scenarios.py": "9008e44e69e54b6d2f23d5aa33af2c27b9b9ecc44c3fc01a470af06d2b476975",
+    "tests/test_api.py": "3e23d2d21a44e5cecd046eb68f5ebaae4cbc5c3f9a0f1bbd49d566bac584ba82",
+    "tests/test_reconciliation.py": "2b7230228025df0f63387c3f8502941e884e27e430180b0d4915233bd57f691c",
+    "tests/test_scenarios.py": "9b6c7cddb4bda7e6aa6c8c59c2f9648b05111ed8473f7d2671cce79635060a35",
+    "tests/test_workflow.py": "fe5e600bdd9c5f1645fc755ad6e3b9eca9839dc492f8de815bf60afed4d67521"
+  },
+  "boundaries": {
+    "provider": "SQLite mock receipts",
+    "inference": "template-fixture",
+    "live_calls": 0
+  },
+  "unexecuted": [
+    "Paid model token/deadline/atomic-budget accounting",
+    "Live provider idempotency and ingestion lag",
+    "Production auth/tenant isolation",
+    "Browser UI exercise (separate root evidence)"
+  ]
+}

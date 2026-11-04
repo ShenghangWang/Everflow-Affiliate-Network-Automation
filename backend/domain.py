@@ -14,6 +14,7 @@ import sqlite3
 import uuid
 
 from .inference import TemplateInference
+from .reconciliation import ReconciliationService, TABLES as RECON_TABLES, ensure_schema as ensure_recon_schema
 
 FIXTURE = Path(__file__).parent / "fixtures" / "generic.json"
 PENDING = ("scheduled", "authorized", "executing")
@@ -74,6 +75,7 @@ class Workflow:
               cache_key TEXT PRIMARY KEY, lead_id TEXT, prompt_version TEXT,
               mode TEXT, content TEXT, created_at TEXT);
             """)
+            ensure_recon_schema(c)
         if not self.setting("now"):
             self.reset()
 
@@ -124,7 +126,7 @@ class Workflow:
     def reset(self):
         fixture = json.loads(FIXTURE.read_text())
         with self.tx() as c:
-            for table in ("leads", "provenance", "inbox", "actions", "authorizations", "attempts", "receipts", "messages", "audit", "issues", "draft_usage", "settings"):
+            for table in (*RECON_TABLES, "leads", "provenance", "inbox", "actions", "authorizations", "attempts", "receipts", "messages", "audit", "issues", "draft_usage", "settings"):
                 c.execute(f"DELETE FROM {table}")  # table is a code-owned allowlist
             for key in ("now", "policy", "terms", "sources", "label"):
                 self._set(c, key, fixture[key])
@@ -583,6 +585,7 @@ class Workflow:
             "policy": self._get(c, "policy"), "terms": self._get(c, "terms"), "kill_switch": self._get(c, "kill_switch"),
             "leads": leads, "actions": actions, "messages": rows("messages"), "audit": audit,
             "issues": rows("issues"), "authorizations": rows("authorizations"), "attempts": rows("attempts"),
+            "reconciliation": ReconciliationService(self).state(c),
             "metrics": {"leads": len(leads), "qualified": sum(l["score"] >= 80 for l in leads),
                         "outreach_accepted": accepted, "replies": sum(l["replied"] for l in leads),
                         "replies_after_accepted_outreach": contacted_replies,

@@ -286,3 +286,6 @@ Labels distinguish deterministic, template-fixture, mock adapter and any future 
 
 
 Revision note — D1-HLD-R2: accepts independent Codex findings CR-01 (shared target ordering), CR-02 (activation readiness) and CR-03 (mutable-report consistency). Proposed falsifiable checks above are release prerequisites for those future capabilities, not claims they ran in the BD-only implementation. Original D1-HLD-R1 packet/review remain unchanged; adjudication and focused-review result belong in `reviews/`.
+
+
+Implementation note — resumed fixture reconciliation: the current A05 slice uses separately configured immutable synthetic reports, complete-snapshot/control-total and alignment gates, exact Decimal comparison, hashed retained report/terms/rule payloads, unsent English drafts, optimistic run/version-bound local finance decisions and correction history. Source provider reads and production finance authority remain absent. This implements a bounded portion of the A05 contract; mutable live-source consistency still requires CR-03 verification. Current implementation evidence and actual modes are in delivery.md; frozen R1/R2 review packets are unchanged and do not certify this new code.

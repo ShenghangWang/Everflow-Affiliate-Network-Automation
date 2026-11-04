@@ -10,6 +10,7 @@ from fastapi.staticfiles import StaticFiles
 
 from .domain import Workflow
 from .scenarios import scenario
+from .reconciliation import ReconciliationService, StaleReconciliation
 
 ROOT = Path(__file__).resolve().parents[1]
 workflow = Workflow(os.environ.get("EVERFLOW_DEMO_DB", str(ROOT / "data" / "demo.sqlite3")))
@@ -33,6 +34,11 @@ async def local_boundary(request: Request, call_next):
     response.headers["Cache-Control"] = "no-store"
     response.headers["Content-Security-Policy"] = "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; img-src 'self' data:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
     return response
+
+
+@app.exception_handler(StaleReconciliation)
+async def stale_reconciliation(_request, exc):
+    return JSONResponse({"detail": str(exc)}, status_code=409)
 
 
 @app.exception_handler(ValueError)
@@ -118,6 +124,26 @@ def scenario_defaults():
 @app.post("/api/scenario")
 def scenario_calculate(payload: dict = Body(default={})):
     return scenario(payload)
+
+
+
+@app.get("/api/reconciliation")
+def reconciliation_state():
+    return ReconciliationService(workflow).state()
+
+
+@app.post("/api/reconciliation/compare")
+def reconciliation_compare(payload: dict = Body(...)):
+    if set(payload) != {"fixture_id"} or not isinstance(payload["fixture_id"], str):
+        raise ValueError("Select exactly one allowlisted synthetic fixture_id")
+    return ReconciliationService(workflow).compare_fixture(payload["fixture_id"])
+
+
+@app.post("/api/reconciliation/cases/{case_id}/decision")
+def reconciliation_decision(case_id: str, payload: dict = Body(...)):
+    if set(payload) != {"expected_run_id", "expected_version", "decision", "note", "evidence"}:
+        raise ValueError("Finance review requires exact current run/version, decision, note and evidence")
+    return ReconciliationService(workflow).decide(case_id, **payload)
 
 
 dist = ROOT / "frontend" / "dist"

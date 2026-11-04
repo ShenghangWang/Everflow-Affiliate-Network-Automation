@@ -1,3 +1,5 @@
+> Current continuation: local execution and ordinary Git authentication are authorized by the user. The public project remote is https://github.com/ShenghangWang/Everflow-Affiliate-Network-Automation. Earlier isolation/cloud/broker requirements are superseded. Initial history was preserved; the previously reported 44 backend/API and 14 browser checks were reproduced before implementation resumed.
+
 # Everflow affiliate-network automation foundation
 
 Day 1 delivery candidate · 2026-11-04 · adopted work instruction: Engineering Delivery Brief v1.3. This engagement builds reusable BD, negotiation, onboarding, recurring AM and Ops capabilities. Insurance is an optional illustration, not the project target or a confirmed employer business model. The baseline uses synthetic B2B affiliate prospects; no consumer insurance workflow is required or included.
@@ -70,3 +72,11 @@ Complete M01–M06 / A01–A06 HLD and traceability are delivered. Current evide
 Independent Codex R1 found three architecture gaps; all were accepted and resolved in design, with a genuine focused R2 follow-up. Gemini is **pending**, with an initial blind export matching Codex’s original R1 inputs. After Gemini’s first independent verdict, R2 is available for the corresponding update check. Overall Day 1 review/integration gate is **CONDITIONAL**; completed-package acceptance by the boss/business sponsor is pending, exact checkpoint time TBC.
 
 The first verified demo is preserved at `f101944` / `demo-core-verified-r1`; the improved verified candidate is retained at `demo-verified-r2`. Frozen review packets are historical inputs and accurately preserve earlier implementation statuses; current results are in delivery.md. Next task: fixture reconciliation with exact evidence and owned resolution, as the ranked queue records. Existing written-agreement handover details remain unresolved; local archives are review conveniences, not additional contractual commitments or a completed external transfer.
+
+## Fixture reconciliation increment
+
+The generic **Reconciliation** workbench now implements aligned immutable synthetic reports → exact event/amount/status evidence → unsent discrepancy and overdue-reminder drafts → version-bound owned finance review. The default fixture reports USD 50.00 internally and USD 37.50 from the counterparty; event DEMO-E004 explains the USD 12.50 difference. These are assumed demonstration values, not company accounts or debt.
+
+A corrected report preserves original snapshots and decisions, reopens the case and rejects stale decisions. Incomplete/misaligned inputs keep amounts unavailable and cannot receive a final conclusion. Report/terms/rule hashes are retained in SQLite; repeated comparisons do not duplicate cases/drafts. Finance review does not send messages, settle balances, record payment or change payouts. Production finance identity and actual provider consistency remain unimplemented/conditional.
+
+Current increment verification: **62 backend/API tests and 23 browser checks pass**, plus frontend build. Evidence: `evidence/tests/reconciliation-v1/`. The original 44/14 baseline reproduction is retained under `evidence/tests/resume-baseline/`. The public remote received baseline commit `5670506`; further normal commits preserve all earlier work and demo tags. Gemini remains pending; no live model/integration capability is inferred from local checks.

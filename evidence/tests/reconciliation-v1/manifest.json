@@ -1,0 +1,19 @@
+{
+  "observed_at": "2026-11-04T04:33:34.172601+00:00",
+  "candidate": "fixture reconciliation v1",
+  "backend_tests": 62,
+  "browser_checks": 23,
+  "frontend_build": "PASS",
+  "visual_review": "Desktop variance and mobile blocked-input pages inspected",
+  "files_sha256": {
+    "backend/reconciliation.py": "a414d5a85bd7ef221d91f77c5cad247514795ce368c849c8c77afe0af076bd42",
+    "backend/fixtures/reconciliation.json": "1ec3d5b0cb1588267a7cabe5afc7d4c1e60c6e386dcf6db6ee429ff13eb91809",
+    "backend/domain.py": "9ab621b92188f0c5b163445d876a9e6a378e897ed626b14c69930186900c1022",
+    "backend/app.py": "3801be5ba60bce79c3cebf955677d5af1af3471633131f4353c9e0253694fdcc",
+    "frontend/src/Reconciliation.jsx": "f05c40cc9fd6a0936fd213e785b1587e5e21bca41ebb5c622d91b6b8b7b755d4",
+    "frontend/src/main.jsx": "53a6d6a20f78561609ea4ab5e86564cfb16939028477c2a857088030c744b97f",
+    "frontend/src/style.css": "660d6c5d9f65a8de5f3f76d8598f0db9cd86d5ca5a6f0e6aeeae94bc379e6bba",
+    "tests/test_reconciliation.py": "2b7230228025df0f63387c3f8502941e884e27e430180b0d4915233bd57f691c",
+    "scripts/check_ui.mjs": "40db6b15821dac8a90cfecf488d0d22d22cd5fbc65c1e13f43677b9482234720"
+  }
+}
