@@ -20,7 +20,7 @@ Day 1 delivery candidate · 2026-11-04 · adopted work instruction: Engineering 
 
 ## Daily minimum commitments and ranked continuation
 
-The original repository contains only `.git` and no commits/code/instructions. All three supplied originals are readable and hashed. React and Python dependencies are installed. The local application launches, the frontend builds, 28 backend/API tests pass and 12 browser checks pass. Fresh independent setup verification is in progress. No employer working window has been supplied: these floors are based on the inspected local environment, not a promise about unverified tenant delivery.
+The original repository contains only `.git` and no commits/code/instructions. All three supplied originals are readable and hashed. React and Python dependencies are installed. The local application launches, the frontend builds, 44 backend/API tests pass and 14 browser checks pass. Genuinely fresh setup/build and process-restart evidence is retained separately. No employer working window has been supplied: these floors are based on the inspected local environment, not a promise about unverified tenant delivery.
 
 | Day | Evidence-based minimum floor | Dependencies and extension |
 |---|---|---|
@@ -28,7 +28,7 @@ The original repository contains only `.git` and no commits/code/instructions. A
 | 2 | Connected React/Python fixture path with persisted state, deterministic authorization, reply/follow-up/handoff and tested failure handling | Local dependency installation/loopback launch must pass. Live credentials are not required for the mock path. Resolve principal checks before adding depth. |
 | 3 | Reproducible setup, relevant T01–T12 actual evidence, material defect resolution or explicit failure, capability/mode matrix and operating handover | Real provider contract/usage tests conditional on approved access. Shared production deployment is not promised by a local demo. |
 
-Ranked next-value queue (pull whenever ready): (1) verified generic BD path and recovery; (2) synthetic source/outcome cohorts and channel stress; (3) fixture reconciliation discrepancy → owned issue → closure; (4) recurring AM activation/health follow-through; (5) authorized read-only Everflow snapshot; (6) validated integration configuration assistance; (7) genuine approved runtime language evaluation. Missing credentials do not block independent items. Optional example configuration is lower priority and adds no mandatory scope. Preserve the last verified revision while each additional increment is checked.
+Verified additional work: generic BD path/recovery, source/outcome cohorts, synthetic channel/economics stress, owned internal case follow-through and source-event replay integrity. Ranked remaining queue (pull whenever ready): (1) fixture reconciliation discrepancy → owned finance issue → closure; (2) recurring AM activation/health follow-through; (3) validated integration configuration assistance; (4) authorized read-only Everflow snapshot; (5) genuine approved runtime language evaluation. Missing credentials do not block independent items. Optional example configuration is lower priority and adds no mandatory scope. Preserve the last verified revision while each additional increment is checked.
 
 ## Package index
 
@@ -62,3 +62,11 @@ npm --prefix frontend run build
 Optional browser check uses a Playwright installation plus its compatible Chromium (`PLAYWRIGHT_PACKAGE` and `CHROMIUM_EXECUTABLE` can select them): `node scripts/check_ui.mjs`. It resets synthetic demo data and requires the server on port 8000. Actual commands and results, including initial failures and recovered prerequisites, are in `delivery.md` and `evidence/tests/`.
 
 Keep the demo on `127.0.0.1` with one worker. Do not publish this local unauthenticated prototype as a shared service. Paid inference is disabled: the replacement interface and output validation are present, template output is explicitly offline fallback, and genuine model/usage evaluation awaits approved credentials/data/prices/budget. Full HLD coverage does not imply all-six-role production implementation.
+
+## Current checkpoint
+
+Complete M01–M06 / A01–A06 HLD and traceability are delivered. Current evidence: **44 backend/API tests**, **14 browser checks**, build and independent fresh setup/restart pass locally. The replaceable inference boundary is validated in template mode; genuine runtime quality, deadlines/token budgets and provider billing remain unverified. No live business effects or paid model calls occurred.
+
+Independent Codex R1 found three architecture gaps; all were accepted and resolved in design, with a genuine focused R2 follow-up. Gemini is **pending**, with an initial blind export matching Codex’s original R1 inputs. After Gemini’s first independent verdict, R2 is available for the corresponding update check. Overall Day 1 review/integration gate is **CONDITIONAL**; completed-package acceptance by the boss/business sponsor is pending, exact checkpoint time TBC.
+
+The first verified demo is preserved at `f101944` / `demo-core-verified-r1`; the improved verified candidate is retained at `demo-verified-r2`. Frozen review packets are historical inputs and accurately preserve earlier implementation statuses; current results are in delivery.md. Next task: fixture reconciliation with exact evidence and owned resolution, as the ranked queue records. Existing written-agreement handover details remain unresolved; local archives are review conveniences, not additional contractual commitments or a completed external transfer.

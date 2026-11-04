@@ -1,0 +1,19 @@
+{
+  "material_errors": [
+    {
+      "command": "kill -TERM 54272",
+      "exit": 1,
+      "stderr": "zsh:kill:1: kill 54272 failed: operation not permitted",
+      "recovery": "Specific approved process stop succeeded; original server shut down cleanly."
+    },
+    {
+      "command": ".venv/bin/python -m uvicorn backend.app:app --host 127.0.0.1 --port 8000 --workers 1",
+      "attempt": "before original process was successfully stopped",
+      "exit": 1,
+      "stderr": "[Errno 48] error while attempting to bind on address ('127.0.0.1', 8000): [errno 48] address already in use",
+      "recovery": "Waited for original shutdown, then replacement launch succeeded."
+    }
+  ],
+  "approval_review_rejections": 0,
+  "latest_verified_launch": "Loopback server PID55387; complete 14-check browser walkthrough passed against final code; no live business effects"
+}

@@ -1,0 +1,44 @@
+{
+  "observed_at": "2026-11-04T02:54:24.853514+00:00",
+  "sources": [
+    {
+      "path": "/Users/shenghangwang/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/wxid_3obs0g6rfyox22_3bea/temp/drag/网盟自动系统需求文档.docx",
+      "status": "readable",
+      "bytes": 13155,
+      "sha256": "de3337d5c48e58274d9c95f2d904cc675f9fc0e9052e51d1f0cd59a73827f446",
+      "paragraph_count": 40,
+      "retained_copy": "evidence/intake/originals/网盟自动系统需求文档.docx"
+    },
+    {
+      "path": "/Users/shenghangwang/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/wxid_3obs0g6rfyox22_3bea/temp/drag/数字王国开发-第三版(1).pdf",
+      "status": "readable",
+      "bytes": 313444,
+      "sha256": "8c2d1437dedb7951d8e2c79b0b64a677d912b398e3f929e56079e4fbda44b3a3",
+      "pages": 5,
+      "retained_copy": "evidence/intake/originals/数字王国开发-第三版(1).pdf"
+    },
+    {
+      "path": "/Users/shenghangwang/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/wxid_3obs0g6rfyox22_3bea/temp/drag/青蓝绩效文档-2.pdf",
+      "status": "readable",
+      "bytes": 424259,
+      "sha256": "32581f425301ddce32a7c509cb017c7c69f425f2cb8e43c550c92dbaefd88ced",
+      "pages": 8,
+      "retained_copy": "evidence/intake/originals/青蓝绩效文档-2.pdf"
+    },
+    {
+      "path": "/Users/shenghangwang/Downloads/Everflow-Engineering-Delivery-Brief.md",
+      "status": "readable",
+      "bytes": 50914,
+      "sha256": "43a339af6db9e7c5aa68fa44b877e7e3e10be852e800b23991abab6baa1ae77f",
+      "version": "v1.3",
+      "retained_copy": "evidence/intake/originals/Everflow-Engineering-Delivery-Brief.md"
+    }
+  ],
+  "instruction_search": "AGENTS.md absent in original project, visualization workspace and all original-project ancestors",
+  "repository": "Original repository .git only, no commits yet on master",
+  "write_probe": {
+    "target": "/Users/shenghangwang/Documents/ChatGPT/Everflow Affiliate Network Automation/evidence",
+    "result": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  "working_location": "/Users/shenghangwang/.codex/visualizations/2026/11/04/01a1a475-c70b-7342-89b1-f642577c991c/everflow-foundation"
+}

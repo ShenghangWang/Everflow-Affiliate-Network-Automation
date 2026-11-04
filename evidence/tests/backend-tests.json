@@ -1,6 +1,6 @@
 {
-  "started_at_utc": "2026-11-04T03:09:04.012853+00:00",
-  "finished_at_utc": "2026-11-04T03:09:06.358800+00:00",
+  "started_at_utc": "2026-11-04T03:25:23.367549+00:00",
+  "finished_at_utc": "2026-11-04T03:25:25.615973+00:00",
   "command": [
     "/Users/shenghangwang/.codex/visualizations/2026/11/04/01a1a475-c70b-7342-89b1-f642577c991c/everflow-foundation/.venv/bin/python",
     "-m",
@@ -12,16 +12,19 @@
   ],
   "working_directory": "/Users/shenghangwang/.codex/visualizations/2026/11/04/01a1a475-c70b-7342-89b1-f642577c991c/everflow-foundation",
   "exit_code": 0,
-  "test_count": 28,
-  "revision": "uncommitted intake",
+  "test_count": 44,
+  "revision": "f10194488bf7750aab223202870f2256e64cd783",
   "files_sha256": {
     "backend/__init__.py": "b0dd23c9d4f5b80f1315ce0a20c8b1ea82429240d038c5b8685f06380510a6a2",
-    "backend/app.py": "8eb93efec138b2c1a869a2d31f1e3102d103e62b69b40431dfe36c33cf0234a3",
-    "backend/domain.py": "2da3a02f340bde58b61fec574dcbd6169e7be3c8c8d21c48b42bcb103373458a",
+    "backend/app.py": "71984172d6ac88f55e081bb9354b9cfc0bd23ccd5174b439783560c5edf514e9",
+    "backend/domain.py": "00f86edf9b4d90cb88a16e467aae78436b02929a3cf48a3c517d975130262a03",
     "backend/fixtures/generic.json": "a96d9f10e96557e543ad1dace80591027ed51f40ee3d2634e3d88f3bf1043b44",
+    "backend/fixtures/source_stress.json": "e96a0f1d042771d68bb2b6d0b855b36aeda69cd539f119265efef99d5f5fe558",
     "backend/inference.py": "890093025356330d13b7c711dc604bced25d26e0bc05fcfe817d7e681c12ac44",
+    "backend/scenarios.py": "9008e44e69e54b6d2f23d5aa33af2c27b9b9ecc44c3fc01a470af06d2b476975",
     "tests/test_api.py": "3e23d2d21a44e5cecd046eb68f5ebaae4cbc5c3f9a0f1bbd49d566bac584ba82",
-    "tests/test_workflow.py": "c8499535a45cd1b1d2ec5e49b24ca3b92b5fa78f1b0aa20ff33ba2f85b1b547d"
+    "tests/test_scenarios.py": "9b6c7cddb4bda7e6aa6c8c59c2f9648b05111ed8473f7d2671cce79635060a35",
+    "tests/test_workflow.py": "fe5e600bdd9c5f1645fc755ad6e3b9eca9839dc492f8de815bf60afed4d67521"
   },
   "boundaries": {
     "provider": "SQLite mock receipts",

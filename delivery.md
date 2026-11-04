@@ -6,7 +6,7 @@ Delivery candidate · 2026-11-04 Asia/Shanghai · work instruction v1.3. This re
 
 Day 1 floor: complete M01–M06 / A01–A06 architecture, traceability, acquisition assessment, source/access register, original review or explicit pending packet, walkthrough and verified launch baseline. No dependency on live outreach, tenant mutations or paid inference. The original project had no application code. All three provided originals were readable; the different unsuffixed factory filename in the brief is not presumed identical. No repository instruction file was discovered in the searched project/workspace/ancestors.
 
-Actual intake outcomes: source bytes/hashes/full paragraph/page extracts retained; original binary copies preserved; write restriction and network/dependency probes recorded; React and Python dependencies installed in the permitted session workspace. A connected React/FastAPI/SQLite BD path now passes 28 backend/API tests and 12 actual browser checks; the built UI was visually inspected at desktop/mobile sizes. The original project write failure did not change the local scope floor. Local work continued while employer integration access and a Gemini route remained absent. No automatic approval rejection was received.
+Actual intake outcomes: source bytes/hashes/full paragraph/page extracts retained; original binary copies preserved; write restriction and network/dependency probes recorded; React and Python dependencies installed in the permitted session workspace. A connected React/FastAPI/SQLite BD path now passes 44 backend/API tests and 14 actual browser checks; the built UI was visually inspected at desktop/mobile sizes. The original project write failure did not change the local scope floor. Local work continued while employer integration access and a Gemini route remained absent. No automatic approval rejection was received.
 
 Additional increments are brought forward after their relevant checks; reaching a floor is a checkpoint. Queue and current implementation/evidence are updated below. A known working revision is retained before subsequent improvements; planned or merely coded work does not count as verified additional delivery.
 
@@ -32,11 +32,11 @@ Two dimensions are reported per capability. “Tested” requires evidence; “m
 | Capability | Implementation status | Execution mode | Evidence / limit |
 |---|---|---|---|
 | Complete six-role architecture and original traceability | Designed-only | Deterministic workflows / bounded language design | HLD and source register; separate gate evaluation below |
-| Generic sourced intake, scoring, BD draft/send/reply/handoff | Tested locally | Deterministic + template-fixture + mock adapter | 28 backend/API tests and browser checks; `evidence/tests/backend-tests.*`, `evidence/tests/ui/browser-results.json` |
+| Generic sourced intake, scoring, BD draft/send/reply/handoff | Tested locally | Deterministic + template-fixture + mock adapter | 44 backend/API tests and browser checks; `evidence/tests/backend-tests.*`, `evidence/tests/ui/browser-results.json` |
 | Durable outbox, 72-hour follow-up, suppression/recovery | Tested locally | Deterministic + mock adapter | Due/not-due/repeated tick, persisted reply race, opt-out/handoff, unknown outcome and restart checks. No external provider guarantee. |
 | Replaceable inference boundary and conservative output validation | Tested locally | Template-fixture; live adapter fail-closed | Invalid output rejected to labeled fallback; unapproved adapter not called; paid inference disabled. Live task quality/token/deadline/atomic monetary reservation remain designed-only. |
 | Six-role workflows beyond core | Designed-only, except tested internal issue follow-through | Mock/design by default | Internal case closure requires verification evidence and preserves handoff/suppression. This narrow increment is not a complete recurring AM implementation or all-six production claim. |
-| Source/outcome cohort view | Tested locally | Deterministic synthetic observations | Two permitted fixture sources, normalization/dedupe/provenance, contacted-cohort reply denominator, unknown billable/economic data retained. Stress scenario is the next queue item. |
+| Source/outcome cohorts and stress scenario | Tested locally | Deterministic synthetic observations / illustrative planning assumptions | Two permitted fixture sources, normalization/dedupe/provenance, contacted-cohort reply denominator, unknown billable/economic data retained. A separate hypothetical traffic/outcome stress scenario is also tested; its assumed values do not replace unknown B2B cohort economics. |
 | Everflow reports, management actions, postbacks/webhooks | Blocked on tenant verification | No live external adapter | Official documentation is separate from employer permissions |
 | Factory lifecycle and optional local/cloud/Jev routing | Designed-only | No production mutation engine | Complete factory/cluster not minimum commitment |
 | Optional insurance example | Deferred / omitted | None | Generic baseline covers core without insurance-specific fields |
@@ -45,7 +45,7 @@ Two dimensions are reported per capability. “Tested” requires evidence; “m
 
 T01–T12 come from v1.3 §6. Each result below is a local scoped result; an expected outcome or a unit test name alone is insufficient. Missing live-model/provider contracts remain explicit even if a fixture check passes.
 
-| ID | Scope of check | Actual result at intake |
+| ID | Scope of check | Actual result / current evidence |
 |---|---|---|
 | T01 | Sourced lead → draft → authorized mock dispatch → reply → standard response/handoff; UI/persistence/owner | PASS local — backend connected path and browser draft/send/FAQ/handoff; persisted IDs, fact references and Demo BD owner recorded |
 | T02 | Ten duplicate events and competing claims; one logical mock acceptance | PASS local — ten duplicate drafts/dispatch/events plus competing worker claims; one logical mock acceptance |
@@ -53,29 +53,29 @@ T01–T12 come from v1.3 §6. Each result below is a local scoped result; an exp
 | T04 | Opt-out/human request/ambiguous and negated commercial language | PASS local — deterministic opt-out, requested human, negation/unknown/out-of-policy and round-cap cases; other language goes to owned review |
 | T05 | Before/at due time, repeated ticks, reply/worker race | PASS local — 71h / 72h / repeated tick browser path; backend reply-between-claim-and-execution cancellation. External ingestion lag remains unmeasured |
 | T06 | Known nonacceptance transient retry vs possible acceptance timeout | PASS local mock — known pre-acceptance retry cap and possible-acceptance timeout quarantine/reconciliation; no live provider contract verified |
-| T07 | Pending and accepted action recovery across engine/process restart | PASS local domain — pending/accepted restart and expired-claim quarantine; separate fresh process restart being verified |
+| T07 | Pending and accepted action recovery across engine/process restart | PASS local — pending/accepted domain recovery, expired-claim quarantine and independent fresh process stop/restart with exact state preservation |
 | T08 | Invalid/malformed model output, unsupported terms/facts, hostile inputs | PARTIAL — malformed/unsupported candidate output, invented terms and hostile inputs rejected or reviewed locally. No genuine model held-out evaluation run |
 | T09 | Provider unavailable/attempt limit/token/deadline/budget exhaustion | PARTIAL — paid/live inference disabled and unapproved adapter never invoked. Actual provider token/deadline/attempt/atomic monetary-budget enforcement is designed-only |
 | T10 | Attempt-inclusive usage/cost and cache/policy invalidation | PARTIAL — versioned template cache keys and current authority tested; zero provider calls/cost accurately shown, other costs unknown. Actual/uncertain model billing not exercised |
 | T11 | Local-only mock configuration, no unintended effects/frontend secrets | PASS scoped local — loopback Host/browser mutation Origin restrictions, synthetic-only recipient/mock boundary and browser modes; production RBAC/tenant isolation not implemented |
-| T12 | Fresh setup, backend tests, frontend build and exercised UI | PARTIAL — 28 backend/API tests, Vite build and 12 browser checks pass; fresh independent setup/restart verification in progress |
+| T12 | Fresh setup, backend tests, frontend build and exercised UI | PASS local — 44 backend/API tests, Vite build, 14 browser checks and genuinely fresh environment/process-restart verification; actual results and source manifests retained |
 
 Residual production checks cannot be demonstrated by fixtures: provider idempotency/lookup and acceptance semantics; reply ingestion latency; tenant permissions and rate limits; real inference quality/usage/cost; production identity/tenant isolation; multi-user concurrency; backup/restore at operational scale. Preserve unknown outcomes and missing costs as unknown.
 
 ## 5. Day 1 gates and separate acceptance states
 
-| Gate | Result at intake | Evidence / open item |
+| Gate | Current result | Evidence / open item |
 |---|---|---|
 | G1 All M/A workflows substantive | PASS design coverage | `requirements.md` traceability + `architecture.md` contracts |
 | G2 Source disposition / example separation | PASS for provided sources | Original extracts/hashes and S01–S08; generic baseline; alternate F version identity explicit |
 | G3 Negotiation/dispatch/AM/Ops authority/failure paths | PASS design coverage | Live policy missing; synthetic policy does not grant external authority |
-| G4 Verified integration facts / isolated unknowns | CONDITIONAL | Official docs can be checked; tenant-specific operations await employer access |
+| G4 Verified integration facts / isolated unknowns | CONDITIONAL | Official documentation/research checked with retained citations; tenant-specific role/region/operations remain unverified with owners and fixture fallbacks |
 | G5 Rules/AI cost/quality boundary | PASS design coverage; runtime inference checks partial | No inference budget/provider supplied; deterministic core proceeds |
-| G6 Critical findings/reviews | CONDITIONAL | Genuine Codex record and Gemini original required; export pending alone is not Gemini completion |
-| G7 Three-day path feasible with evidence | CONDITIONAL until launch/tests complete | Local prototype floor; live integration and all-six production not promised |
+| G6 Critical findings/reviews | CONDITIONAL — Gemini pending | Genuine original Codex R1 and focused R2 follow-up retained; three findings resolved in design, affected release tests still required. Initial blind Gemini packet exported, no Gemini result invented. |
+| G7 Three-day path feasible with evidence | PASS for selected local path | Connected business path, build/browser and fresh install/restart evidence. Live integration/all-six production not promised; T08–T10 live verification remains conditional. |
 | G8 Acquisition evidence/decisions/validation | PASS design/research | Dated research distinguished from employer facts and hypotheses |
 
-Separate dimensions: **design coverage** all M01–M06 / A01–A06 substantively covered; **verified employer integrations** zero; **independent reviews** fresh Codex in progress / Gemini pending; **scope baseline** adopted by user; **deliverable acceptance** pending. Do not report an aggregate percentage as approval.
+Separate dimensions: **design coverage** all M01–M06 / A01–A06 substantively covered; **verified employer integrations** zero; **independent reviews** Codex architecture complete (R1 + focused R2, findings design-resolved) / Gemini pending; **scope baseline** adopted by user; **deliverable acceptance** pending. Do not report an aggregate percentage as approval.
 
 ## 6. Day 1 walkthrough
 
@@ -86,7 +86,7 @@ Proposed 20-minute evaluation by the boss/business sponsor. Exact checkpoint tim
 3. **Decisions (3 minutes).** Explain rules versus bounded language use, commercial authority, data ownership, integration unknowns, runtime budget and local/production deployment boundary.
 4. **Acquisition resilience (3 minutes).** Present dated observations and limits, source concentration/unknown attribution/non-overlapping costs, platform bypass hypothesis, owners and falsifiable validation steps. Architecture does not guarantee revenue or survival.
 5. **Runnable evidence (4 minutes when verified).** Reset generic fixtures, draft English outreach, run synthetic policy and mock send, advance fake time, inject reply/opt-out/handoff, show audit/owner/mode and restart persistence. Never label template output as a live model.
-6. **Review and decision (2 minutes).** Show frozen input revision, original Codex finding/status, pending or genuine Gemini record and adjudication. Evaluate eight gates; capture explicit sponsor corrections/deliverable acceptance. Report minimum outcomes, additional verified increments, blockers/owners and next queue item.
+6. **Review and decision (2 minutes).** Show frozen R1/R2, genuine Codex original/follow-up, accepted findings/remedies and explicitly pending Gemini packet. Evaluate eight gates; capture explicit sponsor corrections/deliverable acceptance. Report minimum outcomes, additional verified increments, blockers/owners and next queue item.
 
 Day 3 handover adds fresh setup, relevant T01–T12 evidence, exception/recovery, any additional verified workflows, actual mode/cost status and remaining production prerequisites. Do not fabricate production soak, vendor contract tests or sponsor acceptance.
 
@@ -110,10 +110,22 @@ User clarification (2026-11-04): the minimum baseline is adopted; architecture c
 
 ## 8 Actual verification and preserved evidence
 
-- Backend/API: `.venv/bin/python scripts/check_backend.py` → exit 0, **28 tests**, 1.470 seconds, genuine log and code hashes in `evidence/tests/backend-tests.{log,json}`. An earlier missing-httpx failure is preserved under `backend-before-httpx-install.*`; dependency installed and affected suite rerun.
+- Backend/API: `.venv/bin/python scripts/check_backend.py` → exit 0, **44 tests**, 1.516 seconds, genuine log and code hashes in `evidence/tests/backend-tests.{log,json}`. An earlier missing-httpx failure is preserved under `backend-before-httpx-install.*`; dependency installed and affected suite rerun.
 - Frontend: `npm --prefix frontend run build` → exit 0, Vite 7.2.2, 23 modules. An initial root-directory invocation failed because package.json is in frontend; the documented command includes the correct location.
-- Browser: bundled Node + `scripts/check_ui.mjs` → **12 checks pass**, Chromium **149.0.7827.55**, zero browser JS/page errors. Exact results and screenshots in `evidence/tests/ui/`. Desktop and mobile screenshots were visually inspected; no clipped panels or page overflow observed. Installed Playwright expected absent cache revision 1234; existing browser revision 1228 was explicitly selected. Restricted browser launch then failed with `bootstrap_check_in ... Permission denied (1100)`; approved local browser execution passed. These are prerequisite recoveries, not a claim the initial environment worked without changes.
+- Browser: bundled Node + `scripts/check_ui.mjs` → **14 checks pass**, Chromium **149.0.7827.55**, zero browser JS/page errors. Exact results and screenshots in `evidence/tests/ui/`. Desktop and mobile screenshots were visually inspected; no clipped panels or page overflow observed. Installed Playwright expected absent cache revision 1234; existing browser revision 1228 was explicitly selected. Restricted browser launch then failed with `bootstrap_check_in ... Permission denied (1100)`; approved local browser execution passed. These are prerequisite recoveries, not a claim the initial environment worked without changes.
 - Browser demonstrated accepted mock outreach, before/due 72-hour follow-up, idempotent repeated tick, approved USD 12.50 synthetic FAQ, reply cancellation, owned clear-interest handoff, evidence-backed synthetic case closure that preserves human authority, two-source unknown economics, role-depth labels and responsive layout. Model calls: **0**. Real dispatches: **0**.
-- Fresh installation/process restart is an independent check in progress. Do not call it passed until its exact result is recorded.
+- Fresh setup: new empty environment and Node modules installed from lock files; independent checks run on port 8001, then stopped. The exact initial DNS restriction, approved dependency retry and successful setup/build/test/process-restart evidence are in `evidence/tests/fresh-setup.{log,json}`. Final source hashes attribute the latest 44-test candidate separately from the initial 28-test core snapshot. No existing virtual environment or node_modules was copied to call it fresh.
 
-Additional verified outcomes beyond the Day 1 architecture floor: connected BD core with durable mock execution, two-source cohort view and internal AM issue follow-through. No additional outcome is counted merely because its code exists. Next dependency-ready increment: hypothetical channel-shift calculation, while preserving the verified core revision; live tenant/inference work remains dependent on approved access.
+Additional verified outcomes beyond the Day 1 architecture floor: connected BD core with durable mock execution, two-source cohort view and internal AM issue follow-through. No additional outcome is counted merely because its code exists. Further completed increment: the hypothetical channel-shift calculation is separate from B2B records, uses exact Decimal arithmetic and accepted-outcome concentration, preserves unavailable metrics, and makes zero state changes/model/external calls. Source-event changed-payload replay is now quarantined before lead creation; pending authority is cancelled with original mapping/owner preserved, including legacy unverifiable receipts. The follow-up audit records the actual configured interval; 12-hour alternate configuration and its due boundary are tested. Next ranked task: immutable-fixture reconciliation → discrepancy evidence → owned finance decision/closure. Live tenant/inference work remains dependent on approved access.
+
+## 9 Revision checkpoint and next work
+
+**Minimum delivered:** complete all-six-role architecture/source coverage, S01–S08 dispositions, acquisition-resilience assessment and validation decisions, acceptance baseline, access/launch evidence, genuine Codex review/adjudication, pending blind Gemini packet and Day 1 walkthrough. Overall Day 1 gate remains **CONDITIONAL** for Gemini review and relevant tenant unknowns; employer completed-deliverable acceptance is pending.
+
+**Additional completed outcomes:** the Day 2 local BD path and recovery were brought forward; two-source cohorts, evidence-backed internal issue closure, separate hypothetical channel/economics stress and source-replay integrity correction are tested. Fresh setup/process restart work from the Day 3 plan is also brought forward. No artificial day boundary prevented these increments.
+
+**Preserved revisions:** `demo-core-verified-r1` / commit `f101944` retains the first working core (28 backend/API +12 browser checks). `demo-verified-r2` identifies the final tested candidate with the new increments, review remedies and evidence. Check the current tag/commit in Git or the local source-history bundle; do not confuse a frozen HLD packet identifier with a source-code commit.
+
+**Next ranked continuation:** (1) immutable fixture reconciliation with IDs/window/currency/control totals → exact discrepancy → draft and owned finance resolution; (2) fuller activation/recurring AM health cycle; (3) contract-tested integration mapping; (4) approved read-only Everflow snapshot and genuine bounded runtime-language evaluation when access/budget is supplied. Pending reviews/access do not block the first local items. Future mutable-report/activation/shared-target features inherit CR-01–CR-03 release checks; no authority is enabled by architecture review alone.
+
+**Open checkpoint items:** boss/business sponsor exact time TBC; Day 1 working-window end unspecified; 72-hour interval business-unconfirmed and configurable; actual named role owners/commercial definitions; approved Gemini route; Everflow role/region/products/scopes; sender/recipient scope; runtime model/data/prices/budget; existing written engagement agreement and unspecified handover terms. Final destination/transfer/ownership/retention are not invented. The source/archive is a local review convenience, not proof contractual handover occurred.

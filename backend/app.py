@@ -9,6 +9,7 @@ from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 
 from .domain import Workflow
+from .scenarios import scenario
 
 ROOT = Path(__file__).resolve().parents[1]
 workflow = Workflow(os.environ.get("EVERFLOW_DEMO_DB", str(ROOT / "data" / "demo.sqlite3")))
@@ -107,6 +108,16 @@ def resolve_issue(issue_id: str, payload: dict = Body(...)):
     if set(payload) != {"resolution", "evidence"}:
         raise ValueError("Closing an internal case requires resolution and verification evidence")
     return workflow.resolve_issue(issue_id, payload["resolution"], payload["evidence"])
+
+
+@app.get("/api/scenario")
+def scenario_defaults():
+    return scenario()
+
+
+@app.post("/api/scenario")
+def scenario_calculate(payload: dict = Body(default={})):
+    return scenario(payload)
 
 
 dist = ROOT / "frontend" / "dist"

@@ -138,6 +138,41 @@ class Workflow:
             recipient = source["recipient"].strip().lower()
             if "@" not in recipient or not recipient.endswith(".example"):
                 raise ValueError("Only synthetic .example recipients are accepted")
+            if not all(isinstance(source.get(name, False), bool) for name in ("permitted", "fit_verified")):
+                raise ValueError("Source permission and verified-fit flags must be boolean")
+            normalized_payload = {
+                "recipient": recipient,
+                "organization": " ".join(source["organization"].split()).casefold(),
+                "contact": " ".join(source["contact"].split()).casefold(),
+                "profile": " ".join(source["profile"].split()).casefold(),
+                "permitted": source.get("permitted", False),
+                "fit_verified": source.get("fit_verified", False)
+            }
+            payload_hash = hashlib.sha256(json.dumps(normalized_payload, sort_keys=True).encode()).hexdigest()
+            receipt_key = json.dumps([source["source"], source["external_id"]])
+            receipts = self._get(c, "source_receipts") or {}
+            original = c.execute("SELECT lead_id FROM provenance WHERE source=? AND external_id=?", (source["source"], source["external_id"])).fetchone()
+            if original:
+                original_lead = self._lead(c, original["lead_id"])
+                receipt = receipts.get(receipt_key)
+                if receipt and receipt["payload_hash"] == payload_hash and receipt["lead_id"] == original["lead_id"]:
+                    self._audit(c, "source_event_replayed", original["lead_id"], source=source["source"],
+                                external_id=source["external_id"], normalized_payload_sha256=payload_hash,
+                                new_lead_created=False, canonical_record_changed=False)
+                else:
+                    # Source event identity is resolved before lead creation.
+                    # Changed recipients/facts cannot silently reassign an
+                    # immutable receipt or create an orphan lead. A legacy
+                    # receipt lacking a digest is also an explicit review case.
+                    self._cancel_pending(c, original["lead_id"], "source_event_conflict")
+                    self._issue(c, original_lead, "source_event_conflict",
+                                f"Source event {source['source']}/{source['external_id']} changed or has no verifiable payload receipt; preserve the original record and review source correction")
+                    self._audit(c, "source_event_conflict", original["lead_id"], source=source["source"],
+                                external_id=source["external_id"], normalized_payload_sha256=payload_hash,
+                                original_payload_sha256=receipt["payload_hash"] if receipt else None,
+                                legacy_receipt_unverified=receipt is None, new_lead_created=False,
+                                original_mapping_preserved=True)
+                continue
             existing = c.execute("SELECT id FROM leads WHERE recipient=?", (recipient,)).fetchone()
             lead_id = existing[0] if existing else source["id"]
             if not existing:
@@ -149,8 +184,10 @@ class Workflow:
                           VALUES(?,?,?,?,?,?,?,?,?,?)""", (lead_id, source["organization"], source["contact"], recipient,
                           source["profile"], source["source"], score, json.dumps(reasons),
                           "qualified" if score >= 80 else "needs_qualification", "Demo BD owner"))
-            c.execute("INSERT OR IGNORE INTO provenance VALUES(?,?,?,?,?)", (source["source"], source["external_id"], lead_id, self._get(c, "now"), "supplied source ID"))
-            self._audit(c, "lead_deduplicated" if existing else "lead_imported", lead_id, source=source["source"], external_id=source["external_id"])
+            c.execute("INSERT INTO provenance VALUES(?,?,?,?,?)", (source["source"], source["external_id"], lead_id, self._get(c, "now"), "supplied source ID"))
+            receipts[receipt_key] = {"lead_id": lead_id, "payload_hash": payload_hash}
+            self._set(c, "source_receipts", receipts)
+            self._audit(c, "lead_deduplicated" if existing else "lead_imported", lead_id, source=source["source"], external_id=source["external_id"], normalized_payload_sha256=payload_hash)
 
     def import_leads(self, rows):
         with self.tx() as c:
@@ -329,7 +366,7 @@ class Workflow:
             if not lead["replied"] and not lead["suppressed"] and lead["stage"] not in ("handoff", "review"):
                 due = stamp(parse(receipt["accepted_at"]) + timedelta(hours=self._get(c, "policy")["followup_hours"]))
                 self._new_action(c, lead, "followup", f"Hi {lead['contact']}, following up on our affiliate partnership introduction. Would a conversation be useful? Reply 'unsubscribe' to stop.", f"followup:{action['id']}", due)
-                self._audit(c, "followup_scheduled", action["lead_id"], action["id"], due_at=due, basis="72 elapsed hours from provider acceptance; proposed default")
+                self._audit(c, "followup_scheduled", action["lead_id"], action["id"], due_at=due, basis="Elapsed hours from provider acceptance; proposed unconfirmed business rule", followup_hours=self._get(c, "policy")["followup_hours"])
         self._audit(c, "mock_dispatch_succeeded", action["lead_id"], action["id"], provider_id=receipt["provider_id"], accepted_at=receipt["accepted_at"], external_effect=False)
 
     def reconcile(self, aid):

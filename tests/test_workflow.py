@@ -5,7 +5,7 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from backend.domain import Workflow, parse, stamp
+from backend.domain import FIXTURE, Workflow, parse, stamp
 from backend.inference import TemplateInference
 
 
@@ -302,6 +302,76 @@ class WorkflowTests(unittest.TestCase):
         self.assertEqual(len([e for e in state["audit"] if e["event"] == "owned_issue_resolved"]), 1)
         self.w.resolve_issue(issue["id"], "Duplicate closure", "same evidence")
         self.assertEqual(len([e for e in self.w.state()["audit"] if e["event"] == "owned_issue_resolved"]), 1)
+
+    def test_source_event_replay_same_normalized_payload_is_idempotent(self):
+        original = json.loads(FIXTURE.read_text())["leads"][0]
+        replay = dict(original, recipient=" ALEX@NORTHSTAR.EXAMPLE ", organization=" NORTHSTAR   MEDIA ")
+        self.w.draft("L001")
+        before = self.w.state()
+        for _ in range(10):
+            self.w.import_leads([replay])
+        after = self.w.state()
+        self.assertEqual(before["leads"], after["leads"])
+        self.assertEqual(before["actions"], after["actions"])
+        self.assertEqual(after["issues"], [])
+        self.assertEqual(len(after["leads"]), 3)
+        self.assertEqual(len(after["leads"][0]["provenance"]), 2)
+        self.w.dispatch("L001")
+        self.assertEqual(self.action()["attempts"], 1)
+
+    def test_source_event_changed_recipient_or_payload_preserves_owned_record(self):
+        original = json.loads(FIXTURE.read_text())["leads"][0]
+        for changed in (dict(original, id="L999", recipient="new@northstar.example"),
+                        dict(original, profile="Different commercial facts were silently substituted")):
+            with self.subTest(changed=changed):
+                self.w.reset()
+                self.w.draft("L001")
+                aid = self.action()["id"]
+                self.authorize(aid)
+                before = self.lead()
+                self.w.import_leads([changed])
+                after = self.w.state()
+                self.assertEqual(len(after["leads"]), 3)
+                current = self.lead()
+                for field in ("recipient", "organization", "profile", "contact", "owner", "version", "provenance"):
+                    self.assertEqual(current[field], before[field])
+                self.assertEqual(current["stage"], "review")
+                self.assertEqual(after["issues"][0]["kind"], "source_event_conflict")
+                self.assertEqual(after["issues"][0]["owner"], "Demo BD owner")
+                self.assertEqual(self.action()["status"], "cancelled")
+                self.assertFalse(self.w.run_action(aid))
+                self.w.dispatch("L001")
+                self.assertEqual(len(self.w.state()["messages"]), 0)
+                with self.w.db() as c:
+                    self.assertEqual(c.execute("SELECT count(*) FROM provenance").fetchone()[0], 4)
+                    self.assertEqual(c.execute("SELECT count(*) FROM receipts").fetchone()[0], 0)
+
+    def test_legacy_source_receipt_without_payload_digest_requires_review(self):
+        original = json.loads(FIXTURE.read_text())["leads"][0]
+        with self.w.tx() as c:
+            self.w._set(c, "source_receipts", {})
+        self.w.import_leads([original])
+        self.assertEqual(self.lead()["stage"], "review")
+        self.assertEqual(len(self.w.state()["leads"]), 3)
+        evidence = [event for event in self.w.state()["audit"] if event["event"] == "source_event_conflict"][-1]
+        self.assertTrue(evidence["detail"]["legacy_receipt_unverified"])
+
+
+    def test_configurable_followup_interval_and_audit_use_the_same_rule(self):
+        with self.w.tx() as c:
+            policy = self.w._get(c, "policy")
+            policy["followup_hours"] = 12
+            self.w._set(c, "policy", policy)
+        self.send()
+        accepted_at = parse(self.action()["accepted_at"])
+        self.assertEqual(parse(self.action("followup")["due_at"]) - accepted_at, timedelta(hours=12))
+        event = next(e for e in self.w.state()["audit"] if e["event"] == "followup_scheduled")
+        self.assertEqual(event["detail"]["followup_hours"], 12)
+        self.assertIn("unconfirmed", event["detail"]["basis"])
+        self.w.tick(11)
+        self.assertEqual(self.action("followup")["status"], "scheduled")
+        self.w.tick(1)
+        self.assertEqual(self.action("followup")["status"], "succeeded")
 
 
 if __name__ == "__main__":

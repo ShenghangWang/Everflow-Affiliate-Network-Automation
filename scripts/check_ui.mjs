@@ -37,6 +37,12 @@ try{
  const i=s.issues.find(i=>i.lead_id==='L002');await page.locator('#resolution-'+i.id).fill('Synthetic walkthrough: BD acknowledged the interest handoff package.');await page.locator('#evidence-'+i.id).fill('Fixture conversation, exact approved FAQ and mock action receipts inspected in this browser walkthrough.');
  await click(page.getByRole('button',{name:'Record synthetic closure',exact:true}));s=await state();check('Synthetic closure preserves handoff authority',s.issues.find(x=>x.id===i.id).status==='resolved'&&s.leads.find(l=>l.id==='L002').stage==='handoff',{});
  check('Two-source cohorts retain unknown economics',s.metrics.source_cohorts.length===2&&s.metrics.source_cohorts.every(c=>c.contribution_usd===null),{});
+ const beforeStress=await state();await page.getByRole('button',{name:'Apply hypothetical shock',exact:true}).waitFor();
+ const scenarioResponse=page.waitForResponse(r=>r.url().endsWith('/api/scenario')&&r.request().method()==='POST');
+ await page.getByLabel('Hypothetical volume change percent').fill('-50');await page.getByLabel('Hypothetical acquisition cost change percent').fill('25');await page.getByRole('button',{name:'Apply hypothetical shock',exact:true}).click();
+ const projected=await (await scenarioResponse).json();check('UI hypothetical source shock computes bounded distinct economics',projected.effects.external_effects===false&&projected.effects.model_calls===0&&Number(projected.delta.contribution_usd)<0&&projected.stressed.concentration.denominator==='expected_accepted',{inputs:projected.inputs,delta:projected.delta});
+ const afterStress=await state();check('Scenario calculations do not mutate authority or pipeline',JSON.stringify(beforeStress)===JSON.stringify(afterStress),{});
+
  await page.screenshot({path:out+'/04-source-outcomes.png',fullPage:true});
  await page.getByRole('button',{name:'Six-role coverage'}).click();await page.getByRole('heading',{name:'One foundation, six business roles'}).waitFor();check('UI separates six-role architecture from implementation',await page.locator('.role-card').count()===6,{});
  await page.screenshot({path:out+'/05-role-coverage.png',fullPage:true});

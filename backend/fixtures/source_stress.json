@@ -1,0 +1,57 @@
+{
+  "classification": "ILLUSTRATIVE USE CASE",
+  "label": "Hypothetical generic source stress scenario — entirely synthetic traffic/outcome cohorts and assumed rules; not employer facts or a forecast",
+  "entity_boundary": "These scenario traffic opportunities, buyer-accepted outcomes and billable outcomes are separate from B2B partner prospect records. A prospect reply, handoff or onboarding is not treated as a billable event.",
+  "window": "30 hypothetical days; identical assumed observation window for both cohorts",
+  "currency": "USD",
+  "billable_event": "Synthetic contract-accepted tracked outcome; not an insurance sale or a confirmed employer billing rule",
+  "defaults": {
+    "affected_source": "traditional_referral",
+    "volume_shock_pct": "-50",
+    "acquisition_cost_change_pct": "25"
+  },
+  "assumptions": [
+    "All source names, volumes, rates, prices, refunds and costs are invented for a reversible sensitivity calculation. Shock values are user assumptions, not copied research estimates.",
+    "Acceptance rate applies to scenario traffic opportunities. Billable rate applies only to accepted scenario outcomes. Fractional results are expected values, not actual events.",
+    "The shock changes one source's opportunity volume and direct acquisition cost per opportunity. Acceptance rate, billable rate, prices and other per-unit costs remain fixed assumptions.",
+    "All modeled costs are variable. Fixed overhead, hosting and human review are outside this modeled cohort contribution; this is not total company profit.",
+    "Acquisition cost means disjoint source procurement/list licensing cost, excluding paid media. Media spend is a separate paid advertising cost. No cost is counted in both fields.",
+    "Refunds are contra-revenue, partner payout is a cost per billable outcome, and acquisition/media/inference/channel costs are separate costs per opportunity.",
+    "Inference and channel amounts are assumed scenario allocations, not actual model usage or provider charges. This calculation makes zero model or external adapter calls.",
+    "A missing required modeled cost or revenue component yields unavailable contribution. Unknown is not treated as zero. Mixed currencies are rejected; no exchange rate is assumed.",
+    "Concentration uses expected accepted-outcome counts across the two synthetic sources in the stated window; it does not measure employer channel concentration or AI-only attribution.",
+    "No outcome, revenue, AI recommendation or business survival is guaranteed by this scenario or the system architecture."
+  ],
+  "cohorts": [
+    {
+      "source_id": "traditional_referral",
+      "label": "Synthetic traditional referral cohort",
+      "currency": "USD",
+      "opportunities": "1000",
+      "acceptance_rate": "0.25",
+      "billable_rate_of_accepted": "0.80",
+      "revenue_per_billable": "20.00",
+      "refund_fraction_of_revenue": "0.05",
+      "partner_payout_per_billable": "8.00",
+      "acquisition_per_opportunity": "0.50",
+      "media_per_opportunity": "1.00",
+      "inference_per_opportunity": "0.01",
+      "channel_per_opportunity": "0.02"
+    },
+    {
+      "source_id": "partner_feed",
+      "label": "Synthetic permitted partner feed cohort",
+      "currency": "USD",
+      "opportunities": "500",
+      "acceptance_rate": "0.40",
+      "billable_rate_of_accepted": "0.90",
+      "revenue_per_billable": "20.00",
+      "refund_fraction_of_revenue": "0.05",
+      "partner_payout_per_billable": "8.00",
+      "acquisition_per_opportunity": "0.25",
+      "media_per_opportunity": "0.50",
+      "inference_per_opportunity": "0.01",
+      "channel_per_opportunity": "0.02"
+    }
+  ]
+}
