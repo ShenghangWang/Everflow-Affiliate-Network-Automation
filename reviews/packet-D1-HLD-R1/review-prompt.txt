@@ -1,0 +1,9 @@
+Independently review the attached frozen architecture and original sources. Check M01–M06 and A01–A06 coverage, including negotiation, dispatch, recurring AM, integration assistance, reconciliation and Traffic Guard. Trace one BD action, one AM cycle and one Ops failure to an owned outcome.
+
+Check that the three assignment documents and explicit employer instructions define mandatory scope. Insurance must remain a labeled optional example, with assumptions and configuration separated from core requirements. Flag any inferred employer business fact, insurance-only core dependency, or example that displaces required scope.
+
+Evaluate the daily minimums as floors, identify additional achievable work and flag artificial calendar barriers. Review acquisition-channel concentration, AI-mediated discovery, attribution gaps, provider dependence and platform bypass. Separate verified evidence, industry-specific observations, hypotheses and proposed design responses. Test whether the system adapts its inputs and measures accepted business outcomes without claiming that architecture guarantees business survival.
+
+Challenge source interpretations, API/tenant assumptions, rule-versus-model boundaries, financial/terms authority, inbox/outbox concurrency, approval edits, duplicate sends, reply/follow-up races, unknown external-write outcomes, stale data, model outages, prompt injection, token/cost limits and three-day feasibility.
+
+Return ranked findings: ID, severity, exact artifact/source location, concrete failure scenario, evidence or explicit uncertainty, minimal remedy, tradeoff and falsifiable verification. Identify important strengths and a credible simpler alternative. Distinguish a defect from a preference. Do not infer correctness from model agreement. Do not claim a test or vendor action was executed without evidence.

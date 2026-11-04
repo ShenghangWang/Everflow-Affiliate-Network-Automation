@@ -1,0 +1,33 @@
+test_T11_host_origin_and_secret_boundary (test_api.APITests.test_T11_host_origin_and_secret_boundary) ... ok
+test_T12_connected_api (test_api.APITests.test_T12_connected_api) ... ok
+test_payload_schema_and_live_recipient_rejected (test_api.APITests.test_payload_schema_and_live_recipient_rejected) ... ok
+test_T01_connected_path_approved_facts_and_owned_handoff (test_workflow.WorkflowTests.test_T01_connected_path_approved_facts_and_owned_handoff) ... ok
+test_T02_competing_workers_one_logical_acceptance (test_workflow.WorkflowTests.test_T02_competing_workers_one_logical_acceptance) ... ok
+test_T02_duplicate_drafts_dispatches_and_inbound_events (test_workflow.WorkflowTests.test_T02_duplicate_drafts_dispatches_and_inbound_events) ... ok
+test_T03_direct_mutation_cannot_reuse_binding (test_workflow.WorkflowTests.test_T03_direct_mutation_cannot_reuse_binding) ... ok
+test_T03_expired_policy_denies_even_cached_draft (test_workflow.WorkflowTests.test_T03_expired_policy_denies_even_cached_draft) ... ok
+test_T03_recipient_content_and_terms_edits_invalidate (test_workflow.WorkflowTests.test_T03_recipient_content_and_terms_edits_invalidate) ... ok
+test_T04_max_two_standard_rounds (test_workflow.WorkflowTests.test_T04_max_two_standard_rounds) ... ok
+test_T04_optout_human_negation_unknown_and_out_of_policy (test_workflow.WorkflowTests.test_T04_optout_human_negation_unknown_and_out_of_policy) ... ok
+test_T04_suppression_and_handoff_persist_on_later_faq (test_workflow.WorkflowTests.test_T04_suppression_and_handoff_persist_on_later_faq) ... ok
+test_T05_due_boundary_and_repeated_ticks (test_workflow.WorkflowTests.test_T05_due_boundary_and_repeated_ticks) ... ok
+test_T05_reply_between_worker_claim_and_execute_cancels (test_workflow.WorkflowTests.test_T05_reply_between_worker_claim_and_execute_cancels) ... ok
+test_T06_finite_known_failure_cap (test_workflow.WorkflowTests.test_T06_finite_known_failure_cap) ... ok
+test_T06_known_preaccept_failure_retries_once (test_workflow.WorkflowTests.test_T06_known_preaccept_failure_retries_once) ... ok
+test_T06_timeout_after_possible_acceptance_no_blind_resend (test_workflow.WorkflowTests.test_T06_timeout_after_possible_acceptance_no_blind_resend) ... ok
+test_T07_expired_claim_is_quarantined_not_retried (test_workflow.WorkflowTests.test_T07_expired_claim_is_quarantined_not_retried) ... ok
+test_T07_restart_recovers_pending_without_repeated_send (test_workflow.WorkflowTests.test_T07_restart_recovers_pending_without_repeated_send) ... ok
+test_T08_malformed_invented_terms_and_hostile_input (test_workflow.WorkflowTests.test_T08_malformed_invented_terms_and_hostile_input) ... ok
+test_T08_replaceable_adapter_invalid_output_falls_back_visibly (test_workflow.WorkflowTests.test_T08_replaceable_adapter_invalid_output_falls_back_visibly) ... ok
+test_T09_live_inference_disabled_and_visible_template_mode (test_workflow.WorkflowTests.test_T09_live_inference_disabled_and_visible_template_mode) ... ok
+test_T09_unapproved_provider_adapter_is_never_invoked (test_workflow.WorkflowTests.test_T09_unapproved_provider_adapter_is_never_invoked) ... ok
+test_T10_source_policy_terms_change_cache_key_and_current_authority (test_workflow.WorkflowTests.test_T10_source_policy_terms_change_cache_key_and_current_authority) ... ok
+test_T11_generic_only_mock_boundary_and_redacted_costs (test_workflow.WorkflowTests.test_T11_generic_only_mock_boundary_and_redacted_costs) ... ok
+test_internal_am_issue_followthrough_preserves_human_authority (test_workflow.WorkflowTests.test_internal_am_issue_followthrough_preserves_human_authority) ... ok
+test_kill_switch_and_unqualified_no_effect (test_workflow.WorkflowTests.test_kill_switch_and_unqualified_no_effect) ... ok
+test_metrics_reply_rate_matches_accepted_contact_cohort (test_workflow.WorkflowTests.test_metrics_reply_rate_matches_accepted_contact_cohort) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 1.470s
+
+OK

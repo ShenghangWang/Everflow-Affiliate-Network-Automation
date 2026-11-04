@@ -1,0 +1,61 @@
+test_api (unittest.loader._FailedTest.test_api) ... ERROR
+test_T01_connected_path_approved_facts_and_owned_handoff (test_workflow.WorkflowTests.test_T01_connected_path_approved_facts_and_owned_handoff) ... ok
+test_T02_competing_workers_one_logical_acceptance (test_workflow.WorkflowTests.test_T02_competing_workers_one_logical_acceptance) ... ok
+test_T02_duplicate_drafts_dispatches_and_inbound_events (test_workflow.WorkflowTests.test_T02_duplicate_drafts_dispatches_and_inbound_events) ... ok
+test_T03_direct_mutation_cannot_reuse_binding (test_workflow.WorkflowTests.test_T03_direct_mutation_cannot_reuse_binding) ... ok
+test_T03_expired_policy_denies_even_cached_draft (test_workflow.WorkflowTests.test_T03_expired_policy_denies_even_cached_draft) ... ok
+test_T03_recipient_content_and_terms_edits_invalidate (test_workflow.WorkflowTests.test_T03_recipient_content_and_terms_edits_invalidate) ... ok
+test_T04_max_two_standard_rounds (test_workflow.WorkflowTests.test_T04_max_two_standard_rounds) ... ok
+test_T04_optout_human_negation_unknown_and_out_of_policy (test_workflow.WorkflowTests.test_T04_optout_human_negation_unknown_and_out_of_policy) ... ok
+test_T04_suppression_and_handoff_persist_on_later_faq (test_workflow.WorkflowTests.test_T04_suppression_and_handoff_persist_on_later_faq) ... ok
+test_T05_due_boundary_and_repeated_ticks (test_workflow.WorkflowTests.test_T05_due_boundary_and_repeated_ticks) ... ok
+test_T05_reply_between_worker_claim_and_execute_cancels (test_workflow.WorkflowTests.test_T05_reply_between_worker_claim_and_execute_cancels) ... ok
+test_T06_finite_known_failure_cap (test_workflow.WorkflowTests.test_T06_finite_known_failure_cap) ... ok
+test_T06_known_preaccept_failure_retries_once (test_workflow.WorkflowTests.test_T06_known_preaccept_failure_retries_once) ... ok
+test_T06_timeout_after_possible_acceptance_no_blind_resend (test_workflow.WorkflowTests.test_T06_timeout_after_possible_acceptance_no_blind_resend) ... ok
+test_T07_expired_claim_is_quarantined_not_retried (test_workflow.WorkflowTests.test_T07_expired_claim_is_quarantined_not_retried) ... ok
+test_T07_restart_recovers_pending_without_repeated_send (test_workflow.WorkflowTests.test_T07_restart_recovers_pending_without_repeated_send) ... ok
+test_T08_malformed_invented_terms_and_hostile_input (test_workflow.WorkflowTests.test_T08_malformed_invented_terms_and_hostile_input) ... ok
+test_T08_replaceable_adapter_invalid_output_falls_back_visibly (test_workflow.WorkflowTests.test_T08_replaceable_adapter_invalid_output_falls_back_visibly) ... ok
+test_T09_live_inference_disabled_and_visible_template_mode (test_workflow.WorkflowTests.test_T09_live_inference_disabled_and_visible_template_mode) ... ok
+test_T09_unapproved_provider_adapter_is_never_invoked (test_workflow.WorkflowTests.test_T09_unapproved_provider_adapter_is_never_invoked) ... ok
+test_T10_source_policy_terms_change_cache_key_and_current_authority (test_workflow.WorkflowTests.test_T10_source_policy_terms_change_cache_key_and_current_authority) ... ok
+test_T11_generic_only_mock_boundary_and_redacted_costs (test_workflow.WorkflowTests.test_T11_generic_only_mock_boundary_and_redacted_costs) ... ok
+test_internal_am_issue_followthrough_preserves_human_authority (test_workflow.WorkflowTests.test_internal_am_issue_followthrough_preserves_human_authority) ... ok
+test_kill_switch_and_unqualified_no_effect (test_workflow.WorkflowTests.test_kill_switch_and_unqualified_no_effect) ... ok
+test_metrics_reply_rate_matches_accepted_contact_cohort (test_workflow.WorkflowTests.test_metrics_reply_rate_matches_accepted_contact_cohort) ... ok
+
+======================================================================
+ERROR: test_api (unittest.loader._FailedTest.test_api)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_api
+Traceback (most recent call last):
+  File "/Users/shenghangwang/.codex/visualizations/2026/11/04/01a1a475-c70b-7342-89b1-f642577c991c/everflow-foundation/.venv/lib/python3.12/site-packages/starlette/testclient.py", line 30, in <module>
+    import httpx
+ModuleNotFoundError: No module named 'httpx'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/shenghangwang/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shenghangwang/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/Users/shenghangwang/.codex/visualizations/2026/11/04/01a1a475-c70b-7342-89b1-f642577c991c/everflow-foundation/tests/test_api.py", line 6, in <module>
+    from fastapi.testclient import TestClient
+  File "/Users/shenghangwang/.codex/visualizations/2026/11/04/01a1a475-c70b-7342-89b1-f642577c991c/everflow-foundation/.venv/lib/python3.12/site-packages/fastapi/testclient.py", line 1, in <module>
+    from starlette.testclient import TestClient as TestClient  # noqa
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shenghangwang/.codex/visualizations/2026/11/04/01a1a475-c70b-7342-89b1-f642577c991c/everflow-foundation/.venv/lib/python3.12/site-packages/starlette/testclient.py", line 32, in <module>
+    raise RuntimeError(
+RuntimeError: The starlette.testclient module requires the httpx package to be installed.
+You can install this with:
+    $ pip install httpx
+
+
+
+----------------------------------------------------------------------
+Ran 26 tests in 1.566s
+
+FAILED (errors=1)

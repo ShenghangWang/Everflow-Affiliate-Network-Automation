@@ -1,0 +1,46 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {createRequire} from 'node:module';
+const require=createRequire(import.meta.url);
+let pw;
+try{pw=require('playwright')}catch{pw=require(process.env.PLAYWRIGHT_PACKAGE || '/Users/shenghangwang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright')}
+const out=path.resolve('evidence/tests/ui');fs.mkdirSync(out,{recursive:true});
+const base=process.env.DEMO_URL || 'http://127.0.0.1:8000';
+const results={started_at:new Date().toISOString(),base,checks:[],console_errors:[],page_errors:[],mode:'synthetic mock/template only'};
+const browser=await pw.chromium.launch({headless:true,...(process.env.CHROMIUM_EXECUTABLE?{executablePath:process.env.CHROMIUM_EXECUTABLE}:{})});
+results.browser=browser.version();results.browser_executable=process.env.CHROMIUM_EXECUTABLE || 'Playwright default';
+try{
+ const page=await browser.newPage({viewport:{width:1440,height:1100},deviceScaleFactor:1});
+ page.on('pageerror',e=>results.page_errors.push(e.message));
+ page.on('console',m=>{if(m.type()==='error')results.console_errors.push(m.text())});
+ const state=async()=>{const r=await page.request.get(base+'/api/state');if(!r.ok())throw Error('State HTTP '+r.status());return r.json()};
+ const check=(name,condition,detail)=>{results.checks.push({name,pass:!!condition,detail});if(!condition)throw Error(name+' failed: '+JSON.stringify(detail))};
+ const click=async(locator)=>{await Promise.all([page.waitForResponse(r=>r.url().includes('/api/')&&r.request().method()==='POST'),locator.click()]);await page.waitForFunction(()=>!document.querySelector('button.primary')?.disabled||document.body.innerText.includes('Human case review'),{},{timeout:1000}).catch(()=>{});};
+ await page.request.post(base+'/api/reset');await page.goto(base);await page.getByRole('heading',{name:'From prospect to owned outcome'}).waitFor();
+ await page.screenshot({path:out+'/01-generic-baseline.png',fullPage:true});
+ check('Generic baseline loads React with accurate modes',(await page.locator('body').innerText()).includes('offline template fallback'),{});
+ await click(page.getByRole('button',{name:'Draft outreach',exact:true}));
+ await page.getByText('Outreach draft · template fallback').waitFor();
+ await click(page.getByRole('button',{name:'Run policy & mock send',exact:true}));
+ let s=await state();check('UI initial mock dispatch accepted with fact refs',s.actions.filter(a=>a.kind==='outreach'&&a.status==='succeeded').length===1&&s.actions[0].fact_refs.length>0,s.actions.map(a=>({id:a.id,status:a.status,kind:a.kind})));
+ await page.screenshot({path:out+'/02-mock-dispatch.png',fullPage:true});
+ await click(page.getByRole('button',{name:'+71h',exact:true}));s=await state();check('UI before72h leaves followup pending',s.actions.find(a=>a.kind==='followup').status==='scheduled',s.now);
+ await click(page.getByRole('button',{name:'+1h',exact:true}));s=await state();check('UI at72h dispatches one eligible followup',s.actions.filter(a=>a.kind==='followup'&&a.status==='succeeded').length===1,s.now);
+ await click(page.getByRole('button',{name:'Tick',exact:true}));s=await state();check('Repeated tick does not duplicate logical followup',s.actions.filter(a=>a.kind==='followup'&&a.status==='succeeded').length===1,{});
+ await page.getByRole('button').filter({hasText:'Harbor Partners'}).click();
+ await click(page.getByRole('button',{name:'Draft outreach',exact:true}));await click(page.getByRole('button',{name:'Run policy & mock send',exact:true}));
+ await page.getByLabel('Inject a synthetic inbound reply').fill('What is the payout?');await click(page.getByRole('button',{name:'Process reply',exact:true}));s=await state();
+ check('UI FAQ uses approved numeric terms and cancels followup',s.messages.some(m=>m.lead_id==='L002'&&m.text.includes('USD 12.50'))&&s.actions.find(a=>a.lead_id==='L002'&&a.kind==='followup').status==='cancelled',{});
+ await page.getByRole('button',{name:'Clear interest',exact:true}).click();await click(page.getByRole('button',{name:'Process reply',exact:true}));s=await state();check('UI clear interest has accountable handoff',s.leads.find(l=>l.id==='L002').stage==='handoff'&&s.issues.some(i=>i.lead_id==='L002'&&i.owner==='Demo BD owner'),{});
+ await page.screenshot({path:out+'/03-owned-handoff.png',fullPage:true});
+ await page.getByRole('button',{name:'Source & outcomes'}).click();await page.getByRole('heading',{name:'Source cohorts'}).waitFor();
+ const i=s.issues.find(i=>i.lead_id==='L002');await page.locator('#resolution-'+i.id).fill('Synthetic walkthrough: BD acknowledged the interest handoff package.');await page.locator('#evidence-'+i.id).fill('Fixture conversation, exact approved FAQ and mock action receipts inspected in this browser walkthrough.');
+ await click(page.getByRole('button',{name:'Record synthetic closure',exact:true}));s=await state();check('Synthetic closure preserves handoff authority',s.issues.find(x=>x.id===i.id).status==='resolved'&&s.leads.find(l=>l.id==='L002').stage==='handoff',{});
+ check('Two-source cohorts retain unknown economics',s.metrics.source_cohorts.length===2&&s.metrics.source_cohorts.every(c=>c.contribution_usd===null),{});
+ await page.screenshot({path:out+'/04-source-outcomes.png',fullPage:true});
+ await page.getByRole('button',{name:'Six-role coverage'}).click();await page.getByRole('heading',{name:'One foundation, six business roles'}).waitFor();check('UI separates six-role architecture from implementation',await page.locator('.role-card').count()===6,{});
+ await page.screenshot({path:out+'/05-role-coverage.png',fullPage:true});
+ await page.setViewportSize({width:390,height:844});check('Mobile layout has no page overflow',await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth),{});await page.screenshot({path:out+'/06-mobile.png',fullPage:true});
+ check('No browser JS/page errors',results.page_errors.length===0&&results.console_errors.length===0,{console_errors:results.console_errors,page_errors:results.page_errors});
+ results.finished_at=new Date().toISOString();results.pass=true;results.final_summary={leads:s.leads.map(l=>({id:l.id,stage:l.stage})),actions:s.actions.map(a=>({id:a.id,kind:a.kind,status:a.status,attempts:a.attempts})),mode:s.mode,model_calls:s.cost.provider_attempts};
+}catch(e){results.pass=false;results.error=e.stack;throw e}finally{fs.writeFileSync(out+'/browser-results.json',JSON.stringify(results,null,2));await browser.close();console.log(JSON.stringify(results,null,2));}

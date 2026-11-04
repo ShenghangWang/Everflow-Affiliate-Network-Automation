@@ -1,0 +1,97 @@
+{
+  "revision": "D1-HLD-R1",
+  "frozen_at": "2026-11-04T03:08:53.441903+00:00",
+  "scope": "Architecture and assigned sources, same input for independent Codex and Gemini review. Snapshot status may differ from subsequent tested implementation; no other reviewer verdict provided.",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 7469,
+      "sha256": "459e43a724a57b2d717e40874ce088607a9433183c21133ff0f8af349cc55590"
+    },
+    {
+      "path": "architecture.md",
+      "bytes": 49604,
+      "sha256": "ec205b3430399f2e9915943150b71292ea307849d06b1449373613751042ad81"
+    },
+    {
+      "path": "delivery.md",
+      "bytes": 14157,
+      "sha256": "648f43a20243c0786fb0d61f06f79cb737fa788a9dfd26cc65a6bc3d903c0376"
+    },
+    {
+      "path": "evidence/intake/business-original.txt",
+      "bytes": 3304,
+      "sha256": "4397925f511c53b6a6eb79f5f78b1deb2f714d7b80140d601783a445b868d8ee"
+    },
+    {
+      "path": "evidence/intake/delivery-brief-v1.3.md",
+      "bytes": 50914,
+      "sha256": "43a339af6db9e7c5aa68fa44b877e7e3e10be852e800b23991abab6baa1ae77f"
+    },
+    {
+      "path": "evidence/intake/dependency-results.json",
+      "bytes": 1944,
+      "sha256": "6f32148c2e52a37a5f1cb2ab94a47b492e6b34b009431bca2f615a3d949ac6e8"
+    },
+    {
+      "path": "evidence/intake/factory-original.txt",
+      "bytes": 18266,
+      "sha256": "2686d612b71dfdd9f74def8951d7326b67521dbf531a85d1ec33853eaad871fd"
+    },
+    {
+      "path": "evidence/intake/launch-probes.json",
+      "bytes": 2049,
+      "sha256": "8bf521a1313c2e4dbbe544ce840ef429cd045bc3cc1969e5a501e651a045424b"
+    },
+    {
+      "path": "evidence/intake/originals/Everflow-Engineering-Delivery-Brief.md",
+      "bytes": 50914,
+      "sha256": "43a339af6db9e7c5aa68fa44b877e7e3e10be852e800b23991abab6baa1ae77f"
+    },
+    {
+      "path": "evidence/intake/originals/数字王国开发-第三版(1).pdf",
+      "bytes": 313444,
+      "sha256": "8c2d1437dedb7951d8e2c79b0b64a677d912b398e3f929e56079e4fbda44b3a3"
+    },
+    {
+      "path": "evidence/intake/originals/网盟自动系统需求文档.docx",
+      "bytes": 13155,
+      "sha256": "de3337d5c48e58274d9c95f2d904cc675f9fc0e9052e51d1f0cd59a73827f446"
+    },
+    {
+      "path": "evidence/intake/originals/青蓝绩效文档-2.pdf",
+      "bytes": 424259,
+      "sha256": "32581f425301ddce32a7c509cb017c7c69f425f2cb8e43c550c92dbaefd88ced"
+    },
+    {
+      "path": "evidence/intake/roles-original.txt",
+      "bytes": 24841,
+      "sha256": "1545b317623e76cdc20622a668e2c900c68fb2fd301b3007819cbac5f58b9849"
+    },
+    {
+      "path": "evidence/intake/sources.json",
+      "bytes": 2236,
+      "sha256": "d670180d7fa1fa98da922adb8a5f968dcdffe1bc5517ad646d3724777b4aa0f2"
+    },
+    {
+      "path": "evidence/intake/sponsor-clarification-2026-11-04.md",
+      "bytes": 2497,
+      "sha256": "1d5d35679304cbb4791391ad1cda5a83665f0fa731525c83d7b879e60b76bc49"
+    },
+    {
+      "path": "evidence/research/checked-2026-11-04.md",
+      "bytes": 9082,
+      "sha256": "c6d7e13eec253e15e4afa0c9416ff22a470775c996d9d8a476ad8c7f29bc02bd"
+    },
+    {
+      "path": "requirements.md",
+      "bytes": 39544,
+      "sha256": "506cf1c1be0a77a348c45219a944e8ced9cfcbf98c5080737de3298bf56e8297"
+    },
+    {
+      "path": "review-prompt.txt",
+      "bytes": 1849,
+      "sha256": "0141d5b727be962a6b4978c186a13a49555848868bfac7b340a2f06fe5e4c7a0"
+    }
+  ]
+}
