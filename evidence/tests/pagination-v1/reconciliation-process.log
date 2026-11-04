@@ -1,0 +1,64 @@
+INFO:     Started server process [65695]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:54712 (Press CTRL+C to quit)
+INFO:     127.0.0.1:54724 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54726 - "POST /api/reconciliation/compare HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54728 - "POST /api/reconciliation/cases/REC-f2ee5ac6122cab24/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54730 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [65695]
+INFO:     Started server process [65697]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:54712 (Press CTRL+C to quit)
+INFO:     127.0.0.1:54741 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54744 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54747 - "POST /api/tick HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54749 - "POST /api/tick HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54751 - "POST /api/reconciliation/compare HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54753 - "POST /api/reconciliation/cases/REC-f2ee5ac6122cab24/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54755 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [65697]
+INFO:     Started server process [65714]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:54712 (Press CTRL+C to quit)
+INFO:     127.0.0.1:54767 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54769 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54771 - "POST /api/reconciliation/compare HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54773 - "POST /api/reconciliation/cases/REC-08d440ffa88486c2/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54775 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [65714]
+INFO:     Started server process [65717]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:54712 (Press CTRL+C to quit)
+INFO:     127.0.0.1:54785 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54787 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54789 - "POST /api/tick HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54791 - "POST /api/reconciliation/compare HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54793 - "POST /api/reconciliation/cases/REC-08d440ffa88486c2/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54795 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [65717]
+INFO:     Started server process [65731]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:54712 (Press CTRL+C to quit)
+INFO:     127.0.0.1:54805 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54807 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [65731]

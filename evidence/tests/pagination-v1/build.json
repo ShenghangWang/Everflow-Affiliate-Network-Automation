@@ -1,0 +1,17 @@
+{
+  "command": [
+    "npm",
+    "--prefix",
+    "frontend",
+    "run",
+    "build"
+  ],
+  "started_at_utc": "2026-11-04T07:58:29.225858+00:00",
+  "finished_at_utc": "2026-11-04T07:58:31.321861+00:00",
+  "exit_code": 0,
+  "assets": {
+    "frontend/dist/assets/index-CLIKwgdo.js": "f13e317ed5af19e769c7891eec1317fcc967a4a36442db7519208b2f3b2cf47b",
+    "frontend/dist/assets/index-CMTVDqF-.css": "05e692c7b2f54dcf7138b8e5fb4825d513a0a4a1f7d3b733c37cd1b822b52d41",
+    "frontend/dist/index.html": "842bdce11c32fbe39e0a6b9a79b69c1117898bf8ceee009cfa85c616ce9b4300"
+  }
+}

@@ -17,6 +17,8 @@ from .inference import TemplateInference
 from .reconciliation import ReconciliationService, TABLES as RECON_TABLES, ensure_schema as ensure_recon_schema
 from .account_management import AccountManagement, TABLES as AM_TABLES, ensure_schema as ensure_am_schema
 
+from .commercial import CommercialService, TABLES as COMMERCIAL_TABLES, ensure_schema as ensure_commercial_schema
+
 FIXTURE = Path(__file__).parent / "fixtures" / "generic.json"
 PENDING = ("scheduled", "authorized", "executing")
 
@@ -78,6 +80,7 @@ class Workflow:
             """)
             ensure_recon_schema(c)
             ensure_am_schema(c)
+            ensure_commercial_schema(c)
         if not self.setting("now"):
             self.reset()
 
@@ -128,7 +131,7 @@ class Workflow:
     def reset(self):
         fixture = json.loads(FIXTURE.read_text())
         with self.tx() as c:
-            for table in (*AM_TABLES, *RECON_TABLES, "leads", "provenance", "inbox", "actions", "authorizations", "attempts", "receipts", "messages", "audit", "issues", "draft_usage", "settings"):
+            for table in (*COMMERCIAL_TABLES, *AM_TABLES, *RECON_TABLES, "leads", "provenance", "inbox", "actions", "authorizations", "attempts", "receipts", "messages", "audit", "issues", "draft_usage", "settings"):
                 c.execute(f"DELETE FROM {table}")  # table is a code-owned allowlist
             for key in ("now", "policy", "terms", "sources", "label"):
                 self._set(c, key, fixture[key])
@@ -596,6 +599,7 @@ class Workflow:
             "issues": rows("issues"), "authorizations": rows("authorizations"), "attempts": rows("attempts"),
             "reconciliation": ReconciliationService(self).state(c),
             "account_management": AccountManagement(self).state(c),
+            "commercial": CommercialService(self).state(c),
             "metrics": {"leads": len(leads), "qualified": sum(l["score"] >= 80 for l in leads),
                         "outreach_accepted": accepted, "replies": sum(l["replied"] for l in leads),
                         "replies_after_accepted_outreach": contacted_replies,

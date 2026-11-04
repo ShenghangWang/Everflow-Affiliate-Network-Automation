@@ -1,0 +1,2702 @@
+{
+  "observed_at_utc": "2026-11-04T08:00:58.022907+00:00",
+  "upstream": "synthetic fake page source; no Everflow request",
+  "cases": [
+    {
+      "scenario": "stable",
+      "classification": "verified_fixture",
+      "attempts": 1,
+      "page_calls": 2,
+      "comparison": "matched",
+      "difference": "0.00",
+      "proof": {
+        "version": "synthetic-page-acquisition-v1",
+        "limits": {
+          "max_attempts": 2,
+          "max_pages": 5,
+          "page_retries": 1,
+          "page_size": 2,
+          "retry_delays_seconds": [
+            1
+          ],
+          "label": "Assumed local fixture limits, not provider SLA"
+        },
+        "attempts": [
+          {
+            "number": 1,
+            "contract": {
+              "header": {
+                "schema_version": 1,
+                "source": "synthetic_internal_ledger",
+                "report_id": "INTERNAL-W44",
+                "revision": 1,
+                "account_id": "DEMO-ACCOUNT-02",
+                "currency": "USD",
+                "unit": "currency_amount",
+                "reporting_timezone": "UTC",
+                "window_start": "2026-10-26T00:00:00+00:00",
+                "window_end": "2026-11-02T00:00:00+00:00",
+                "billable_event": "synthetic contract-accepted tracked outcome",
+                "status_basis": "final_billable_outcomes"
+              },
+              "as_of": "2026-11-03T09:00:00+00:00",
+              "ordering": "event_id_ascending",
+              "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+              "consistency": "immutable_fixture_manifest",
+              "controls": {
+                "count": 4,
+                "amount": "50.00",
+                "rows_sha256": "904cb50c94257ec63da96a4abfc37469d92fc9b294c203cc09fe94d681ce1fb1"
+              }
+            },
+            "pages": [
+              {
+                "page": 1,
+                "next_page": 2,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E001",
+                    "occurred_at": "2026-10-27T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E002",
+                    "occurred_at": "2026-10-28T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 2,
+                "next_page": null,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E003",
+                    "occurred_at": "2026-10-29T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E004",
+                    "occurred_at": "2026-10-30T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              }
+            ],
+            "calls": [
+              {
+                "page": 1,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 2,
+                "try": 1,
+                "outcome": "response"
+              }
+            ],
+            "problems": []
+          }
+        ],
+        "classification": "verified_fixture",
+        "limitations": [
+          "Reaching the last page or repeating identical reads does not prove a consistent snapshot",
+          "Fixture contract is not evidence of a provider snapshot token/content manifest",
+          "No live auth, timeout, quota, watermark or settling contract verified"
+        ]
+      }
+    },
+    {
+      "scenario": "insert",
+      "classification": "partial_or_uncertain",
+      "attempts": 2,
+      "page_calls": 6,
+      "comparison": "blocked",
+      "difference": null,
+      "proof": {
+        "version": "synthetic-page-acquisition-v1",
+        "limits": {
+          "max_attempts": 2,
+          "max_pages": 5,
+          "page_retries": 1,
+          "page_size": 2,
+          "retry_delays_seconds": [
+            1
+          ],
+          "label": "Assumed local fixture limits, not provider SLA"
+        },
+        "attempts": [
+          {
+            "number": 1,
+            "contract": {
+              "header": {
+                "schema_version": 1,
+                "source": "synthetic_internal_ledger",
+                "report_id": "INTERNAL-W44",
+                "revision": 1,
+                "account_id": "DEMO-ACCOUNT-02",
+                "currency": "USD",
+                "unit": "currency_amount",
+                "reporting_timezone": "UTC",
+                "window_start": "2026-10-26T00:00:00+00:00",
+                "window_end": "2026-11-02T00:00:00+00:00",
+                "billable_event": "synthetic contract-accepted tracked outcome",
+                "status_basis": "final_billable_outcomes"
+              },
+              "as_of": "2026-11-03T09:00:00+00:00",
+              "ordering": "event_id_ascending",
+              "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+              "consistency": "immutable_fixture_manifest",
+              "controls": {
+                "count": 4,
+                "amount": "50.00",
+                "rows_sha256": "904cb50c94257ec63da96a4abfc37469d92fc9b294c203cc09fe94d681ce1fb1"
+              }
+            },
+            "pages": [
+              {
+                "page": 1,
+                "next_page": 2,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E001",
+                    "occurred_at": "2026-10-27T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E002",
+                    "occurred_at": "2026-10-28T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 2,
+                "next_page": 3,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E002",
+                    "occurred_at": "2026-10-28T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E003",
+                    "occurred_at": "2026-10-29T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 3,
+                "next_page": null,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E004",
+                    "occurred_at": "2026-10-30T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              }
+            ],
+            "calls": [
+              {
+                "page": 1,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 2,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 3,
+                "try": 1,
+                "outcome": "response"
+              }
+            ],
+            "problems": [
+              "content_control_mismatch",
+              "duplicate_event_ids"
+            ]
+          },
+          {
+            "number": 2,
+            "contract": {
+              "header": {
+                "schema_version": 1,
+                "source": "synthetic_internal_ledger",
+                "report_id": "INTERNAL-W44",
+                "revision": 1,
+                "account_id": "DEMO-ACCOUNT-02",
+                "currency": "USD",
+                "unit": "currency_amount",
+                "reporting_timezone": "UTC",
+                "window_start": "2026-10-26T00:00:00+00:00",
+                "window_end": "2026-11-02T00:00:00+00:00",
+                "billable_event": "synthetic contract-accepted tracked outcome",
+                "status_basis": "final_billable_outcomes"
+              },
+              "as_of": "2026-11-03T09:00:00+00:00",
+              "ordering": "event_id_ascending",
+              "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+              "consistency": "immutable_fixture_manifest",
+              "controls": {
+                "count": 4,
+                "amount": "50.00",
+                "rows_sha256": "904cb50c94257ec63da96a4abfc37469d92fc9b294c203cc09fe94d681ce1fb1"
+              }
+            },
+            "pages": [
+              {
+                "page": 1,
+                "next_page": 2,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E001",
+                    "occurred_at": "2026-10-27T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E002",
+                    "occurred_at": "2026-10-28T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 2,
+                "next_page": 3,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E002",
+                    "occurred_at": "2026-10-28T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E003",
+                    "occurred_at": "2026-10-29T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 3,
+                "next_page": null,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E004",
+                    "occurred_at": "2026-10-30T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              }
+            ],
+            "calls": [
+              {
+                "page": 1,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 2,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 3,
+                "try": 1,
+                "outcome": "response"
+              }
+            ],
+            "problems": [
+              "content_control_mismatch",
+              "duplicate_event_ids"
+            ]
+          }
+        ],
+        "classification": "partial_or_uncertain",
+        "limitations": [
+          "Reaching the last page or repeating identical reads does not prove a consistent snapshot",
+          "Fixture contract is not evidence of a provider snapshot token/content manifest",
+          "No live auth, timeout, quota, watermark or settling contract verified"
+        ]
+      }
+    },
+    {
+      "scenario": "remove",
+      "classification": "partial_or_uncertain",
+      "attempts": 2,
+      "page_calls": 4,
+      "comparison": "blocked",
+      "difference": null,
+      "proof": {
+        "version": "synthetic-page-acquisition-v1",
+        "limits": {
+          "max_attempts": 2,
+          "max_pages": 5,
+          "page_retries": 1,
+          "page_size": 2,
+          "retry_delays_seconds": [
+            1
+          ],
+          "label": "Assumed local fixture limits, not provider SLA"
+        },
+        "attempts": [
+          {
+            "number": 1,
+            "contract": {
+              "header": {
+                "schema_version": 1,
+                "source": "synthetic_internal_ledger",
+                "report_id": "INTERNAL-W44",
+                "revision": 1,
+                "account_id": "DEMO-ACCOUNT-02",
+                "currency": "USD",
+                "unit": "currency_amount",
+                "reporting_timezone": "UTC",
+                "window_start": "2026-10-26T00:00:00+00:00",
+                "window_end": "2026-11-02T00:00:00+00:00",
+                "billable_event": "synthetic contract-accepted tracked outcome",
+                "status_basis": "final_billable_outcomes"
+              },
+              "as_of": "2026-11-03T09:00:00+00:00",
+              "ordering": "event_id_ascending",
+              "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+              "consistency": "immutable_fixture_manifest",
+              "controls": {
+                "count": 4,
+                "amount": "50.00",
+                "rows_sha256": "904cb50c94257ec63da96a4abfc37469d92fc9b294c203cc09fe94d681ce1fb1"
+              }
+            },
+            "pages": [
+              {
+                "page": 1,
+                "next_page": 2,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E001",
+                    "occurred_at": "2026-10-27T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E002",
+                    "occurred_at": "2026-10-28T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 2,
+                "next_page": null,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E004",
+                    "occurred_at": "2026-10-30T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              }
+            ],
+            "calls": [
+              {
+                "page": 1,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 2,
+                "try": 1,
+                "outcome": "response"
+              }
+            ],
+            "problems": [
+              "content_control_mismatch"
+            ]
+          },
+          {
+            "number": 2,
+            "contract": {
+              "header": {
+                "schema_version": 1,
+                "source": "synthetic_internal_ledger",
+                "report_id": "INTERNAL-W44",
+                "revision": 1,
+                "account_id": "DEMO-ACCOUNT-02",
+                "currency": "USD",
+                "unit": "currency_amount",
+                "reporting_timezone": "UTC",
+                "window_start": "2026-10-26T00:00:00+00:00",
+                "window_end": "2026-11-02T00:00:00+00:00",
+                "billable_event": "synthetic contract-accepted tracked outcome",
+                "status_basis": "final_billable_outcomes"
+              },
+              "as_of": "2026-11-03T09:00:00+00:00",
+              "ordering": "event_id_ascending",
+              "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+              "consistency": "immutable_fixture_manifest",
+              "controls": {
+                "count": 4,
+                "amount": "50.00",
+                "rows_sha256": "904cb50c94257ec63da96a4abfc37469d92fc9b294c203cc09fe94d681ce1fb1"
+              }
+            },
+            "pages": [
+              {
+                "page": 1,
+                "next_page": 2,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E001",
+                    "occurred_at": "2026-10-27T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E002",
+                    "occurred_at": "2026-10-28T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 2,
+                "next_page": null,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E004",
+                    "occurred_at": "2026-10-30T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              }
+            ],
+            "calls": [
+              {
+                "page": 1,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 2,
+                "try": 1,
+                "outcome": "response"
+              }
+            ],
+            "problems": [
+              "content_control_mismatch"
+            ]
+          }
+        ],
+        "classification": "partial_or_uncertain",
+        "limitations": [
+          "Reaching the last page or repeating identical reads does not prove a consistent snapshot",
+          "Fixture contract is not evidence of a provider snapshot token/content manifest",
+          "No live auth, timeout, quota, watermark or settling contract verified"
+        ]
+      }
+    },
+    {
+      "scenario": "reorder",
+      "classification": "partial_or_uncertain",
+      "attempts": 2,
+      "page_calls": 4,
+      "comparison": "blocked",
+      "difference": null,
+      "proof": {
+        "version": "synthetic-page-acquisition-v1",
+        "limits": {
+          "max_attempts": 2,
+          "max_pages": 5,
+          "page_retries": 1,
+          "page_size": 2,
+          "retry_delays_seconds": [
+            1
+          ],
+          "label": "Assumed local fixture limits, not provider SLA"
+        },
+        "attempts": [
+          {
+            "number": 1,
+            "contract": {
+              "header": {
+                "schema_version": 1,
+                "source": "synthetic_internal_ledger",
+                "report_id": "INTERNAL-W44",
+                "revision": 1,
+                "account_id": "DEMO-ACCOUNT-02",
+                "currency": "USD",
+                "unit": "currency_amount",
+                "reporting_timezone": "UTC",
+                "window_start": "2026-10-26T00:00:00+00:00",
+                "window_end": "2026-11-02T00:00:00+00:00",
+                "billable_event": "synthetic contract-accepted tracked outcome",
+                "status_basis": "final_billable_outcomes"
+              },
+              "as_of": "2026-11-03T09:00:00+00:00",
+              "ordering": "event_id_ascending",
+              "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+              "consistency": "immutable_fixture_manifest",
+              "controls": {
+                "count": 4,
+                "amount": "50.00",
+                "rows_sha256": "904cb50c94257ec63da96a4abfc37469d92fc9b294c203cc09fe94d681ce1fb1"
+              }
+            },
+            "pages": [
+              {
+                "page": 1,
+                "next_page": 2,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E001",
+                    "occurred_at": "2026-10-27T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E002",
+                    "occurred_at": "2026-10-28T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 2,
+                "next_page": null,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E002",
+                    "occurred_at": "2026-10-28T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E001",
+                    "occurred_at": "2026-10-27T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              }
+            ],
+            "calls": [
+              {
+                "page": 1,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 2,
+                "try": 1,
+                "outcome": "response"
+              }
+            ],
+            "problems": [
+              "content_control_mismatch",
+              "duplicate_event_ids",
+              "ordering_changed"
+            ]
+          },
+          {
+            "number": 2,
+            "contract": {
+              "header": {
+                "schema_version": 1,
+                "source": "synthetic_internal_ledger",
+                "report_id": "INTERNAL-W44",
+                "revision": 1,
+                "account_id": "DEMO-ACCOUNT-02",
+                "currency": "USD",
+                "unit": "currency_amount",
+                "reporting_timezone": "UTC",
+                "window_start": "2026-10-26T00:00:00+00:00",
+                "window_end": "2026-11-02T00:00:00+00:00",
+                "billable_event": "synthetic contract-accepted tracked outcome",
+                "status_basis": "final_billable_outcomes"
+              },
+              "as_of": "2026-11-03T09:00:00+00:00",
+              "ordering": "event_id_ascending",
+              "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+              "consistency": "immutable_fixture_manifest",
+              "controls": {
+                "count": 4,
+                "amount": "50.00",
+                "rows_sha256": "904cb50c94257ec63da96a4abfc37469d92fc9b294c203cc09fe94d681ce1fb1"
+              }
+            },
+            "pages": [
+              {
+                "page": 1,
+                "next_page": 2,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E001",
+                    "occurred_at": "2026-10-27T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E002",
+                    "occurred_at": "2026-10-28T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 2,
+                "next_page": null,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E002",
+                    "occurred_at": "2026-10-28T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E001",
+                    "occurred_at": "2026-10-27T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              }
+            ],
+            "calls": [
+              {
+                "page": 1,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 2,
+                "try": 1,
+                "outcome": "response"
+              }
+            ],
+            "problems": [
+              "content_control_mismatch",
+              "duplicate_event_ids",
+              "ordering_changed"
+            ]
+          }
+        ],
+        "classification": "partial_or_uncertain",
+        "limitations": [
+          "Reaching the last page or repeating identical reads does not prove a consistent snapshot",
+          "Fixture contract is not evidence of a provider snapshot token/content manifest",
+          "No live auth, timeout, quota, watermark or settling contract verified"
+        ]
+      }
+    },
+    {
+      "scenario": "correction",
+      "classification": "partial_or_uncertain",
+      "attempts": 2,
+      "page_calls": 4,
+      "comparison": "blocked",
+      "difference": null,
+      "proof": {
+        "version": "synthetic-page-acquisition-v1",
+        "limits": {
+          "max_attempts": 2,
+          "max_pages": 5,
+          "page_retries": 1,
+          "page_size": 2,
+          "retry_delays_seconds": [
+            1
+          ],
+          "label": "Assumed local fixture limits, not provider SLA"
+        },
+        "attempts": [
+          {
+            "number": 1,
+            "contract": {
+              "header": {
+                "schema_version": 1,
+                "source": "synthetic_internal_ledger",
+                "report_id": "INTERNAL-W44",
+                "revision": 1,
+                "account_id": "DEMO-ACCOUNT-02",
+                "currency": "USD",
+                "unit": "currency_amount",
+                "reporting_timezone": "UTC",
+                "window_start": "2026-10-26T00:00:00+00:00",
+                "window_end": "2026-11-02T00:00:00+00:00",
+                "billable_event": "synthetic contract-accepted tracked outcome",
+                "status_basis": "final_billable_outcomes"
+              },
+              "as_of": "2026-11-03T09:00:00+00:00",
+              "ordering": "event_id_ascending",
+              "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+              "consistency": "immutable_fixture_manifest",
+              "controls": {
+                "count": 4,
+                "amount": "50.00",
+                "rows_sha256": "904cb50c94257ec63da96a4abfc37469d92fc9b294c203cc09fe94d681ce1fb1"
+              }
+            },
+            "pages": [
+              {
+                "page": 1,
+                "next_page": 2,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E001",
+                    "occurred_at": "2026-10-27T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E002",
+                    "occurred_at": "2026-10-28T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 2,
+                "next_page": null,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E003",
+                    "occurred_at": "2026-10-29T10:00:00+00:00",
+                    "amount": "9.00",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E004",
+                    "occurred_at": "2026-10-30T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              }
+            ],
+            "calls": [
+              {
+                "page": 1,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 2,
+                "try": 1,
+                "outcome": "response"
+              }
+            ],
+            "problems": [
+              "content_control_mismatch"
+            ]
+          },
+          {
+            "number": 2,
+            "contract": {
+              "header": {
+                "schema_version": 1,
+                "source": "synthetic_internal_ledger",
+                "report_id": "INTERNAL-W44",
+                "revision": 1,
+                "account_id": "DEMO-ACCOUNT-02",
+                "currency": "USD",
+                "unit": "currency_amount",
+                "reporting_timezone": "UTC",
+                "window_start": "2026-10-26T00:00:00+00:00",
+                "window_end": "2026-11-02T00:00:00+00:00",
+                "billable_event": "synthetic contract-accepted tracked outcome",
+                "status_basis": "final_billable_outcomes"
+              },
+              "as_of": "2026-11-03T09:00:00+00:00",
+              "ordering": "event_id_ascending",
+              "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+              "consistency": "immutable_fixture_manifest",
+              "controls": {
+                "count": 4,
+                "amount": "50.00",
+                "rows_sha256": "904cb50c94257ec63da96a4abfc37469d92fc9b294c203cc09fe94d681ce1fb1"
+              }
+            },
+            "pages": [
+              {
+                "page": 1,
+                "next_page": 2,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E001",
+                    "occurred_at": "2026-10-27T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E002",
+                    "occurred_at": "2026-10-28T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 2,
+                "next_page": null,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E003",
+                    "occurred_at": "2026-10-29T10:00:00+00:00",
+                    "amount": "9.00",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E004",
+                    "occurred_at": "2026-10-30T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              }
+            ],
+            "calls": [
+              {
+                "page": 1,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 2,
+                "try": 1,
+                "outcome": "response"
+              }
+            ],
+            "problems": [
+              "content_control_mismatch"
+            ]
+          }
+        ],
+        "classification": "partial_or_uncertain",
+        "limitations": [
+          "Reaching the last page or repeating identical reads does not prove a consistent snapshot",
+          "Fixture contract is not evidence of a provider snapshot token/content manifest",
+          "No live auth, timeout, quota, watermark or settling contract verified"
+        ]
+      }
+    },
+    {
+      "scenario": "same_total_change",
+      "classification": "partial_or_uncertain",
+      "attempts": 2,
+      "page_calls": 4,
+      "comparison": "blocked",
+      "difference": null,
+      "proof": {
+        "version": "synthetic-page-acquisition-v1",
+        "limits": {
+          "max_attempts": 2,
+          "max_pages": 5,
+          "page_retries": 1,
+          "page_size": 2,
+          "retry_delays_seconds": [
+            1
+          ],
+          "label": "Assumed local fixture limits, not provider SLA"
+        },
+        "attempts": [
+          {
+            "number": 1,
+            "contract": {
+              "header": {
+                "schema_version": 1,
+                "source": "synthetic_internal_ledger",
+                "report_id": "INTERNAL-W44",
+                "revision": 1,
+                "account_id": "DEMO-ACCOUNT-02",
+                "currency": "USD",
+                "unit": "currency_amount",
+                "reporting_timezone": "UTC",
+                "window_start": "2026-10-26T00:00:00+00:00",
+                "window_end": "2026-11-02T00:00:00+00:00",
+                "billable_event": "synthetic contract-accepted tracked outcome",
+                "status_basis": "final_billable_outcomes"
+              },
+              "as_of": "2026-11-03T09:00:00+00:00",
+              "ordering": "event_id_ascending",
+              "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+              "consistency": "immutable_fixture_manifest",
+              "controls": {
+                "count": 4,
+                "amount": "50.00",
+                "rows_sha256": "904cb50c94257ec63da96a4abfc37469d92fc9b294c203cc09fe94d681ce1fb1"
+              }
+            },
+            "pages": [
+              {
+                "page": 1,
+                "next_page": 2,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E001",
+                    "occurred_at": "2026-10-27T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E002",
+                    "occurred_at": "2026-10-28T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 2,
+                "next_page": null,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E003",
+                    "occurred_at": "2026-10-29T10:00:00+00:00",
+                    "amount": "10.00",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E004",
+                    "occurred_at": "2026-10-30T10:00:00+00:00",
+                    "amount": "15.00",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              }
+            ],
+            "calls": [
+              {
+                "page": 1,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 2,
+                "try": 1,
+                "outcome": "response"
+              }
+            ],
+            "problems": [
+              "content_control_mismatch"
+            ]
+          },
+          {
+            "number": 2,
+            "contract": {
+              "header": {
+                "schema_version": 1,
+                "source": "synthetic_internal_ledger",
+                "report_id": "INTERNAL-W44",
+                "revision": 1,
+                "account_id": "DEMO-ACCOUNT-02",
+                "currency": "USD",
+                "unit": "currency_amount",
+                "reporting_timezone": "UTC",
+                "window_start": "2026-10-26T00:00:00+00:00",
+                "window_end": "2026-11-02T00:00:00+00:00",
+                "billable_event": "synthetic contract-accepted tracked outcome",
+                "status_basis": "final_billable_outcomes"
+              },
+              "as_of": "2026-11-03T09:00:00+00:00",
+              "ordering": "event_id_ascending",
+              "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+              "consistency": "immutable_fixture_manifest",
+              "controls": {
+                "count": 4,
+                "amount": "50.00",
+                "rows_sha256": "904cb50c94257ec63da96a4abfc37469d92fc9b294c203cc09fe94d681ce1fb1"
+              }
+            },
+            "pages": [
+              {
+                "page": 1,
+                "next_page": 2,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E001",
+                    "occurred_at": "2026-10-27T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E002",
+                    "occurred_at": "2026-10-28T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 2,
+                "next_page": null,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E003",
+                    "occurred_at": "2026-10-29T10:00:00+00:00",
+                    "amount": "10.00",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E004",
+                    "occurred_at": "2026-10-30T10:00:00+00:00",
+                    "amount": "15.00",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              }
+            ],
+            "calls": [
+              {
+                "page": 1,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 2,
+                "try": 1,
+                "outcome": "response"
+              }
+            ],
+            "problems": [
+              "content_control_mismatch"
+            ]
+          }
+        ],
+        "classification": "partial_or_uncertain",
+        "limitations": [
+          "Reaching the last page or repeating identical reads does not prove a consistent snapshot",
+          "Fixture contract is not evidence of a provider snapshot token/content manifest",
+          "No live auth, timeout, quota, watermark or settling contract verified"
+        ]
+      }
+    },
+    {
+      "scenario": "duplicate",
+      "classification": "partial_or_uncertain",
+      "attempts": 2,
+      "page_calls": 4,
+      "comparison": "blocked",
+      "difference": null,
+      "proof": {
+        "version": "synthetic-page-acquisition-v1",
+        "limits": {
+          "max_attempts": 2,
+          "max_pages": 5,
+          "page_retries": 1,
+          "page_size": 2,
+          "retry_delays_seconds": [
+            1
+          ],
+          "label": "Assumed local fixture limits, not provider SLA"
+        },
+        "attempts": [
+          {
+            "number": 1,
+            "contract": {
+              "header": {
+                "schema_version": 1,
+                "source": "synthetic_internal_ledger",
+                "report_id": "INTERNAL-W44",
+                "revision": 1,
+                "account_id": "DEMO-ACCOUNT-02",
+                "currency": "USD",
+                "unit": "currency_amount",
+                "reporting_timezone": "UTC",
+                "window_start": "2026-10-26T00:00:00+00:00",
+                "window_end": "2026-11-02T00:00:00+00:00",
+                "billable_event": "synthetic contract-accepted tracked outcome",
+                "status_basis": "final_billable_outcomes"
+              },
+              "as_of": "2026-11-03T09:00:00+00:00",
+              "ordering": "event_id_ascending",
+              "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+              "consistency": "immutable_fixture_manifest",
+              "controls": {
+                "count": 4,
+                "amount": "50.00",
+                "rows_sha256": "904cb50c94257ec63da96a4abfc37469d92fc9b294c203cc09fe94d681ce1fb1"
+              }
+            },
+            "pages": [
+              {
+                "page": 1,
+                "next_page": 2,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E001",
+                    "occurred_at": "2026-10-27T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E002",
+                    "occurred_at": "2026-10-28T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 2,
+                "next_page": null,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E001",
+                    "occurred_at": "2026-10-27T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E004",
+                    "occurred_at": "2026-10-30T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              }
+            ],
+            "calls": [
+              {
+                "page": 1,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 2,
+                "try": 1,
+                "outcome": "response"
+              }
+            ],
+            "problems": [
+              "content_control_mismatch",
+              "duplicate_event_ids",
+              "ordering_changed"
+            ]
+          },
+          {
+            "number": 2,
+            "contract": {
+              "header": {
+                "schema_version": 1,
+                "source": "synthetic_internal_ledger",
+                "report_id": "INTERNAL-W44",
+                "revision": 1,
+                "account_id": "DEMO-ACCOUNT-02",
+                "currency": "USD",
+                "unit": "currency_amount",
+                "reporting_timezone": "UTC",
+                "window_start": "2026-10-26T00:00:00+00:00",
+                "window_end": "2026-11-02T00:00:00+00:00",
+                "billable_event": "synthetic contract-accepted tracked outcome",
+                "status_basis": "final_billable_outcomes"
+              },
+              "as_of": "2026-11-03T09:00:00+00:00",
+              "ordering": "event_id_ascending",
+              "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+              "consistency": "immutable_fixture_manifest",
+              "controls": {
+                "count": 4,
+                "amount": "50.00",
+                "rows_sha256": "904cb50c94257ec63da96a4abfc37469d92fc9b294c203cc09fe94d681ce1fb1"
+              }
+            },
+            "pages": [
+              {
+                "page": 1,
+                "next_page": 2,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E001",
+                    "occurred_at": "2026-10-27T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E002",
+                    "occurred_at": "2026-10-28T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 2,
+                "next_page": null,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E001",
+                    "occurred_at": "2026-10-27T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E004",
+                    "occurred_at": "2026-10-30T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              }
+            ],
+            "calls": [
+              {
+                "page": 1,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 2,
+                "try": 1,
+                "outcome": "response"
+              }
+            ],
+            "problems": [
+              "content_control_mismatch",
+              "duplicate_event_ids",
+              "ordering_changed"
+            ]
+          }
+        ],
+        "classification": "partial_or_uncertain",
+        "limitations": [
+          "Reaching the last page or repeating identical reads does not prove a consistent snapshot",
+          "Fixture contract is not evidence of a provider snapshot token/content manifest",
+          "No live auth, timeout, quota, watermark or settling contract verified"
+        ]
+      }
+    },
+    {
+      "scenario": "missing",
+      "classification": "partial_or_uncertain",
+      "attempts": 2,
+      "page_calls": 4,
+      "comparison": "blocked",
+      "difference": null,
+      "proof": {
+        "version": "synthetic-page-acquisition-v1",
+        "limits": {
+          "max_attempts": 2,
+          "max_pages": 5,
+          "page_retries": 1,
+          "page_size": 2,
+          "retry_delays_seconds": [
+            1
+          ],
+          "label": "Assumed local fixture limits, not provider SLA"
+        },
+        "attempts": [
+          {
+            "number": 1,
+            "contract": {
+              "header": {
+                "schema_version": 1,
+                "source": "synthetic_internal_ledger",
+                "report_id": "INTERNAL-W44",
+                "revision": 1,
+                "account_id": "DEMO-ACCOUNT-02",
+                "currency": "USD",
+                "unit": "currency_amount",
+                "reporting_timezone": "UTC",
+                "window_start": "2026-10-26T00:00:00+00:00",
+                "window_end": "2026-11-02T00:00:00+00:00",
+                "billable_event": "synthetic contract-accepted tracked outcome",
+                "status_basis": "final_billable_outcomes"
+              },
+              "as_of": "2026-11-03T09:00:00+00:00",
+              "ordering": "event_id_ascending",
+              "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+              "consistency": "immutable_fixture_manifest",
+              "controls": {
+                "count": 4,
+                "amount": "50.00",
+                "rows_sha256": "904cb50c94257ec63da96a4abfc37469d92fc9b294c203cc09fe94d681ce1fb1"
+              }
+            },
+            "pages": [
+              {
+                "page": 1,
+                "next_page": 2,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E001",
+                    "occurred_at": "2026-10-27T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E002",
+                    "occurred_at": "2026-10-28T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 2,
+                "next_page": null,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E003",
+                    "occurred_at": "2026-10-29T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              }
+            ],
+            "calls": [
+              {
+                "page": 1,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 2,
+                "try": 1,
+                "outcome": "response"
+              }
+            ],
+            "problems": [
+              "content_control_mismatch"
+            ]
+          },
+          {
+            "number": 2,
+            "contract": {
+              "header": {
+                "schema_version": 1,
+                "source": "synthetic_internal_ledger",
+                "report_id": "INTERNAL-W44",
+                "revision": 1,
+                "account_id": "DEMO-ACCOUNT-02",
+                "currency": "USD",
+                "unit": "currency_amount",
+                "reporting_timezone": "UTC",
+                "window_start": "2026-10-26T00:00:00+00:00",
+                "window_end": "2026-11-02T00:00:00+00:00",
+                "billable_event": "synthetic contract-accepted tracked outcome",
+                "status_basis": "final_billable_outcomes"
+              },
+              "as_of": "2026-11-03T09:00:00+00:00",
+              "ordering": "event_id_ascending",
+              "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+              "consistency": "immutable_fixture_manifest",
+              "controls": {
+                "count": 4,
+                "amount": "50.00",
+                "rows_sha256": "904cb50c94257ec63da96a4abfc37469d92fc9b294c203cc09fe94d681ce1fb1"
+              }
+            },
+            "pages": [
+              {
+                "page": 1,
+                "next_page": 2,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E001",
+                    "occurred_at": "2026-10-27T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E002",
+                    "occurred_at": "2026-10-28T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 2,
+                "next_page": null,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E003",
+                    "occurred_at": "2026-10-29T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              }
+            ],
+            "calls": [
+              {
+                "page": 1,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 2,
+                "try": 1,
+                "outcome": "response"
+              }
+            ],
+            "problems": [
+              "content_control_mismatch"
+            ]
+          }
+        ],
+        "classification": "partial_or_uncertain",
+        "limitations": [
+          "Reaching the last page or repeating identical reads does not prove a consistent snapshot",
+          "Fixture contract is not evidence of a provider snapshot token/content manifest",
+          "No live auth, timeout, quota, watermark or settling contract verified"
+        ]
+      }
+    },
+    {
+      "scenario": "token_change",
+      "classification": "partial_or_uncertain",
+      "attempts": 2,
+      "page_calls": 4,
+      "comparison": "blocked",
+      "difference": null,
+      "proof": {
+        "version": "synthetic-page-acquisition-v1",
+        "limits": {
+          "max_attempts": 2,
+          "max_pages": 5,
+          "page_retries": 1,
+          "page_size": 2,
+          "retry_delays_seconds": [
+            1
+          ],
+          "label": "Assumed local fixture limits, not provider SLA"
+        },
+        "attempts": [
+          {
+            "number": 1,
+            "contract": {
+              "header": {
+                "schema_version": 1,
+                "source": "synthetic_internal_ledger",
+                "report_id": "INTERNAL-W44",
+                "revision": 1,
+                "account_id": "DEMO-ACCOUNT-02",
+                "currency": "USD",
+                "unit": "currency_amount",
+                "reporting_timezone": "UTC",
+                "window_start": "2026-10-26T00:00:00+00:00",
+                "window_end": "2026-11-02T00:00:00+00:00",
+                "billable_event": "synthetic contract-accepted tracked outcome",
+                "status_basis": "final_billable_outcomes"
+              },
+              "as_of": "2026-11-03T09:00:00+00:00",
+              "ordering": "event_id_ascending",
+              "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+              "consistency": "immutable_fixture_manifest",
+              "controls": {
+                "count": 4,
+                "amount": "50.00",
+                "rows_sha256": "904cb50c94257ec63da96a4abfc37469d92fc9b294c203cc09fe94d681ce1fb1"
+              }
+            },
+            "pages": [
+              {
+                "page": 1,
+                "next_page": 2,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E001",
+                    "occurred_at": "2026-10-27T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E002",
+                    "occurred_at": "2026-10-28T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 2,
+                "next_page": null,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E003",
+                    "occurred_at": "2026-10-29T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E004",
+                    "occurred_at": "2026-10-30T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "NEW-TOKEN",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              }
+            ],
+            "calls": [
+              {
+                "page": 1,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 2,
+                "try": 1,
+                "outcome": "response"
+              }
+            ],
+            "problems": [
+              "contract_changed_during_fetch"
+            ]
+          },
+          {
+            "number": 2,
+            "contract": {
+              "header": {
+                "schema_version": 1,
+                "source": "synthetic_internal_ledger",
+                "report_id": "INTERNAL-W44",
+                "revision": 1,
+                "account_id": "DEMO-ACCOUNT-02",
+                "currency": "USD",
+                "unit": "currency_amount",
+                "reporting_timezone": "UTC",
+                "window_start": "2026-10-26T00:00:00+00:00",
+                "window_end": "2026-11-02T00:00:00+00:00",
+                "billable_event": "synthetic contract-accepted tracked outcome",
+                "status_basis": "final_billable_outcomes"
+              },
+              "as_of": "2026-11-03T09:00:00+00:00",
+              "ordering": "event_id_ascending",
+              "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+              "consistency": "immutable_fixture_manifest",
+              "controls": {
+                "count": 4,
+                "amount": "50.00",
+                "rows_sha256": "904cb50c94257ec63da96a4abfc37469d92fc9b294c203cc09fe94d681ce1fb1"
+              }
+            },
+            "pages": [
+              {
+                "page": 1,
+                "next_page": 2,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E001",
+                    "occurred_at": "2026-10-27T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E002",
+                    "occurred_at": "2026-10-28T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 2,
+                "next_page": null,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E003",
+                    "occurred_at": "2026-10-29T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E004",
+                    "occurred_at": "2026-10-30T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "NEW-TOKEN",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              }
+            ],
+            "calls": [
+              {
+                "page": 1,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 2,
+                "try": 1,
+                "outcome": "response"
+              }
+            ],
+            "problems": [
+              "contract_changed_during_fetch"
+            ]
+          }
+        ],
+        "classification": "partial_or_uncertain",
+        "limitations": [
+          "Reaching the last page or repeating identical reads does not prove a consistent snapshot",
+          "Fixture contract is not evidence of a provider snapshot token/content manifest",
+          "No live auth, timeout, quota, watermark or settling contract verified"
+        ]
+      }
+    },
+    {
+      "scenario": "unproven",
+      "classification": "partial_or_uncertain",
+      "attempts": 2,
+      "page_calls": 4,
+      "comparison": "blocked",
+      "difference": null,
+      "proof": {
+        "version": "synthetic-page-acquisition-v1",
+        "limits": {
+          "max_attempts": 2,
+          "max_pages": 5,
+          "page_retries": 1,
+          "page_size": 2,
+          "retry_delays_seconds": [
+            1
+          ],
+          "label": "Assumed local fixture limits, not provider SLA"
+        },
+        "attempts": [
+          {
+            "number": 1,
+            "contract": {
+              "header": {
+                "schema_version": 1,
+                "source": "synthetic_internal_ledger",
+                "report_id": "INTERNAL-W44",
+                "revision": 1,
+                "account_id": "DEMO-ACCOUNT-02",
+                "currency": "USD",
+                "unit": "currency_amount",
+                "reporting_timezone": "UTC",
+                "window_start": "2026-10-26T00:00:00+00:00",
+                "window_end": "2026-11-02T00:00:00+00:00",
+                "billable_event": "synthetic contract-accepted tracked outcome",
+                "status_basis": "final_billable_outcomes"
+              },
+              "as_of": "2026-11-03T09:00:00+00:00",
+              "ordering": "event_id_ascending",
+              "snapshot_token": null,
+              "consistency": "unverified",
+              "controls": {
+                "count": 4,
+                "amount": "50.00",
+                "rows_sha256": "904cb50c94257ec63da96a4abfc37469d92fc9b294c203cc09fe94d681ce1fb1"
+              }
+            },
+            "pages": [
+              {
+                "page": 1,
+                "next_page": 2,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E001",
+                    "occurred_at": "2026-10-27T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E002",
+                    "occurred_at": "2026-10-28T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": null,
+                "contract_sha256": "4625d9696587eb68872b894ba77114ad3ed5294dfb51f1583b67e23ef3301038"
+              },
+              {
+                "page": 2,
+                "next_page": null,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E003",
+                    "occurred_at": "2026-10-29T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E004",
+                    "occurred_at": "2026-10-30T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": null,
+                "contract_sha256": "4625d9696587eb68872b894ba77114ad3ed5294dfb51f1583b67e23ef3301038"
+              }
+            ],
+            "calls": [
+              {
+                "page": 1,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 2,
+                "try": 1,
+                "outcome": "response"
+              }
+            ],
+            "problems": [
+              "upstream_snapshot_not_proven"
+            ]
+          },
+          {
+            "number": 2,
+            "contract": {
+              "header": {
+                "schema_version": 1,
+                "source": "synthetic_internal_ledger",
+                "report_id": "INTERNAL-W44",
+                "revision": 1,
+                "account_id": "DEMO-ACCOUNT-02",
+                "currency": "USD",
+                "unit": "currency_amount",
+                "reporting_timezone": "UTC",
+                "window_start": "2026-10-26T00:00:00+00:00",
+                "window_end": "2026-11-02T00:00:00+00:00",
+                "billable_event": "synthetic contract-accepted tracked outcome",
+                "status_basis": "final_billable_outcomes"
+              },
+              "as_of": "2026-11-03T09:00:00+00:00",
+              "ordering": "event_id_ascending",
+              "snapshot_token": null,
+              "consistency": "unverified",
+              "controls": {
+                "count": 4,
+                "amount": "50.00",
+                "rows_sha256": "904cb50c94257ec63da96a4abfc37469d92fc9b294c203cc09fe94d681ce1fb1"
+              }
+            },
+            "pages": [
+              {
+                "page": 1,
+                "next_page": 2,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E001",
+                    "occurred_at": "2026-10-27T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E002",
+                    "occurred_at": "2026-10-28T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": null,
+                "contract_sha256": "4625d9696587eb68872b894ba77114ad3ed5294dfb51f1583b67e23ef3301038"
+              },
+              {
+                "page": 2,
+                "next_page": null,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E003",
+                    "occurred_at": "2026-10-29T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E004",
+                    "occurred_at": "2026-10-30T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": null,
+                "contract_sha256": "4625d9696587eb68872b894ba77114ad3ed5294dfb51f1583b67e23ef3301038"
+              }
+            ],
+            "calls": [
+              {
+                "page": 1,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 2,
+                "try": 1,
+                "outcome": "response"
+              }
+            ],
+            "problems": [
+              "upstream_snapshot_not_proven"
+            ]
+          }
+        ],
+        "classification": "partial_or_uncertain",
+        "limitations": [
+          "Reaching the last page or repeating identical reads does not prove a consistent snapshot",
+          "Fixture contract is not evidence of a provider snapshot token/content manifest",
+          "No live auth, timeout, quota, watermark or settling contract verified"
+        ]
+      }
+    },
+    {
+      "scenario": "loop",
+      "classification": "partial_or_uncertain",
+      "attempts": 2,
+      "page_calls": 10,
+      "comparison": "blocked",
+      "difference": null,
+      "proof": {
+        "version": "synthetic-page-acquisition-v1",
+        "limits": {
+          "max_attempts": 2,
+          "max_pages": 5,
+          "page_retries": 1,
+          "page_size": 2,
+          "retry_delays_seconds": [
+            1
+          ],
+          "label": "Assumed local fixture limits, not provider SLA"
+        },
+        "attempts": [
+          {
+            "number": 1,
+            "contract": {
+              "header": {
+                "schema_version": 1,
+                "source": "synthetic_internal_ledger",
+                "report_id": "INTERNAL-W44",
+                "revision": 1,
+                "account_id": "DEMO-ACCOUNT-02",
+                "currency": "USD",
+                "unit": "currency_amount",
+                "reporting_timezone": "UTC",
+                "window_start": "2026-10-26T00:00:00+00:00",
+                "window_end": "2026-11-02T00:00:00+00:00",
+                "billable_event": "synthetic contract-accepted tracked outcome",
+                "status_basis": "final_billable_outcomes"
+              },
+              "as_of": "2026-11-03T09:00:00+00:00",
+              "ordering": "event_id_ascending",
+              "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+              "consistency": "immutable_fixture_manifest",
+              "controls": {
+                "count": 4,
+                "amount": "50.00",
+                "rows_sha256": "904cb50c94257ec63da96a4abfc37469d92fc9b294c203cc09fe94d681ce1fb1"
+              }
+            },
+            "pages": [
+              {
+                "page": 1,
+                "next_page": 1,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E001",
+                    "occurred_at": "2026-10-27T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E002",
+                    "occurred_at": "2026-10-28T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 2,
+                "next_page": 2,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E003",
+                    "occurred_at": "2026-10-29T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E004",
+                    "occurred_at": "2026-10-30T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 3,
+                "next_page": 3,
+                "rows": [],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 4,
+                "next_page": 4,
+                "rows": [],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 5,
+                "next_page": 5,
+                "rows": [],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              }
+            ],
+            "calls": [
+              {
+                "page": 1,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 2,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 3,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 4,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 5,
+                "try": 1,
+                "outcome": "response"
+              }
+            ],
+            "problems": [
+              "invalid_next_page",
+              "invalid_page_rows"
+            ]
+          },
+          {
+            "number": 2,
+            "contract": {
+              "header": {
+                "schema_version": 1,
+                "source": "synthetic_internal_ledger",
+                "report_id": "INTERNAL-W44",
+                "revision": 1,
+                "account_id": "DEMO-ACCOUNT-02",
+                "currency": "USD",
+                "unit": "currency_amount",
+                "reporting_timezone": "UTC",
+                "window_start": "2026-10-26T00:00:00+00:00",
+                "window_end": "2026-11-02T00:00:00+00:00",
+                "billable_event": "synthetic contract-accepted tracked outcome",
+                "status_basis": "final_billable_outcomes"
+              },
+              "as_of": "2026-11-03T09:00:00+00:00",
+              "ordering": "event_id_ascending",
+              "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+              "consistency": "immutable_fixture_manifest",
+              "controls": {
+                "count": 4,
+                "amount": "50.00",
+                "rows_sha256": "904cb50c94257ec63da96a4abfc37469d92fc9b294c203cc09fe94d681ce1fb1"
+              }
+            },
+            "pages": [
+              {
+                "page": 1,
+                "next_page": 1,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E001",
+                    "occurred_at": "2026-10-27T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E002",
+                    "occurred_at": "2026-10-28T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 2,
+                "next_page": 2,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E003",
+                    "occurred_at": "2026-10-29T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E004",
+                    "occurred_at": "2026-10-30T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 3,
+                "next_page": 3,
+                "rows": [],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 4,
+                "next_page": 4,
+                "rows": [],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 5,
+                "next_page": 5,
+                "rows": [],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              }
+            ],
+            "calls": [
+              {
+                "page": 1,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 2,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 3,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 4,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 5,
+                "try": 1,
+                "outcome": "response"
+              }
+            ],
+            "problems": [
+              "invalid_next_page",
+              "invalid_page_rows"
+            ]
+          }
+        ],
+        "classification": "partial_or_uncertain",
+        "limitations": [
+          "Reaching the last page or repeating identical reads does not prove a consistent snapshot",
+          "Fixture contract is not evidence of a provider snapshot token/content manifest",
+          "No live auth, timeout, quota, watermark or settling contract verified"
+        ]
+      }
+    },
+    {
+      "scenario": "settles",
+      "classification": "verified_fixture",
+      "attempts": 2,
+      "page_calls": 5,
+      "comparison": "matched",
+      "difference": "0.00",
+      "proof": {
+        "version": "synthetic-page-acquisition-v1",
+        "limits": {
+          "max_attempts": 2,
+          "max_pages": 5,
+          "page_retries": 1,
+          "page_size": 2,
+          "retry_delays_seconds": [
+            1
+          ],
+          "label": "Assumed local fixture limits, not provider SLA"
+        },
+        "attempts": [
+          {
+            "number": 1,
+            "contract": {
+              "header": {
+                "schema_version": 1,
+                "source": "synthetic_internal_ledger",
+                "report_id": "INTERNAL-W44",
+                "revision": 1,
+                "account_id": "DEMO-ACCOUNT-02",
+                "currency": "USD",
+                "unit": "currency_amount",
+                "reporting_timezone": "UTC",
+                "window_start": "2026-10-26T00:00:00+00:00",
+                "window_end": "2026-11-02T00:00:00+00:00",
+                "billable_event": "synthetic contract-accepted tracked outcome",
+                "status_basis": "final_billable_outcomes"
+              },
+              "as_of": "2026-11-03T09:00:00+00:00",
+              "ordering": "event_id_ascending",
+              "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+              "consistency": "immutable_fixture_manifest",
+              "controls": {
+                "count": 4,
+                "amount": "50.00",
+                "rows_sha256": "904cb50c94257ec63da96a4abfc37469d92fc9b294c203cc09fe94d681ce1fb1"
+              }
+            },
+            "pages": [
+              {
+                "page": 1,
+                "next_page": 2,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E001",
+                    "occurred_at": "2026-10-27T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E002",
+                    "occurred_at": "2026-10-28T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 2,
+                "next_page": 3,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E002",
+                    "occurred_at": "2026-10-28T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E003",
+                    "occurred_at": "2026-10-29T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 3,
+                "next_page": null,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E004",
+                    "occurred_at": "2026-10-30T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              }
+            ],
+            "calls": [
+              {
+                "page": 1,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 2,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 3,
+                "try": 1,
+                "outcome": "response"
+              }
+            ],
+            "problems": [
+              "content_control_mismatch",
+              "duplicate_event_ids"
+            ]
+          },
+          {
+            "number": 2,
+            "contract": {
+              "header": {
+                "schema_version": 1,
+                "source": "synthetic_internal_ledger",
+                "report_id": "INTERNAL-W44",
+                "revision": 1,
+                "account_id": "DEMO-ACCOUNT-02",
+                "currency": "USD",
+                "unit": "currency_amount",
+                "reporting_timezone": "UTC",
+                "window_start": "2026-10-26T00:00:00+00:00",
+                "window_end": "2026-11-02T00:00:00+00:00",
+                "billable_event": "synthetic contract-accepted tracked outcome",
+                "status_basis": "final_billable_outcomes"
+              },
+              "as_of": "2026-11-03T09:00:00+00:00",
+              "ordering": "event_id_ascending",
+              "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+              "consistency": "immutable_fixture_manifest",
+              "controls": {
+                "count": 4,
+                "amount": "50.00",
+                "rows_sha256": "904cb50c94257ec63da96a4abfc37469d92fc9b294c203cc09fe94d681ce1fb1"
+              }
+            },
+            "pages": [
+              {
+                "page": 1,
+                "next_page": 2,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E001",
+                    "occurred_at": "2026-10-27T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E002",
+                    "occurred_at": "2026-10-28T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 2,
+                "next_page": null,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E003",
+                    "occurred_at": "2026-10-29T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E004",
+                    "occurred_at": "2026-10-30T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              }
+            ],
+            "calls": [
+              {
+                "page": 1,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 2,
+                "try": 1,
+                "outcome": "response"
+              }
+            ],
+            "problems": []
+          }
+        ],
+        "classification": "verified_fixture",
+        "limitations": [
+          "Reaching the last page or repeating identical reads does not prove a consistent snapshot",
+          "Fixture contract is not evidence of a provider snapshot token/content manifest",
+          "No live auth, timeout, quota, watermark or settling contract verified"
+        ]
+      }
+    },
+    {
+      "scenario": "transient",
+      "classification": "verified_fixture",
+      "attempts": 1,
+      "page_calls": 3,
+      "comparison": "matched",
+      "difference": "0.00",
+      "proof": {
+        "version": "synthetic-page-acquisition-v1",
+        "limits": {
+          "max_attempts": 2,
+          "max_pages": 5,
+          "page_retries": 1,
+          "page_size": 2,
+          "retry_delays_seconds": [
+            1
+          ],
+          "label": "Assumed local fixture limits, not provider SLA"
+        },
+        "attempts": [
+          {
+            "number": 1,
+            "contract": {
+              "header": {
+                "schema_version": 1,
+                "source": "synthetic_internal_ledger",
+                "report_id": "INTERNAL-W44",
+                "revision": 1,
+                "account_id": "DEMO-ACCOUNT-02",
+                "currency": "USD",
+                "unit": "currency_amount",
+                "reporting_timezone": "UTC",
+                "window_start": "2026-10-26T00:00:00+00:00",
+                "window_end": "2026-11-02T00:00:00+00:00",
+                "billable_event": "synthetic contract-accepted tracked outcome",
+                "status_basis": "final_billable_outcomes"
+              },
+              "as_of": "2026-11-03T09:00:00+00:00",
+              "ordering": "event_id_ascending",
+              "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+              "consistency": "immutable_fixture_manifest",
+              "controls": {
+                "count": 4,
+                "amount": "50.00",
+                "rows_sha256": "904cb50c94257ec63da96a4abfc37469d92fc9b294c203cc09fe94d681ce1fb1"
+              }
+            },
+            "pages": [
+              {
+                "page": 1,
+                "next_page": 2,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E001",
+                    "occurred_at": "2026-10-27T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E002",
+                    "occurred_at": "2026-10-28T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              },
+              {
+                "page": 2,
+                "next_page": null,
+                "rows": [
+                  {
+                    "event_id": "DEMO-E003",
+                    "occurred_at": "2026-10-29T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  },
+                  {
+                    "event_id": "DEMO-E004",
+                    "occurred_at": "2026-10-30T10:00:00+00:00",
+                    "amount": "12.50",
+                    "status": "billable"
+                  }
+                ],
+                "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+                "contract_sha256": "9933ff3b338fe919e1aa191c418b1fd14f78d6013c78f7eee083c41a6851d87d"
+              }
+            ],
+            "calls": [
+              {
+                "page": 1,
+                "try": 1,
+                "outcome": "response"
+              },
+              {
+                "page": 2,
+                "try": 1,
+                "outcome": "timeout",
+                "retry_delay_seconds": 1
+              },
+              {
+                "page": 2,
+                "try": 2,
+                "outcome": "response"
+              }
+            ],
+            "problems": []
+          }
+        ],
+        "classification": "verified_fixture",
+        "limitations": [
+          "Reaching the last page or repeating identical reads does not prove a consistent snapshot",
+          "Fixture contract is not evidence of a provider snapshot token/content manifest",
+          "No live auth, timeout, quota, watermark or settling contract verified"
+        ]
+      }
+    },
+    {
+      "scenario": "timeout",
+      "classification": "partial_or_uncertain",
+      "attempts": 2,
+      "page_calls": 4,
+      "comparison": "blocked",
+      "difference": null,
+      "proof": {
+        "version": "synthetic-page-acquisition-v1",
+        "limits": {
+          "max_attempts": 2,
+          "max_pages": 5,
+          "page_retries": 1,
+          "page_size": 2,
+          "retry_delays_seconds": [
+            1
+          ],
+          "label": "Assumed local fixture limits, not provider SLA"
+        },
+        "attempts": [
+          {
+            "number": 1,
+            "contract": {
+              "header": {
+                "schema_version": 1,
+                "source": "synthetic_internal_ledger",
+                "report_id": "INTERNAL-W44",
+                "revision": 1,
+                "account_id": "DEMO-ACCOUNT-02",
+                "currency": "USD",
+                "unit": "currency_amount",
+                "reporting_timezone": "UTC",
+                "window_start": "2026-10-26T00:00:00+00:00",
+                "window_end": "2026-11-02T00:00:00+00:00",
+                "billable_event": "synthetic contract-accepted tracked outcome",
+                "status_basis": "final_billable_outcomes"
+              },
+              "as_of": "2026-11-03T09:00:00+00:00",
+              "ordering": "event_id_ascending",
+              "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+              "consistency": "immutable_fixture_manifest",
+              "controls": {
+                "count": 4,
+                "amount": "50.00",
+                "rows_sha256": "904cb50c94257ec63da96a4abfc37469d92fc9b294c203cc09fe94d681ce1fb1"
+              }
+            },
+            "pages": [],
+            "calls": [
+              {
+                "page": 1,
+                "try": 1,
+                "outcome": "timeout",
+                "retry_delay_seconds": 1
+              },
+              {
+                "page": 1,
+                "try": 2,
+                "outcome": "timeout",
+                "retry_delay_seconds": null
+              }
+            ],
+            "problems": [
+              "page_budget_or_missing_pages",
+              "page_retry_exhausted"
+            ]
+          },
+          {
+            "number": 2,
+            "contract": {
+              "header": {
+                "schema_version": 1,
+                "source": "synthetic_internal_ledger",
+                "report_id": "INTERNAL-W44",
+                "revision": 1,
+                "account_id": "DEMO-ACCOUNT-02",
+                "currency": "USD",
+                "unit": "currency_amount",
+                "reporting_timezone": "UTC",
+                "window_start": "2026-10-26T00:00:00+00:00",
+                "window_end": "2026-11-02T00:00:00+00:00",
+                "billable_event": "synthetic contract-accepted tracked outcome",
+                "status_basis": "final_billable_outcomes"
+              },
+              "as_of": "2026-11-03T09:00:00+00:00",
+              "ordering": "event_id_ascending",
+              "snapshot_token": "FIXTURE-a90d41d26552925de40673377d0680a6b96bcb40e31f1ccf9a27c0a49c416b3d",
+              "consistency": "immutable_fixture_manifest",
+              "controls": {
+                "count": 4,
+                "amount": "50.00",
+                "rows_sha256": "904cb50c94257ec63da96a4abfc37469d92fc9b294c203cc09fe94d681ce1fb1"
+              }
+            },
+            "pages": [],
+            "calls": [
+              {
+                "page": 1,
+                "try": 1,
+                "outcome": "timeout",
+                "retry_delay_seconds": 1
+              },
+              {
+                "page": 1,
+                "try": 2,
+                "outcome": "timeout",
+                "retry_delay_seconds": null
+              }
+            ],
+            "problems": [
+              "page_budget_or_missing_pages",
+              "page_retry_exhausted"
+            ]
+          }
+        ],
+        "classification": "partial_or_uncertain",
+        "limitations": [
+          "Reaching the last page or repeating identical reads does not prove a consistent snapshot",
+          "Fixture contract is not evidence of a provider snapshot token/content manifest",
+          "No live auth, timeout, quota, watermark or settling contract verified"
+        ]
+      }
+    },
+    {
+      "scenario": "forbidden",
+      "classification": "partial_or_uncertain",
+      "attempts": 1,
+      "page_calls": 0,
+      "comparison": "no_report",
+      "difference": null,
+      "proof": {
+        "version": "synthetic-page-acquisition-v1",
+        "limits": {
+          "max_attempts": 2,
+          "max_pages": 5,
+          "page_retries": 1,
+          "page_size": 2,
+          "retry_delays_seconds": [
+            1
+          ],
+          "label": "Assumed local fixture limits, not provider SLA"
+        },
+        "attempts": [
+          {
+            "number": 1,
+            "contract": null,
+            "pages": [],
+            "calls": [],
+            "problems": [
+              "permanent_source_error:PermissionError"
+            ]
+          }
+        ],
+        "classification": "partial_or_uncertain",
+        "limitations": [
+          "Reaching the last page or repeating identical reads does not prove a consistent snapshot",
+          "Fixture contract is not evidence of a provider snapshot token/content manifest",
+          "No live auth, timeout, quota, watermark or settling contract verified"
+        ]
+      }
+    }
+  ]
+}

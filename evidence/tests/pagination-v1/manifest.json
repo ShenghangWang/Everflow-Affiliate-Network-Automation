@@ -1,0 +1,179 @@
+{
+  "recorded_at_utc": "2026-11-04T08:05:08.686274+00:00",
+  "candidate_tag": "demo-pagination-proposal-r1",
+  "git_parent": "4cdcfcbc4dbd4ed17f6ca008c8f966d24d06690a",
+  "preserved_demo_tag": "demo-review-followthrough-r1",
+  "source_sha256": {
+    "backend/__init__.py": "b0dd23c9d4f5b80f1315ce0a20c8b1ea82429240d038c5b8685f06380510a6a2",
+    "backend/account_management.py": "edfb149503011b300438b2174d21c284485a867b643f7142e997d8c15d2d7253",
+    "backend/app.py": "a9988e7dd79f63ee7cfc7464a70bd428867cc47653efb462a8e2f67219a7c8f1",
+    "backend/commercial.py": "466eed54de24b85421c079aa659eebdb10b4e57fbfd7d04d28c8acb20a5c8ca8",
+    "backend/domain.py": "5ec17464da29ff94144e6e7bf0ca2c07a6fa664e47265f9f6ee6e74ab2444faa",
+    "backend/fixtures/account_management.json": "f8569cb4353f45586adfcfcceb5abf1074bc3afb3c1265fb27a3e652922b4fef",
+    "backend/fixtures/generic.json": "a96d9f10e96557e543ad1dace80591027ed51f40ee3d2634e3d88f3bf1043b44",
+    "backend/fixtures/reconciliation.json": "4165d35c55c1b372a29736103165e702b6ce5fa0657694ed6a4d9dfce1869f4a",
+    "backend/fixtures/reconciliation_dst.json": "8174fa3642dea14dea107c39744b18b93a455cd6fbffccbb88e4ab77cb1bf8d8",
+    "backend/fixtures/source_stress.json": "e96a0f1d042771d68bb2b6d0b855b36aeda69cd539f119265efef99d5f5fe558",
+    "backend/inference.py": "890093025356330d13b7c711dc604bced25d26e0bc05fcfe817d7e681c12ac44",
+    "backend/reconciliation.py": "5eca39ad3febde2fbb2831be5370a2ef436b7b13595a247563ffb341e11d713c",
+    "backend/report_acquisition.py": "5970921c6d1bf6ac4d54e374d14abc237a9b249d70f92befecdc0ffb0ee06952",
+    "backend/report_windows.py": "dd4368e4b2b465f4383a38c253289a2ec7faaed766d54e9da138dac4acd3fe63",
+    "backend/scenarios.py": "9008e44e69e54b6d2f23d5aa33af2c27b9b9ecc44c3fc01a470af06d2b476975",
+    "frontend/index.html": "23451c7d4458a5b89d7be82d9cd91999494aeb8c9b81ed10e407935e3254dd8e",
+    "frontend/package-lock.json": "b2d0283028c1e9c53a37f7e74b8be430f54c836bf9b4646102b65974bd823043",
+    "frontend/package.json": "a6ccb0f0491f3cfa4deb360c39c6f9d4e1cc8275fdc80f68db8cffa327e4a777",
+    "frontend/src/AccountManagement.jsx": "cd373824a5ce5241444283913cbe6c5e5abb49755a3941f7878a6cd83fbdfc34",
+    "frontend/src/CommercialProposal.jsx": "71502c6e3e97198acf1486f9d640710bb927f8bdfa7d28960f3721a1e82d530a",
+    "frontend/src/Reconciliation.jsx": "87e8e89fc490d9ce8c2dfb78cf45f60cf5263c68115a5db518a7aa1592955470",
+    "frontend/src/main.jsx": "fd3107768df604fca50341f931e030ae85269744972ba69edfd4d3c28e014525",
+    "frontend/src/style.css": "fec1409d5cbb21c80455a4869ecd16d24bf05574913376228d8927eb84807dac",
+    "frontend/vite.config.js": "3e868db78618d95e86e5ff8e4f8f167bf2f94bf99c9402777cd1b6b28361cb7c",
+    "requirements.lock": "befd28c899c76405a69f51b1a73aa363eae8ac9fba07e67b7e5aadd59522f0be",
+    "requirements.txt": "43f4743e95bc0e068dc5d8973abf9d82893bca87f91f4437485b36af124787f5",
+    "scripts/check_am_restart.py": "589ff7516f2090cec7b9a5cd7138193d4a6222111a45a44e725798b52a0728dd",
+    "scripts/check_backend.py": "9d641f08fa2978dd89c208b9a0ffe6ac092fc9cd3182b078fd1029b3dd226a57",
+    "scripts/check_bd_restart.py": "7691e738e2aae9ae1dcc58092b12f077adc1e22fda06687ee46b35a0d33205d5",
+    "scripts/check_reconciliation_restart.py": "5a61d559fa13d3bb8f244f9dce6d37da2a1cc8c13f05d3f7bb9bd4d543afacea",
+    "scripts/check_ui.mjs": "5648c73ee83235150496d4c444b49e2ada5dfdd3bbbdf3ac4e1a8b862ed72607",
+    "scripts/export_checkpoint_evidence.py": "82385276916483b8db56c57a63e8c8ad104f7156d54932b097cf33df7ffbb13f",
+    "scripts/export_gemini_inputs.py": "52e73eb45fe82a1035ac3a2c34953b734f4445295ef03b36e73a8f539a75469e",
+    "scripts/run.sh": "9fd05dd3ad09403985daab0b0dade12c6365553d191960b9aca08b33aa82496b",
+    "scripts/setup.sh": "2d1dd6fa6ed039f62a8453b72550b0111ce6412e172bae95ccc9ce04a65f1931",
+    "tests/test_account_management.py": "a4793257ea87c4e1431318c730baac4e81fa0c8ec006fd2d2de5c821d1f7cb50",
+    "tests/test_api.py": "6f9c99f158386528eed6cd57df8c6a77df4f8f2bef2c7a6dd3201bca09098537",
+    "tests/test_commercial.py": "ce532a3c681d255f5727824ba99a3ba7c7b3ae4537e303a7c783e3dba200175b",
+    "tests/test_reconciliation.py": "98f340f66b55beb6892be1545b5a0c83878f2f4345dd0adbc8efa552b70ed48f",
+    "tests/test_report_acquisition.py": "c18c2316ba851999edfe0b6823171c68e603163b8e6305112a25f9224cfd16ec",
+    "tests/test_report_windows.py": "2b57c0d57e493feb3ef2ebacd4d724b6c98763e129a3cc266c81a753ae54cba5",
+    "tests/test_review_export.py": "968ea29df433dbb2ccd36e5acc5e8f994b0784cd0df24f17f65a4346230b9c5f",
+    "tests/test_scenarios.py": "9b6c7cddb4bda7e6aa6c8c59c2f9648b05111ed8473f7d2671cce79635060a35",
+    "tests/test_workflow.py": "1726adb53d04bba7fd67535adf824d78f97b94469727a203f0b16507ea7fdc5e"
+  },
+  "backend_api_export_tests": 119,
+  "browser_checks": 54,
+  "finance_page_process_checks": 9,
+  "AM_proposal_process_checks": 11,
+  "process_starts_and_restarts": {
+    "finance": {
+      "starts": 5,
+      "restarts": 4,
+      "exit_codes": [
+        -15,
+        -15,
+        -15,
+        -15,
+        -15
+      ]
+    },
+    "AM": {
+      "starts": 4,
+      "restarts": 3,
+      "exit_codes": [
+        -15,
+        -15,
+        -15,
+        -15
+      ]
+    }
+  },
+  "test_timestamps": {
+    "backend": [
+      "2026-11-04T07:58:22.483744+00:00",
+      "2026-11-04T07:58:29.066887+00:00"
+    ],
+    "browser": [
+      "2026-11-04T07:59:04.118Z",
+      "2026-11-04T07:59:20.714Z"
+    ],
+    "finance": [
+      "2026-11-04T07:59:03.380823+00:00",
+      "2026-11-04T07:59:07.164654+00:00"
+    ],
+    "AM": [
+      "2026-11-04T07:58:57.143868+00:00",
+      "2026-11-04T07:59:00.175874+00:00"
+    ]
+  },
+  "commands": {
+    "backend": ".venv/bin/python scripts/check_backend.py",
+    "build": "npm --prefix frontend run build",
+    "finance": ".venv/bin/python scripts/check_reconciliation_restart.py",
+    "AM": ".venv/bin/python scripts/check_am_restart.py",
+    "browser": "DEMO_URL=http://127.0.0.1:8013 CHROMIUM_EXECUTABLE=/Users/shenghangwang/Library/Caches/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-mac-x64/chrome-headless-shell /Users/shenghangwang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node scripts/check_ui.mjs"
+  },
+  "build": {
+    "command": [
+      "npm",
+      "--prefix",
+      "frontend",
+      "run",
+      "build"
+    ],
+    "started_at_utc": "2026-11-04T07:58:29.225858+00:00",
+    "finished_at_utc": "2026-11-04T07:58:31.321861+00:00",
+    "exit_code": 0,
+    "assets": {
+      "frontend/dist/assets/index-CLIKwgdo.js": "f13e317ed5af19e769c7891eec1317fcc967a4a36442db7519208b2f3b2cf47b",
+      "frontend/dist/assets/index-CMTVDqF-.css": "05e692c7b2f54dcf7138b8e5fb4825d513a0a4a1f7d3b733c37cd1b822b52d41",
+      "frontend/dist/index.html": "842bdce11c32fbe39e0a6b9a79b69c1117898bf8ceee009cfa85c616ce9b4300"
+    }
+  },
+  "visual_review": "Desktop paged correction resolution and mobile proposal reviewed; no new clipped panels/page overflow. Browser has zero console/page errors.",
+  "outcomes": {
+    "paged_source": "changed pages→blocked proof/unknown variance→owned due correction→complete revised full-window proof→fresh finance decision→resolution with prior history",
+    "proposal": "eligible BD handoff→untrusted notes retained separately→approved-clauses-only English draft→version-bound commercial owner review; no contract/signature/dispatch authority",
+    "AM": "readiness→first outcome→recurring stale evidence/owned refresh→repair/verification→one next review; cancellation/restart reverified"
+  },
+  "runtime": "Separate ignored .run/pagination-v1/verification.sqlite3, loopback8013; original DB/port8000 and earlier tags preserved",
+  "effects": {
+    "paid_model_calls": 0,
+    "external_business_effects": 0,
+    "live_checks": "No approved matching tenant/channel/model scope and budget newly supplied; runtime checks conditional. Existing Git sync authorized."
+  },
+  "limitations": [
+    "Only synthetic immutable content manifest is verified; actual provider snapshot/cursor/content/count/total/deadline/quota/correction guarantees unverified",
+    "Local callback/page/attempt counts bounded; a future HTTP client must enforce request/application deadlines; recorded retry delay is a fixture assumption, not measured network backoff",
+    "Proposal owner review is not real commercial/legal acceptance, signature, new terms or dispatch",
+    "Employer outreach organization-scope/billing definitions/timezone/cadences and checkpoint timing unresolved; sponsor acceptance pending",
+    "Review response cycle complete only for historical frozen packets; original responses and manifests unchanged; no independent current-code approval"
+  ],
+  "employer_checkpoint": "employer-checkpoint.md",
+  "finding_ledger": "reviews/combined-adjudication-D1-HLD-R2.md",
+  "evidence_sha256": {
+    "acquisition-scenarios.json": "a1bbcd265d1f6172ce95b8adf03e4be06901c304b85e4f6c21d8282b0d32ab43",
+    "am-process.log": "0d69f3668b81b6ff03bf2e6b29669520756b5b17b3f1eb489fe3fbe13a59b4e4",
+    "am-restart.json": "b7617c8cd82dd184ba00944b4fe894c454d6024a4a4b52dc8786ce4fbd4f6b1f",
+    "backend-tests.json": "272fc28d254e5174b33a1ca373f337af613ef62832f561fdc978ec3dba755d4f",
+    "backend-tests.log": "51b4a9df6a1b7c6ad7089e3337331dbfb5086a2a89c63dab1e5639029a7e063e",
+    "build.json": "a84f3b8b823386a5cf6685c9310934328b935266df5010927d6fc06bf91d083a",
+    "build.log": "ff9781deabf547387fb7aabb5d9485a72ce7513460ec8932e16820120acf7949",
+    "preservation.json": "04b962f37afc3f1f429c6c270ced95a183f96cb33a9c5641fa16f819c4cddbf0",
+    "reconciliation-process.log": "b669e572c44d2f5c93eb2ea92273bbde668d1c467557f81a6f88b777595fe557",
+    "reconciliation-restart.json": "e04d6ad181baece7a66b1299673f8c8e735f6b8f8eb7e4209141ee2051ae934f",
+    "ui/01-generic-baseline.png": "7e6be8df50fb00f74f77814a10c3615a6ceff45672568165da16d0e8672ee124",
+    "ui/02-mock-dispatch.png": "a5b8fef2ae28f29e0fec473ede608b973fb37ae65e24544ea188c30f46d340de",
+    "ui/03-owned-handoff.png": "25615b60595c752c4530e6d78e3ebe8d8ddb3ad1f1f1cb081cb5a46afa18d82e",
+    "ui/04-source-outcomes.png": "291b2dca1b2bf3b86469058e935469bd001872b083c98cfad3dd53699f2e6ca8",
+    "ui/05-role-coverage.png": "a4f47bfce509b69cebe0c810ecf5f4a2a32d31574ad7759a6794424a1fa81d9d",
+    "ui/06-mobile.png": "ee4e01acae77d4634edcb0d1269e96ae0358832ba45d6c8ed76430ecedabc3ae",
+    "ui/07-reconciliation-variance.png": "1b9942ecfec9d40a4f01e708fef5fc1fd9cc6913449d32d378b6eca895921dc8",
+    "ui/08-reconciliation-resolved.png": "87edeb44dad56cad0e740dacbdeaa1b7b7a96ac353615be4ebd65e18edb13b5e",
+    "ui/09-reconciliation-blocked.png": "0a2385cb743db0c12f10a0e6fc0cfe1427d7372c9c9464b799cd18c00209f7e1",
+    "ui/10-reconciliation-mobile.png": "1a109c75f8b5763eddcb818a2f1e3a6c64cd679ce5cd1a591f06cc0ed55ff4b6",
+    "ui/11-finance-correction-due.png": "eeda667a42e1e3cc203b822fd0a0de7024f0dd4dd22508d6b33706f82b8a2948",
+    "ui/12-finance-correction-resolved.png": "f1c57a1c71f5d5f1f4a2ba8378e4873428aca5d9e6fed12c36c8dee72742e175",
+    "ui/13-am-tracking-owner.png": "c459fa6b437fe9c4bf695cef63bc762a8a15e5a60a36431fa49528509a046f34",
+    "ui/14-am-outcome-verified.png": "a3d3c022ffbc1e58c8611cf5276786cb5624daf23883b71b389d401e3ae8f121",
+    "ui/15-am-stale-evidence.png": "1de79f9d61ed3e1c41b06aacbf0aca0d042ce48bf65d0b0001427be110138378",
+    "ui/16-am-mobile.png": "d33fe2f5d68c93e5daf00ae6d45a466d175d34d3fb38c37d5cc37bc368d0fce6",
+    "ui/17-dst-billing-window.png": "9b2754efbdcd37eb2808938451ab1b3f1c4e73c332ca26b0a302f07f7f85cd7b",
+    "ui/18-dst-mobile.png": "739cb05b324e74deef7dfa83f296f90911d7cab46fb7062d8297308e6508852f",
+    "ui/19-owned-proposal-review.png": "c5a98274a9d2e935c1a37b9a8e67730ac478bb8c5588307a9ac78e96538c466b",
+    "ui/20-proposal-mobile.png": "132dcc1c13fd14f7cfd17cd68b6f70c504ca6899199afa8f4466fc6d0812ce02",
+    "ui/21-paged-source-blocked.png": "ed7f76e3f5d17f4d29bedb79cf1e0ea1cfeb337b7394646cef72e2591cb384c2",
+    "ui/22-paged-source-resolved.png": "24ee7967ff03d89cfc848610bfd925386700f5f4de4df1a3f0a9ff5d56e3bac3",
+    "ui/23-paged-mobile.png": "06884798bb1fa5750c62f4663ab03affb81e14112c9f5c7898a1ee2bce230143",
+    "ui/browser-results.json": "d46c746b6777cf9565495758e4d7f8c9d9b47e9d1fc9d854a197e5f7baadf3d2",
+    "ui/prerequisite-failures.md": "cf689c117767738e8c73053996e5d7406f53b338e07a09dfdb3a47757e884464"
+  }
+}

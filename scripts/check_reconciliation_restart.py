@@ -104,6 +104,23 @@ try:
         final = call("/api/state")
         check("Final finance decision and original evidence survive a second restart", fingerprint(before) == fingerprint(final) and final["reconciliation"]["cases"][0]["status"] == "resolved" and len(final["reconciliation"]["decisions"]) == 2)
         check("Restart and finance review create no external or financial authority", not final["actions"] and not final["messages"] and not final["reconciliation"]["effects"]["settlement_enabled"] and final["cost"]["provider_attempts"] == 0)
+        finance = call('/api/reconciliation/compare', {'fixture_id': 'paged_mutating'})
+        page_case = next(c for c in finance['cases'] if c['account_id'] == 'DEMO-PAGED-ACCOUNT')
+        finance = call(f"/api/reconciliation/cases/{page_case['id']}/decision", {
+            'expected_run_id': page_case['current_run_id'], 'expected_version': page_case['version'],
+            'decision': 'request_correction', 'note': 'Source changed during pagination',
+            'evidence': 'Equal counts/totals do not match authoritative fixture content hash'})
+        before = call('/api/state');stop();start(db_path);after = call('/api/state')
+        check('Page responses, failed attempts and owned correction survive a third restart', fingerprint(before) == fingerprint(after))
+        call('/api/tick', {'advance_hours': 24})
+        finance = call('/api/reconciliation/compare', {'fixture_id': 'paged_corrected'})
+        page_case = next(c for c in finance['cases'] if c['id'] == page_case['id'])
+        check('Current complete pages reopen prior blocked window without replacing history', page_case['status'] == 'review_required' and len([r for r in finance['runs'] if r['case_id'] == page_case['id']]) == 2)
+        finance = call(f"/api/reconciliation/cases/{page_case['id']}/decision", {
+            'expected_run_id': page_case['current_run_id'], 'expected_version': page_case['version'],
+            'decision': 'review_complete', 'note': 'Full corrected window checked', 'evidence': 'New content manifest, exact events and controls verified'})
+        before = call('/api/state');stop();start(db_path);after = call('/api/state')
+        check('Resolved paged correction and both original proofs survive a fourth restart', fingerprint(before) == fingerprint(after) and next(c for c in after['reconciliation']['cases'] if c['id'] == page_case['id'])['status'] == 'resolved')
         stop()
     result["pass"] = True
 except Exception as exc:

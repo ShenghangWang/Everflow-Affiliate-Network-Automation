@@ -1,57 +1,59 @@
-INFO:     Started server process [60936]
+INFO:     Started server process [65657]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
-INFO:     Uvicorn running on http://127.0.0.1:51603 (Press CTRL+C to quit)
-INFO:     127.0.0.1:51615 - "GET /api/health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51617 - "POST /api/leads/L001/reply HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51619 - "POST /api/am/start HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51621 - "POST /api/am/accounts/ACC-98e878e1e6a5e7c9/fixture HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51623 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     Uvicorn running on http://127.0.0.1:54621 (Press CTRL+C to quit)
+INFO:     127.0.0.1:54631 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54633 - "POST /api/leads/L001/reply HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54635 - "POST /api/leads/L001/proposal HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54637 - "POST /api/proposals/PRP-8aeea118473e28ec/review HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54639 - "POST /api/am/start HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54641 - "POST /api/am/accounts/ACC-98e878e1e6a5e7c9/fixture HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54643 - "GET /api/state HTTP/1.1" 200 OK
 INFO:     Shutting down
 INFO:     Waiting for application shutdown.
 INFO:     Application shutdown complete.
-INFO:     Finished server process [60936]
-INFO:     Started server process [60937]
+INFO:     Finished server process [65657]
+INFO:     Started server process [65658]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
-INFO:     Uvicorn running on http://127.0.0.1:51603 (Press CTRL+C to quit)
-INFO:     127.0.0.1:51633 - "GET /api/health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51635 - "GET /api/state HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51637 - "POST /api/am/accounts/ACC-98e878e1e6a5e7c9/fixture HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51639 - "POST /api/am/accounts/ACC-98e878e1e6a5e7c9/decision HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51641 - "POST /api/am/accounts/ACC-98e878e1e6a5e7c9/fixture HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51643 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     Uvicorn running on http://127.0.0.1:54621 (Press CTRL+C to quit)
+INFO:     127.0.0.1:54653 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54655 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54657 - "POST /api/am/accounts/ACC-98e878e1e6a5e7c9/fixture HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54659 - "POST /api/am/accounts/ACC-98e878e1e6a5e7c9/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54661 - "POST /api/am/accounts/ACC-98e878e1e6a5e7c9/fixture HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54663 - "GET /api/state HTTP/1.1" 200 OK
 INFO:     Shutting down
 INFO:     Waiting for application shutdown.
 INFO:     Application shutdown complete.
-INFO:     Finished server process [60937]
-INFO:     Started server process [60952]
+INFO:     Finished server process [65658]
+INFO:     Started server process [65672]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
-INFO:     Uvicorn running on http://127.0.0.1:51603 (Press CTRL+C to quit)
-INFO:     127.0.0.1:51657 - "GET /api/health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51659 - "GET /api/state HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51661 - "POST /api/tick HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51663 - "POST /api/tick HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51665 - "POST /api/am/accounts/ACC-98e878e1e6a5e7c9/fixture HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51667 - "POST /api/am/accounts/ACC-98e878e1e6a5e7c9/decision HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51669 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     Uvicorn running on http://127.0.0.1:54621 (Press CTRL+C to quit)
+INFO:     127.0.0.1:54673 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54675 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54677 - "POST /api/tick HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54679 - "POST /api/tick HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54681 - "POST /api/am/accounts/ACC-98e878e1e6a5e7c9/fixture HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54683 - "POST /api/am/accounts/ACC-98e878e1e6a5e7c9/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54685 - "GET /api/state HTTP/1.1" 200 OK
 INFO:     Shutting down
 INFO:     Waiting for application shutdown.
 INFO:     Application shutdown complete.
-INFO:     Finished server process [60952]
-INFO:     Started server process [60953]
+INFO:     Finished server process [65672]
+INFO:     Started server process [65673]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
-INFO:     Uvicorn running on http://127.0.0.1:51603 (Press CTRL+C to quit)
-INFO:     127.0.0.1:51679 - "GET /api/health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51681 - "GET /api/state HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51683 - "POST /api/tick HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51685 - "POST /api/tick HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51687 - "POST /api/am/accounts/ACC-98e878e1e6a5e7c9/decision HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51689 - "GET /api/state HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51691 - "POST /api/tick HTTP/1.1" 200 OK
+INFO:     Uvicorn running on http://127.0.0.1:54621 (Press CTRL+C to quit)
+INFO:     127.0.0.1:54695 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54697 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54699 - "POST /api/tick HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54701 - "POST /api/tick HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54703 - "POST /api/am/accounts/ACC-98e878e1e6a5e7c9/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54705 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54707 - "POST /api/tick HTTP/1.1" 200 OK
 INFO:     Shutting down
 INFO:     Waiting for application shutdown.
 INFO:     Application shutdown complete.
-INFO:     Finished server process [60953]
+INFO:     Finished server process [65673]

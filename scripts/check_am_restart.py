@@ -50,6 +50,8 @@ try:
     with tempfile.TemporaryDirectory(prefix='everflow-am-restart-') as temp:
         db=Path(temp)/'verify.sqlite3';start(db)
         call('/api/leads/L001/reply',{'text':'I am interested','event_id':'BD-AM-HANDOFF'})
+        proposal=call('/api/leads/L001/proposal',{'meeting_note':'Requested USD50 Net-7; unapproved','event_id':'AM-PROPOSAL'})['drafts'][0]
+        call(f"/api/proposals/{proposal['id']}/review",{'expected_version':proposal['version'],'note':'Current clauses verified','evidence':'Approved structured terms only, requested changes excluded'})
         am=call('/api/am/start',{'lead_id':'L001'});account=am['accounts'][0]
         am=apply(account,'signed_only','SIGNATURE-1')
         check('Signed intake remains pending and no AM check is scheduled',am['accounts'][0]['status']=='pending_activation' and not am['tasks'])
@@ -71,6 +73,7 @@ try:
         am=decide(am['accounts'][0],'cancel');before=len([e for e in call('/api/state')['audit'] if e['event']=='am_followthrough_due'])
         state=call('/api/tick',{'advance_hours':168})
         check('Cancellation prevents future due alerts and preserves history',state['account_management']['accounts'][0]['status']=='cancelled' and len([e for e in state['audit'] if e['event']=='am_followthrough_due'])==before and all(t['status'] not in ('scheduled','due') for t in state['account_management']['tasks']))
+        check('Owned proposal review and excluded meeting note survive the AM restarts',state['commercial']['drafts'][0]['status']=='reviewed_draft' and len(state['commercial']['decisions'])==1 and 'USD50' not in state['commercial']['drafts'][0]['content'] and state['commercial']['drafts'][0]['note'].startswith('Requested USD50'))
         check('Full cycle grants no outbound or campaign authority',not state['actions'] and len(state['messages'])==1 and state['messages'][0]['direction']=='inbound' and not am['effects']['campaign_controls_enabled'] and state['cost']['provider_attempts']==0)
         stop()
     result['pass']=True

@@ -1,0 +1,142 @@
+{
+  "started_at": "2026-11-04T07:59:03.380823+00:00",
+  "checks": [
+    {
+      "name": "Owned correction follow-up is durably scheduled",
+      "pass": true
+    },
+    {
+      "name": "Process restart preserves the entire workflow and finance state",
+      "pass": true,
+      "before_sha256": "49ef87891bc4fb0312ccefe8e609671d9485813068e30837ed14a87ecaa21658",
+      "after_sha256": "49ef87891bc4fb0312ccefe8e609671d9485813068e30837ed14a87ecaa21658"
+    },
+    {
+      "name": "Due correction produces one in-app alert after repeated ticks",
+      "pass": true
+    },
+    {
+      "name": "Corrected evidence completes prior follow-up and reopens owned review",
+      "pass": true
+    },
+    {
+      "name": "Final finance decision and original evidence survive a second restart",
+      "pass": true
+    },
+    {
+      "name": "Restart and finance review create no external or financial authority",
+      "pass": true
+    },
+    {
+      "name": "Page responses, failed attempts and owned correction survive a third restart",
+      "pass": true
+    },
+    {
+      "name": "Current complete pages reopen prior blocked window without replacing history",
+      "pass": true
+    },
+    {
+      "name": "Resolved paged correction and both original proofs survive a fourth restart",
+      "pass": true
+    }
+  ],
+  "live_effects": false,
+  "model_calls": 0,
+  "commands": [
+    [
+      "/Users/shenghangwang/.codex/visualizations/2026/11/04/01a1a475-c70b-7342-89b1-f642577c991c/everflow-foundation/.venv/bin/python",
+      "-m",
+      "uvicorn",
+      "backend.app:app",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "54712",
+      "--workers",
+      "1"
+    ],
+    [
+      "/Users/shenghangwang/.codex/visualizations/2026/11/04/01a1a475-c70b-7342-89b1-f642577c991c/everflow-foundation/.venv/bin/python",
+      "-m",
+      "uvicorn",
+      "backend.app:app",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "54712",
+      "--workers",
+      "1"
+    ],
+    [
+      "/Users/shenghangwang/.codex/visualizations/2026/11/04/01a1a475-c70b-7342-89b1-f642577c991c/everflow-foundation/.venv/bin/python",
+      "-m",
+      "uvicorn",
+      "backend.app:app",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "54712",
+      "--workers",
+      "1"
+    ],
+    [
+      "/Users/shenghangwang/.codex/visualizations/2026/11/04/01a1a475-c70b-7342-89b1-f642577c991c/everflow-foundation/.venv/bin/python",
+      "-m",
+      "uvicorn",
+      "backend.app:app",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "54712",
+      "--workers",
+      "1"
+    ],
+    [
+      "/Users/shenghangwang/.codex/visualizations/2026/11/04/01a1a475-c70b-7342-89b1-f642577c991c/everflow-foundation/.venv/bin/python",
+      "-m",
+      "uvicorn",
+      "backend.app:app",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "54712",
+      "--workers",
+      "1"
+    ]
+  ],
+  "server_exit_codes": [
+    -15,
+    -15,
+    -15,
+    -15,
+    -15
+  ],
+  "pass": true,
+  "finished_at": "2026-11-04T07:59:07.164654+00:00",
+  "source_sha256": {
+    "backend/scenarios.py": "9008e44e69e54b6d2f23d5aa33af2c27b9b9ecc44c3fc01a470af06d2b476975",
+    "backend/domain.py": "5ec17464da29ff94144e6e7bf0ca2c07a6fa664e47265f9f6ee6e74ab2444faa",
+    "backend/reconciliation.py": "5eca39ad3febde2fbb2831be5370a2ef436b7b13595a247563ffb341e11d713c",
+    "backend/report_windows.py": "dd4368e4b2b465f4383a38c253289a2ec7faaed766d54e9da138dac4acd3fe63",
+    "backend/__init__.py": "b0dd23c9d4f5b80f1315ce0a20c8b1ea82429240d038c5b8685f06380510a6a2",
+    "backend/account_management.py": "edfb149503011b300438b2174d21c284485a867b643f7142e997d8c15d2d7253",
+    "backend/report_acquisition.py": "5970921c6d1bf6ac4d54e374d14abc237a9b249d70f92befecdc0ffb0ee06952",
+    "backend/app.py": "a9988e7dd79f63ee7cfc7464a70bd428867cc47653efb462a8e2f67219a7c8f1",
+    "backend/inference.py": "890093025356330d13b7c711dc604bced25d26e0bc05fcfe817d7e681c12ac44",
+    "backend/commercial.py": "466eed54de24b85421c079aa659eebdb10b4e57fbfd7d04d28c8acb20a5c8ca8",
+    "backend/fixtures/reconciliation_dst.json": "8174fa3642dea14dea107c39744b18b93a455cd6fbffccbb88e4ab77cb1bf8d8",
+    "backend/fixtures/reconciliation.json": "4165d35c55c1b372a29736103165e702b6ce5fa0657694ed6a4d9dfce1869f4a",
+    "backend/fixtures/generic.json": "a96d9f10e96557e543ad1dace80591027ed51f40ee3d2634e3d88f3bf1043b44",
+    "backend/fixtures/source_stress.json": "e96a0f1d042771d68bb2b6d0b855b36aeda69cd539f119265efef99d5f5fe558",
+    "backend/fixtures/account_management.json": "f8569cb4353f45586adfcfcceb5abf1074bc3afb3c1265fb27a3e652922b4fef",
+    "tests/test_review_export.py": "968ea29df433dbb2ccd36e5acc5e8f994b0784cd0df24f17f65a4346230b9c5f",
+    "tests/test_commercial.py": "ce532a3c681d255f5727824ba99a3ba7c7b3ae4537e303a7c783e3dba200175b",
+    "tests/test_account_management.py": "a4793257ea87c4e1431318c730baac4e81fa0c8ec006fd2d2de5c821d1f7cb50",
+    "tests/test_report_acquisition.py": "c18c2316ba851999edfe0b6823171c68e603163b8e6305112a25f9224cfd16ec",
+    "tests/test_workflow.py": "1726adb53d04bba7fd67535adf824d78f97b94469727a203f0b16507ea7fdc5e",
+    "tests/test_report_windows.py": "2b57c0d57e493feb3ef2ebacd4d724b6c98763e129a3cc266c81a753ae54cba5",
+    "tests/test_scenarios.py": "9b6c7cddb4bda7e6aa6c8c59c2f9648b05111ed8473f7d2671cce79635060a35",
+    "tests/test_api.py": "6f9c99f158386528eed6cd57df8c6a77df4f8f2bef2c7a6dd3201bca09098537",
+    "tests/test_reconciliation.py": "98f340f66b55beb6892be1545b5a0c83878f2f4345dd0adbc8efa552b70ed48f"
+  }
+}

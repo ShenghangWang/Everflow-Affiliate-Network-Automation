@@ -14,6 +14,10 @@ FIXTURE = Path(__file__).parent / "fixtures" / "reconciliation.json"
 TABLES = ("recon_tasks", "recon_decisions", "recon_runs", "recon_cases", "recon_snapshots")
 FIXTURES = [
     {"id": "variance", "label": "Aligned reports · USD 12.50 discrepancy"},
+    {"id": "paged_mutating", "label": "Paged source changes during fetch · blocked"},
+    {"id": "paged_corrected", "label": "Complete corrected paged evidence · fresh review"},
+    {"id": "paged_settles", "label": "Paged source settles within bounded retry"},
+    {"id": "paged_unproven", "label": "Identical page reads without upstream proof · uncertain"},
     {"id": "dst_normalized", "label": "Different source timezones · DST billing window normalized"},
     {"id": "corrected", "label": "Corrected counterparty report · new version"},
     {"id": "partial_corrected", "label": "Complete correction after an incomplete report"},
@@ -71,6 +75,17 @@ def load_fixture(fixture_id):
             data[side] = normalize_report(data[side], window)
         return data
     data = json.loads(FIXTURE.read_text())
+    if fixture_id.startswith("paged_"):
+        from .report_acquisition import fixture_report
+        for side in ("internal", "counterparty"):
+            data[side]["account_id"] = "DEMO-PAGED-ACCOUNT" if fixture_id in ("paged_mutating", "paged_corrected") else "DEMO-" + fixture_id.upper()
+        data["counterparty"]["rows"] = deepcopy(data["internal"]["rows"])
+        data["counterparty"]["snapshot"]["control_amount"] = "50.00"
+        if fixture_id == "paged_corrected":
+            data["counterparty"]["revision"] = 2
+        scenario = {"paged_mutating": "same_total_change", "paged_corrected": "stable", "paged_settles": "settles", "paged_unproven": "unproven"}[fixture_id]
+        data["counterparty"] = fixture_report(data["counterparty"], scenario)
+        return data
     if fixture_id in ("corrected", "matched", "partial_corrected"):
         data["counterparty"]["rows"] = deepcopy(data["internal"]["rows"])
         data["counterparty"]["snapshot"]["control_amount"] = "50.00"
@@ -145,7 +160,11 @@ def check_report(report, side, as_of=None):
     snapshot = report.get("snapshot")
     if not isinstance(snapshot, dict):
         snapshot = {}
-    if snapshot.get("kind") != "immutable_fixture" or not isinstance(snapshot.get("id"), str) or not 1 <= len(snapshot["id"].strip()) <= 200 or snapshot.get("complete") is not True:
+    snapshot_proven = snapshot.get("kind") == "immutable_fixture"
+    if snapshot.get("kind") == "paginated_fixture" or "acquisition" in report:
+        from .report_acquisition import acquisition_matches
+        snapshot_proven = snapshot.get("kind") == "paginated_fixture" and acquisition_matches(report)
+    if not snapshot_proven or not isinstance(snapshot.get("id"), str) or not 1 <= len(snapshot["id"].strip()) <= 200 or snapshot.get("complete") is not True:
         problems.append({"side": side, "code": "unproven_snapshot"})
     records = report.get("rows")
     if not isinstance(records, list) or len(records) > 5000:
@@ -210,6 +229,12 @@ def compare_reports(internal, counterparty, threshold_percent="5", as_of=None):
     base["normalization"] = {side: {k: v for k, v in report.get("normalization", {}).items() if k != "source_report"}
                              for side, report in (("internal", internal), ("counterparty", counterparty))
                              if isinstance(report.get("normalization"), dict)}
+    base["acquisition"] = {side: {"classification": report["acquisition"].get("classification"),
+                                  "attempts": len(report["acquisition"].get("attempts", [])),
+                                  "problems": [a.get("problems") for a in report["acquisition"].get("attempts", [])],
+                                  "limits": report["acquisition"].get("limits"), "evidence_sha256": digest(report["acquisition"])}
+                           for side, report in (("internal", internal), ("counterparty", counterparty))
+                           if isinstance(report.get("acquisition"), dict)}
     if blockers:
         return {**base, "result": "blocked", "reason": "Incomplete, inconsistent or unaligned inputs; no final variance or collection draft"}
     rows = []

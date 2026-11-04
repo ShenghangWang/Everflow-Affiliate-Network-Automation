@@ -13,6 +13,8 @@ from .scenarios import scenario
 from .reconciliation import ReconciliationService, StaleReconciliation
 from .account_management import AccountManagement, StaleAccountAction
 
+from .commercial import CommercialService
+
 ROOT = Path(__file__).resolve().parents[1]
 workflow = Workflow(os.environ.get("EVERFLOW_DEMO_DB", str(ROOT / "data" / "demo.sqlite3")))
 app = FastAPI(title="Affiliate Network Foundation — synthetic local demo", docs_url="/api/docs")
@@ -186,6 +188,20 @@ def account_management_decision(account_id: str, payload: dict = Body(...)):
     if set(payload) != {"expected_version", "decision", "note", "evidence"}:
         raise ValueError("AM decision requires current version, decision, note and verification evidence")
     return AccountManagement(workflow).decide(account_id, **payload)
+
+
+@app.post("/api/leads/{lead_id}/proposal")
+def prepare_proposal(lead_id: str, payload: dict = Body(...)):
+    if set(payload) != {"meeting_note", "event_id"}:
+        raise ValueError("Proposal accepts only a meeting note and stable event ID")
+    return CommercialService(workflow).prepare(lead_id, **payload)
+
+
+@app.post("/api/proposals/{draft_id}/review")
+def review_proposal(draft_id: str, payload: dict = Body(...)):
+    if set(payload) != {"expected_version", "note", "evidence"}:
+        raise ValueError("Proposal review requires version, note and verification evidence only")
+    return CommercialService(workflow).review(draft_id, **payload)
 
 
 dist = ROOT / "frontend" / "dist"

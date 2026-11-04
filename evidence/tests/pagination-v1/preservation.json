@@ -1,0 +1,17 @@
+{
+  "recorded_at_utc": "2026-11-04T08:00:57.940516+00:00",
+  "original_responses": {
+    "D1-HLD-R1": {
+      "original_response_sha256": "b9b2e85cfd7a842e0d8180447b085301518610021d1ac62c747d36960c5e026f",
+      "saved_file_sha256": "5b93f9a7a54ed525467a70de4fa6e09c1f81b8f5f11bff50aa193c5777d99a1a",
+      "body_unchanged": true
+    },
+    "D1-HLD-R2": {
+      "original_response_sha256": "3cce43ede54169d9b25f46097b7cb813028ac3b4e9a4bf7ae1896010923d736f",
+      "saved_file_sha256": "68c877916c995312c84a3df6a18c1ace7fc2a64bde7f5bce777a5c5b80e3d325",
+      "body_unchanged": true
+    }
+  },
+  "all_protected_paths_unchanged_against_parent": true,
+  "previous_demo_tag": "4cdcfcbc4dbd4ed17f6ca008c8f966d24d06690a"
+}

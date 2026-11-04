@@ -1,6 +1,6 @@
 {
-  "started_at": "2026-11-04T07:10:32.133Z",
-  "base": "http://127.0.0.1:8012",
+  "started_at": "2026-11-04T07:59:04.118Z",
+  "base": "http://127.0.0.1:8013",
   "checks": [
     {
       "name": "Generic baseline loads React with accurate modes",
@@ -45,6 +45,21 @@
     },
     {
       "name": "UI clear interest has accountable handoff",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Meeting notes cannot smuggle numeric or spelled-out requested terms into proposal clauses",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Proposal reaches an owned review outcome with no signature or dispatch",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Mobile proposal review has no page overflow",
       "pass": true,
       "detail": {}
     },
@@ -243,6 +258,36 @@
       "detail": {}
     },
     {
+      "name": "Changed page contents with unchanged controls block final variance and drafts",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Uncertain paged evidence keeps one owned due correction task",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Complete corrected pages reopen review and preserve the original failed attempts",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Paged correction reaches owned finance resolution without duplicate runs or effects",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Repeated identical reads without upstream proof remain uncertain in the UI",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Mobile page acquisition evidence has no overflow",
+      "pass": true,
+      "detail": {}
+    },
+    {
       "name": "UI separates six-role architecture from implementation",
       "pass": true,
       "detail": {}
@@ -266,7 +311,7 @@
   "mode": "synthetic mock/template only",
   "browser": "149.0.7827.55",
   "browser_executable": "/Users/shenghangwang/Library/Caches/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-mac-x64/chrome-headless-shell",
-  "finished_at": "2026-11-04T07:10:46.282Z",
+  "finished_at": "2026-11-04T07:59:20.714Z",
   "pass": true,
   "final_summary": {
     "leads": [
@@ -309,7 +354,7 @@
         "attempts": 0
       },
       {
-        "id": "ACT-fa4c3152b26d22f6",
+        "id": "ACT-0535016f62a78b56",
         "kind": "standard_response",
         "status": "succeeded",
         "attempts": 1
@@ -353,14 +398,26 @@
           "version": 4
         },
         {
+          "id": "REC-08d440ffa88486c2",
+          "status": "resolved",
+          "owner": "Demo finance owner",
+          "version": 4
+        },
+        {
           "id": "REC-aeb387ff13931d55",
           "status": "resolved",
           "owner": "Demo finance owner",
           "version": 2
+        },
+        {
+          "id": "REC-5b54d8b01e8d531b",
+          "status": "blocked",
+          "owner": "Demo finance owner",
+          "version": 1
         }
       ],
-      "runs": 5,
-      "decisions": 5,
+      "runs": 8,
+      "decisions": 7,
       "external_effects": false
     }
   }
