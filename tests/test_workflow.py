@@ -147,6 +147,45 @@ class WorkflowTests(unittest.TestCase):
         with self.w.db() as c:
             self.assertEqual(c.execute("SELECT count(*) FROM receipts").fetchone()[0], 1)
 
+    def test_gemini_F01_unknown_action_does_not_block_other_ready_leads(self):
+        self.w.draft("L001")
+        self.w.dispatch("L001", transport_result="timeout_after_accept")
+        unknown = self.action()["id"]
+        self.w.draft("L002")
+        self.w.dispatch("L002")
+        self.assertEqual(self.action(lead_id="L002")["status"], "succeeded")
+        self.assertEqual(self.action()["status"], "unknown_outcome")
+        self.assertEqual(self.action()["attempts"], 1)
+        with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+            list(pool.map(lambda _: Workflow(self.path).reconcile(unknown), range(10)))
+        state = self.w.state()
+        self.assertEqual(len([a for a in state["actions"] if a["lead_id"] == "L001" and a["kind"] == "followup"]), 1)
+        self.assertEqual(len([e for e in state["audit"] if e["event"] == "mock_outcome_reconciled" and e["action_id"] == unknown]), 1)
+        self.assertEqual(self.action()["attempts"], 1)
+
+    def test_gemini_F05_reply_before_acceptance_commit_preserves_owned_conversation(self):
+        # Receipt is committed, but client acceptance is unknown until reconciliation.
+        # Both accepted-send paths share _succeed; persist the reply before it runs.
+        for text, stage in (("What is the payout?", "conversation"),
+                            ("I am interested", "handoff"),
+                            ("unsubscribe", "suppressed")):
+            with self.subTest(text=text):
+                self.w.reset()
+                self.w.draft("L001")
+                self.w.dispatch("L001", transport_result="timeout_after_accept")
+                aid = self.action()["id"]
+                self.w.reply("L001", text, "fast-reply")
+                self.assertEqual(self.lead()["stage"], stage)
+                with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+                    list(pool.map(lambda _: Workflow(self.path).reconcile(aid), range(10)))
+                self.assertEqual(self.action()["status"], "succeeded")
+                self.assertEqual(self.lead()["stage"], stage)
+                state = self.w.state()
+                self.assertFalse([a for a in state["actions"] if a["kind"] == "followup"])
+                self.assertTrue(self.lead()["replied"])
+                self.assertEqual(len([e for e in state["audit"] if e["event"] == "mock_outcome_reconciled" and e["action_id"] == aid]), 1)
+                self.assertEqual(self.action()["attempts"], 1)
+
     def test_T06_known_preaccept_failure_retries_once(self):
         self.w.draft("L001")
         self.w.dispatch("L001", transport_result="transient_before_accept")

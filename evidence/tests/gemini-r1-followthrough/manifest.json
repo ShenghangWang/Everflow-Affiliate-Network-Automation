@@ -1,0 +1,60 @@
+{
+  "recorded_at_utc": "2026-11-04T06:53:31.001861+00:00",
+  "verified_parent_revision": "ee2bf8d31c52bb42ee591c281ed8d5461ad9da60",
+  "candidate": "backend-only delayed acceptance conversation preservation",
+  "test_count": 94,
+  "exit_code": 0,
+  "test_started_at_utc": "2026-11-04T06:48:33.453693+00:00",
+  "test_finished_at_utc": "2026-11-04T06:48:39.437980+00:00",
+  "source_sha256": {
+    "backend/__init__.py": "b0dd23c9d4f5b80f1315ce0a20c8b1ea82429240d038c5b8685f06380510a6a2",
+    "backend/account_management.py": "edfb149503011b300438b2174d21c284485a867b643f7142e997d8c15d2d7253",
+    "backend/app.py": "760186b068df02a3ef1f397c9051ee49ba2abe9df0c713ecc059b9eff29e6123",
+    "backend/domain.py": "7ccbb136bbd1a064110ea9f99dd724140edcce8941649d26b38e73262b30ec57",
+    "backend/fixtures/account_management.json": "f8569cb4353f45586adfcfcceb5abf1074bc3afb3c1265fb27a3e652922b4fef",
+    "backend/fixtures/generic.json": "a96d9f10e96557e543ad1dace80591027ed51f40ee3d2634e3d88f3bf1043b44",
+    "backend/fixtures/reconciliation.json": "4165d35c55c1b372a29736103165e702b6ce5fa0657694ed6a4d9dfce1869f4a",
+    "backend/fixtures/source_stress.json": "e96a0f1d042771d68bb2b6d0b855b36aeda69cd539f119265efef99d5f5fe558",
+    "backend/inference.py": "890093025356330d13b7c711dc604bced25d26e0bc05fcfe817d7e681c12ac44",
+    "backend/reconciliation.py": "710a9a103f42f409251e7d0f1ff35f57bd3e822c99ad65268efbfafa3836b34f",
+    "backend/scenarios.py": "9008e44e69e54b6d2f23d5aa33af2c27b9b9ecc44c3fc01a470af06d2b476975",
+    "tests/test_account_management.py": "a4793257ea87c4e1431318c730baac4e81fa0c8ec006fd2d2de5c821d1f7cb50",
+    "tests/test_api.py": "3e23d2d21a44e5cecd046eb68f5ebaae4cbc5c3f9a0f1bbd49d566bac584ba82",
+    "tests/test_reconciliation.py": "98f340f66b55beb6892be1545b5a0c83878f2f4345dd0adbc8efa552b70ed48f",
+    "tests/test_review_export.py": "968ea29df433dbb2ccd36e5acc5e8f994b0784cd0df24f17f65a4346230b9c5f",
+    "tests/test_scenarios.py": "9b6c7cddb4bda7e6aa6c8c59c2f9648b05111ed8473f7d2671cce79635060a35",
+    "tests/test_workflow.py": "1726adb53d04bba7fd67535adf824d78f97b94469727a203f0b16507ea7fdc5e"
+  },
+  "code_change": "Acceptance completion sets contacted only when replied=0; existing no-follow-up-on-reply guard retained",
+  "new_checks": [
+    "Unknown action permits other ready lead; ten concurrent reconciliations complete once",
+    "FAQ/interest/opt-out persist before acceptance completion; stage preserved; no follow-up created; one acceptance/attempt under ten reconcilers"
+  ],
+  "failed_run": "before-reply-stage-fix.json/log: 94 tests, one FAQ stage assertion failed",
+  "historical_ui_process_build": {
+    "checkpoint": "ee2bf8d / demo-am-r1",
+    "evidence": "evidence/tests/am-v1/manifest.json",
+    "manifest_sha256": "309b6ca42de0099a253c5757bdfa14ce4d3a1a4f1d5fa109ecf873b61d57724b",
+    "browser_checks": 41,
+    "process_restart_checks": 10,
+    "build": "passed at its own source hashes",
+    "rerun_for_this_backend_only_fix": false
+  },
+  "effects": {
+    "paid_model_calls": 0,
+    "external_business_effects": 0,
+    "provider": "SQLite mock receipts only"
+  },
+  "limits": [
+    "Does not test a real provider receipt/reply ingestion race or asynchronous reconciliation network fences",
+    "Working HLD amendments are outside frozen R1/R2 and are not Gemini-approved",
+    "R2 follow-up, several release checks/business policies and sponsor acceptance remain pending"
+  ],
+  "evidence_sha256": {
+    "backend-tests.json": "854fdf477bd51efc29744b1e7280541856ff07887b0b10d21dddbac3ad8e631a",
+    "backend-tests.log": "db7c12c24a9344427fea9a40a371b17b1c9f6a0961c79e680e3f73ea3e41fbca",
+    "before-reply-stage-fix.json": "fb1cb0199e9ebdc8591274de63fea1469b9d0189fea22cf0781ceac284c05441",
+    "before-reply-stage-fix.log": "30fd8e3733f7b9b0075e9248899145f4376561697a9c066c8b32b60700fcaa84",
+    "review-preservation.json": "a371fb3ebc037fea605bd5c2325e250e306d4a9b046325650763b6e84aad710d"
+  }
+}

@@ -84,6 +84,8 @@ test_T09_unapproved_provider_adapter_is_never_invoked (test_workflow.WorkflowTes
 test_T10_source_policy_terms_change_cache_key_and_current_authority (test_workflow.WorkflowTests.test_T10_source_policy_terms_change_cache_key_and_current_authority) ... ok
 test_T11_generic_only_mock_boundary_and_redacted_costs (test_workflow.WorkflowTests.test_T11_generic_only_mock_boundary_and_redacted_costs) ... ok
 test_configurable_followup_interval_and_audit_use_the_same_rule (test_workflow.WorkflowTests.test_configurable_followup_interval_and_audit_use_the_same_rule) ... ok
+test_gemini_F01_unknown_action_does_not_block_other_ready_leads (test_workflow.WorkflowTests.test_gemini_F01_unknown_action_does_not_block_other_ready_leads) ... ok
+test_gemini_F05_reply_before_acceptance_commit_preserves_owned_conversation (test_workflow.WorkflowTests.test_gemini_F05_reply_before_acceptance_commit_preserves_owned_conversation) ... ok
 test_internal_am_issue_followthrough_preserves_human_authority (test_workflow.WorkflowTests.test_internal_am_issue_followthrough_preserves_human_authority) ... ok
 test_kill_switch_and_unqualified_no_effect (test_workflow.WorkflowTests.test_kill_switch_and_unqualified_no_effect) ... ok
 test_legacy_source_receipt_without_payload_digest_requires_review (test_workflow.WorkflowTests.test_legacy_source_receipt_without_payload_digest_requires_review) ... ok
@@ -92,6 +94,6 @@ test_source_event_changed_recipient_or_payload_preserves_owned_record (test_work
 test_source_event_replay_same_normalized_payload_is_idempotent (test_workflow.WorkflowTests.test_source_event_replay_same_normalized_payload_is_idempotent) ... ok
 
 ----------------------------------------------------------------------
-Ran 92 tests in 5.157s
+Ran 94 tests in 5.397s
 
 OK

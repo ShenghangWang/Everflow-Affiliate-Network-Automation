@@ -365,7 +365,9 @@ class Workflow:
         if action["kind"] == "standard_response":
             c.execute("UPDATE leads SET stage='conversation',rounds=rounds+1 WHERE id=?", (action["lead_id"],))
         elif action["kind"] == "outreach":
-            c.execute("UPDATE leads SET stage='contacted' WHERE id=? AND stage NOT IN ('handoff','review','suppressed')", (action["lead_id"],))
+            # Acceptance may be reconciled after an inbound reply was committed.
+            # Preserve the newer conversation/owner state as well as skipping follow-up.
+            c.execute("UPDATE leads SET stage='contacted' WHERE id=? AND replied=0 AND stage NOT IN ('handoff','review','suppressed')", (action["lead_id"],))
             lead = self._lead(c, action["lead_id"])
             if not lead["replied"] and not lead["suppressed"] and lead["stage"] not in ("handoff", "review"):
                 due = stamp(parse(receipt["accepted_at"]) + timedelta(hours=self._get(c, "policy")["followup_hours"]))
