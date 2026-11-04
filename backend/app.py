@@ -11,6 +11,7 @@ from fastapi.staticfiles import StaticFiles
 from .domain import Workflow
 from .scenarios import scenario
 from .reconciliation import ReconciliationService, StaleReconciliation
+from .account_management import AccountManagement, StaleAccountAction
 
 ROOT = Path(__file__).resolve().parents[1]
 workflow = Workflow(os.environ.get("EVERFLOW_DEMO_DB", str(ROOT / "data" / "demo.sqlite3")))
@@ -34,6 +35,11 @@ async def local_boundary(request: Request, call_next):
     response.headers["Cache-Control"] = "no-store"
     response.headers["Content-Security-Policy"] = "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; img-src 'self' data:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
     return response
+
+
+@app.exception_handler(StaleAccountAction)
+async def stale_account_action(_request, exc):
+    return JSONResponse({"detail": str(exc)}, status_code=409)
 
 
 @app.exception_handler(StaleReconciliation)
@@ -144,6 +150,33 @@ def reconciliation_decision(case_id: str, payload: dict = Body(...)):
     if set(payload) != {"expected_run_id", "expected_version", "decision", "note", "evidence"}:
         raise ValueError("Finance review requires exact current run/version, decision, note and evidence")
     return ReconciliationService(workflow).decide(case_id, **payload)
+
+
+
+@app.get("/api/am")
+def account_management_state():
+    return AccountManagement(workflow).state()
+
+
+@app.post("/api/am/start")
+def account_management_start(payload: dict = Body(...)):
+    if set(payload) != {"lead_id"} or not isinstance(payload["lead_id"], str):
+        raise ValueError("Activation intake requires exactly one handed-off lead_id")
+    return AccountManagement(workflow).start(payload["lead_id"])
+
+
+@app.post("/api/am/accounts/{account_id}/fixture")
+def account_management_fixture(account_id: str, payload: dict = Body(...)):
+    if set(payload) != {"fixture_id", "event_id"} or not all(isinstance(v, str) for v in payload.values()):
+        raise ValueError("Choose an allowlisted fixture and stable event_id; no authority fields accepted")
+    return AccountManagement(workflow).apply_fixture(account_id, **payload)
+
+
+@app.post("/api/am/accounts/{account_id}/decision")
+def account_management_decision(account_id: str, payload: dict = Body(...)):
+    if set(payload) != {"expected_version", "decision", "note", "evidence"}:
+        raise ValueError("AM decision requires current version, decision, note and verification evidence")
+    return AccountManagement(workflow).decide(account_id, **payload)
 
 
 dist = ROOT / "frontend" / "dist"

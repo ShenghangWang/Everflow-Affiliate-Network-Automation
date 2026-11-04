@@ -15,6 +15,7 @@ import uuid
 
 from .inference import TemplateInference
 from .reconciliation import ReconciliationService, TABLES as RECON_TABLES, ensure_schema as ensure_recon_schema
+from .account_management import AccountManagement, TABLES as AM_TABLES, ensure_schema as ensure_am_schema
 
 FIXTURE = Path(__file__).parent / "fixtures" / "generic.json"
 PENDING = ("scheduled", "authorized", "executing")
@@ -76,6 +77,7 @@ class Workflow:
               mode TEXT, content TEXT, created_at TEXT);
             """)
             ensure_recon_schema(c)
+            ensure_am_schema(c)
         if not self.setting("now"):
             self.reset()
 
@@ -126,7 +128,7 @@ class Workflow:
     def reset(self):
         fixture = json.loads(FIXTURE.read_text())
         with self.tx() as c:
-            for table in (*RECON_TABLES, "leads", "provenance", "inbox", "actions", "authorizations", "attempts", "receipts", "messages", "audit", "issues", "draft_usage", "settings"):
+            for table in (*AM_TABLES, *RECON_TABLES, "leads", "provenance", "inbox", "actions", "authorizations", "attempts", "receipts", "messages", "audit", "issues", "draft_usage", "settings"):
                 c.execute(f"DELETE FROM {table}")  # table is a code-owned allowlist
             for key in ("now", "policy", "terms", "sources", "label"):
                 self._set(c, key, fixture[key])
@@ -445,6 +447,7 @@ class Workflow:
                     self._audit(c, "standard_terms_rendered", lead_id, response_id, terms_version=terms["version"], mode="deterministic approved structured facts")
                 else:
                     self._issue(c, lead, "ambiguous_or_out_of_policy", "Free-text request needs review; no inferred consent, commercial term or operational permission")
+            AccountManagement(self).sync(c, lead_id)
         if response_id:
             self.run_action(response_id)
         return self.state()
@@ -471,6 +474,7 @@ class Workflow:
                 if self._authorize(c, row["id"]):
                     aids.append(row["id"])
             ReconciliationService(self).check_due(c)
+            AccountManagement(self).check_due(c)
             self._audit(c, "scheduler_tick", due_actions=len(aids), advance_hours=advance_hours)
         for aid in aids:
             self.run_action(aid)
@@ -491,6 +495,7 @@ class Workflow:
             # as a review note rather than sent from a mutable draft.
             if content is not None:
                 self._issue(c, self._lead(c, lead_id), "edited_content", "Free-text draft edit requires human review; it will not auto-dispatch")
+            AccountManagement(self).sync(c, lead_id)
             self._audit(c, "lead_edited", lead_id, recipient_changed=recipient is not None, free_text_changed=content is not None)
         return self.state()
 
@@ -529,6 +534,7 @@ class Workflow:
             self._set(c, "terms", terms)
             for row in c.execute("SELECT * FROM actions WHERE status IN ('scheduled','authorized','executing')").fetchall():
                 self._cancel(c, dict(row), "terms_version_changed")
+            AccountManagement(self).sync(c)
             self._audit(c, "synthetic_terms_changed", terms_version=terms["version"], no_live_authority=True)
         return self.state()
 
@@ -587,6 +593,7 @@ class Workflow:
             "leads": leads, "actions": actions, "messages": rows("messages"), "audit": audit,
             "issues": rows("issues"), "authorizations": rows("authorizations"), "attempts": rows("attempts"),
             "reconciliation": ReconciliationService(self).state(c),
+            "account_management": AccountManagement(self).state(c),
             "metrics": {"leads": len(leads), "qualified": sum(l["score"] >= 80 for l in leads),
                         "outreach_accepted": accepted, "replies": sum(l["replied"] for l in leads),
                         "replies_after_accepted_outreach": contacted_replies,

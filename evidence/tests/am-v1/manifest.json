@@ -1,0 +1,119 @@
+{
+  "recorded_at_utc": "2026-11-04T06:18:52.513528+00:00",
+  "candidate_tag": "demo-am-r1",
+  "parent_revision": "2f411176aa1c8dfea4f9aa55a91c0184dc69bf08",
+  "candidate_state": "Uncommitted source at verification; exact hashes below. Tag will bind the committed checkpoint.",
+  "preserved_previous": "2f41117 / demo-reconciliation-r2",
+  "backend_api_export_tests": 92,
+  "browser_checks": 41,
+  "am_process_restart_checks": 10,
+  "test_timestamps": {
+    "backend": [
+      "2026-11-04T06:13:27.390735+00:00",
+      "2026-11-04T06:13:33.405277+00:00"
+    ],
+    "browser": [
+      "2026-11-04T06:14:06.566Z",
+      "2026-11-04T06:14:20.085Z"
+    ],
+    "am_process": [
+      "2026-11-04T06:13:50.841639+00:00",
+      "2026-11-04T06:13:54.045334+00:00"
+    ]
+  },
+  "build": {
+    "command": [
+      "npm",
+      "--prefix",
+      "frontend",
+      "run",
+      "build"
+    ],
+    "started_at_utc": "2026-11-04T06:18:50.204756+00:00",
+    "exit": 0,
+    "log": "build.log",
+    "assets": {
+      "frontend/dist/assets/index-CMTVDqF-.css": "05e692c7b2f54dcf7138b8e5fb4825d513a0a4a1f7d3b733c37cd1b822b52d41",
+      "frontend/dist/assets/index-CnBQwyvX.js": "d6c03a766b5e48f8acd43fa5415f9c32a4b2f4ef804ff447cc00748a7eeb4ff8",
+      "frontend/dist/index.html": "b8616a5d807fb583570ee135197c81401d0975da0b047251842dd3341b47dd61"
+    }
+  },
+  "source_sha256": {
+    "backend/__init__.py": "b0dd23c9d4f5b80f1315ce0a20c8b1ea82429240d038c5b8685f06380510a6a2",
+    "backend/account_management.py": "edfb149503011b300438b2174d21c284485a867b643f7142e997d8c15d2d7253",
+    "backend/app.py": "760186b068df02a3ef1f397c9051ee49ba2abe9df0c713ecc059b9eff29e6123",
+    "backend/domain.py": "e2e55936117ae7f37b71cb632a37fcb2fc477c65e0e9ddb6cb175c9d8ac4d5f0",
+    "backend/fixtures/account_management.json": "f8569cb4353f45586adfcfcceb5abf1074bc3afb3c1265fb27a3e652922b4fef",
+    "backend/fixtures/generic.json": "a96d9f10e96557e543ad1dace80591027ed51f40ee3d2634e3d88f3bf1043b44",
+    "backend/fixtures/reconciliation.json": "4165d35c55c1b372a29736103165e702b6ce5fa0657694ed6a4d9dfce1869f4a",
+    "backend/fixtures/source_stress.json": "e96a0f1d042771d68bb2b6d0b855b36aeda69cd539f119265efef99d5f5fe558",
+    "backend/inference.py": "890093025356330d13b7c711dc604bced25d26e0bc05fcfe817d7e681c12ac44",
+    "backend/reconciliation.py": "710a9a103f42f409251e7d0f1ff35f57bd3e822c99ad65268efbfafa3836b34f",
+    "backend/scenarios.py": "9008e44e69e54b6d2f23d5aa33af2c27b9b9ecc44c3fc01a470af06d2b476975",
+    "frontend/index.html": "23451c7d4458a5b89d7be82d9cd91999494aeb8c9b81ed10e407935e3254dd8e",
+    "frontend/package-lock.json": "b2d0283028c1e9c53a37f7e74b8be430f54c836bf9b4646102b65974bd823043",
+    "frontend/package.json": "a6ccb0f0491f3cfa4deb360c39c6f9d4e1cc8275fdc80f68db8cffa327e4a777",
+    "frontend/src/AccountManagement.jsx": "cd373824a5ce5241444283913cbe6c5e5abb49755a3941f7878a6cd83fbdfc34",
+    "frontend/src/Reconciliation.jsx": "3bb5de4963736d62f0cf199e20b0d870809686024173ba78b189db547adf0743",
+    "frontend/src/main.jsx": "44eaa9fa2713e812814829009a8157f8fbd52bda7df82a43a8a8856bfcebf08d",
+    "frontend/src/style.css": "fec1409d5cbb21c80455a4869ecd16d24bf05574913376228d8927eb84807dac",
+    "frontend/vite.config.js": "3e868db78618d95e86e5ff8e4f8f167bf2f94bf99c9402777cd1b6b28361cb7c",
+    "requirements.lock": "befd28c899c76405a69f51b1a73aa363eae8ac9fba07e67b7e5aadd59522f0be",
+    "requirements.txt": "43f4743e95bc0e068dc5d8973abf9d82893bca87f91f4437485b36af124787f5",
+    "scripts/check_am_restart.py": "00c98c68b0f2bdee52f55967a380032658074e2cfbd23892c0ac60636fc05e84",
+    "scripts/check_backend.py": "9d641f08fa2978dd89c208b9a0ffe6ac092fc9cd3182b078fd1029b3dd226a57",
+    "scripts/check_reconciliation_restart.py": "4ba417c59c9d3527feb7b5b8b8cece508dbdd4eba9ce438d4ac2ee9deaed36ac",
+    "scripts/check_ui.mjs": "7384b576db7ce07da0b27d30c74b807231215b838326d6c36a4c2417e6feca69",
+    "scripts/export_gemini_inputs.py": "52e73eb45fe82a1035ac3a2c34953b734f4445295ef03b36e73a8f539a75469e",
+    "scripts/run.sh": "9fd05dd3ad09403985daab0b0dade12c6365553d191960b9aca08b33aa82496b",
+    "scripts/setup.sh": "2d1dd6fa6ed039f62a8453b72550b0111ce6412e172bae95ccc9ce04a65f1931",
+    "tests/test_account_management.py": "a4793257ea87c4e1431318c730baac4e81fa0c8ec006fd2d2de5c821d1f7cb50",
+    "tests/test_api.py": "3e23d2d21a44e5cecd046eb68f5ebaae4cbc5c3f9a0f1bbd49d566bac584ba82",
+    "tests/test_reconciliation.py": "98f340f66b55beb6892be1545b5a0c83878f2f4345dd0adbc8efa552b70ed48f",
+    "tests/test_review_export.py": "968ea29df433dbb2ccd36e5acc5e8f994b0784cd0df24f17f65a4346230b9c5f",
+    "tests/test_scenarios.py": "9b6c7cddb4bda7e6aa6c8c59c2f9648b05111ed8473f7d2671cce79635060a35",
+    "tests/test_workflow.py": "fe5e600bdd9c5f1645fc755ad6e3b9eca9839dc492f8de815bf60afed4d67521"
+  },
+  "visual_review": "Desktop tracking owner, verified outcome, stale-evidence and mobile AM inspected; browser has no page overflow or JS/console errors.",
+  "runtime": "Loopback single-worker server, separate ignored .run/resume-baseline/verification.sqlite3; original data/demo.sqlite3 and backup preserved. Temporary AM verifier uses four starts and three restarts, then stops all four processes.",
+  "effects": {
+    "model_calls": 0,
+    "external_business_effects": 0,
+    "git_sync": "Ordinary authorized commits/pushes to public repository"
+  },
+  "review_exports": {
+    "directory": "reviews/manual-upload",
+    "immutable_packets": "R1/R2 and manifests unchanged against HEAD and all 18 retained file hashes each",
+    "tests": "Three export tests in 92-test run; full text spans/common prompt and exact three original copies; R1 independent"
+  },
+  "limits": [
+    "Fixture readiness/signatures/mapping/health and synthetic owner decisions do not establish real provider verification or production identity",
+    "No live model/channel/Everflow, campaign/payout/cap/routing changes or draft dispatch",
+    "Live model quality/budget/provider contracts and employer acceptance remain conditional; Gemini responses pending"
+  ],
+  "evidence_sha256": {
+    "am-process.log": "014ea1d11bbdf8e212acb6f9248c9dc54e47415436c1432c6377ae9d6b4391c8",
+    "am-restart.json": "999f28b136f46c42b852303cd7ffdb9fbd3b4e30a3388aae558907f203dfa91f",
+    "backend-tests.json": "cac241d0331f5f186f94553bd4349984ab29bb7d1ce84f7627ca57efd9016faf",
+    "backend-tests.log": "7b4efb047875de3011545b4671a1be68d2225279db40a7db587d0849496cdfce",
+    "build.log": "58efebf3fb0b382e564e64549c60a5c63fc2e880d316e38a496d878bcee2a3c7",
+    "ui/01-generic-baseline.png": "f0956f0e05e9cb1990b83abf7f515d62a2fa6a55fe90112352c0ff00c05eb891",
+    "ui/02-mock-dispatch.png": "4086dceec43f9e4e1ad0e908dd8662f65ed87b497ede3f6b9066b8bb2581b868",
+    "ui/03-owned-handoff.png": "ed9a6b92d916c73e61c673459579864e7d4a5321e61e1aafd67febac2e6a9899",
+    "ui/04-source-outcomes.png": "8093004b6c11264ddc4a5b0cb61f93d3e07985a8660b4d3d69463b8eab453db4",
+    "ui/05-role-coverage.png": "0326322ff5d80bdfb92fd2f577bee2a2edb96f73a9346ee42c43e807ad2aa0ff",
+    "ui/06-mobile.png": "89a50b836a1d7702712bdddf9ec92e276d38ea473aecc0b429dc762f5db50f94",
+    "ui/07-reconciliation-variance.png": "cd7cd40f3284fa6922515f785b69412dd8a8b347fcb61cc2491f181536bee0ac",
+    "ui/08-reconciliation-resolved.png": "13edc2260c50cb757a8ad12b9692b7fe89c7fdafa7ebd3a774a085ae67f7bad8",
+    "ui/09-reconciliation-blocked.png": "d65210d61df090b75929cc6b7779929d2fc78d1156b69e638fc1880f7263e159",
+    "ui/10-reconciliation-mobile.png": "1a109c75f8b5763eddcb818a2f1e3a6c64cd679ce5cd1a591f06cc0ed55ff4b6",
+    "ui/11-finance-correction-due.png": "68b7fefaef89f23b17087c05a96ba342af64599b327b7e2d10fb3d69924017c7",
+    "ui/12-finance-correction-resolved.png": "caabd2621c7d4332e5d335534223e61e35ea3de1a8d718446af1d4a833fa6fdc",
+    "ui/13-am-tracking-owner.png": "2917f2f02115e2e04592bb6317da2e1438b3da7509490eeeb9965d1e0ce33cf7",
+    "ui/14-am-outcome-verified.png": "24448c1bf8fceae2fda6873bb8e91958f04cd403ce49779c2fa725e347bc672d",
+    "ui/15-am-stale-evidence.png": "38c13b85cbbac65963202b8cfee5b7fa8a99e4ed6c7fc1f420236619ad36b75a",
+    "ui/16-am-mobile.png": "d33fe2f5d68c93e5daf00ae6d45a466d175d34d3fb38c37d5cc37bc368d0fce6",
+    "ui/browser-results.json": "8a07875fdae8a09fbe7c4ec024b535417c6c1e09fd638e3922784389737045d4",
+    "ui/prerequisite-failures.md": "cf689c117767738e8c73053996e5d7406f53b338e07a09dfdb3a47757e884464"
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-11-04T04:44:01.474Z",
+  "started_at": "2026-11-04T06:14:06.566Z",
   "base": "http://127.0.0.1:8000",
   "checks": [
     {
@@ -153,6 +153,76 @@
       "detail": {}
     },
     {
+      "name": "BD handoff connects to a pending owned activation case",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Signed intake alone cannot activate an account",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Stale readiness blocks activation approval",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Complete readiness plus explicit approval schedules first and recurring checks",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Low activation retains an owned AM check-in and no guessed outcome",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Tracking exception hands the next action to integration ownership",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Due AM checks are persisted once and do not dispatch messages",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Outcome counts alone cannot close an unresolved tracking issue",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Fresh repair and accepted outcome verification resolves issues and schedules the next health cycle",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Recurring health review keeps stale evidence unknown and assigns a refresh owner",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Refreshed evidence completes another owned review without duplicate recurring tasks",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Mobile AM workbench has no page overflow",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Cancellation prevents future AM tasks or automatic resumption",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Activation and recurring AM do not change outbound or financial authority",
+      "pass": true,
+      "detail": {}
+    },
+    {
       "name": "UI separates six-role architecture from implementation",
       "pass": true,
       "detail": {}
@@ -176,7 +246,7 @@
   "mode": "synthetic mock/template only",
   "browser": "149.0.7827.55",
   "browser_executable": "/Users/shenghangwang/Library/Caches/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-mac-x64/chrome-headless-shell",
-  "finished_at": "2026-11-04T04:44:12.811Z",
+  "finished_at": "2026-11-04T06:14:20.085Z",
   "pass": true,
   "final_summary": {
     "leads": [
@@ -219,7 +289,7 @@
         "attempts": 0
       },
       {
-        "id": "ACT-265d0b3ee751c81d",
+        "id": "ACT-d5c0171d623f34e3",
         "kind": "standard_response",
         "status": "succeeded",
         "attempts": 1
@@ -233,6 +303,21 @@
       "live_effects": false
     },
     "model_calls": 0,
+    "account_management": {
+      "accounts": [
+        {
+          "id": "ACC-e51ca99114380a4f",
+          "status": "cancelled",
+          "owner": "Demo AM owner",
+          "next_owner": "Demo onboarding owner",
+          "outcome_status": "verified"
+        }
+      ],
+      "tasks": 6,
+      "issues": 3,
+      "outcomes": 4,
+      "external_effects": false
+    },
     "reconciliation": {
       "cases": [
         {

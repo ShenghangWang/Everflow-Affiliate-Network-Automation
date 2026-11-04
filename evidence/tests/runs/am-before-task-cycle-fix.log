@@ -1,0 +1,71 @@
+test_api_connects_bd_activation_and_review_and_rejects_extra_authority (test_account_management.AccountManagementTests.test_api_connects_bd_activation_and_review_and_rejects_extra_authority) ... ok
+test_bd_handoff_creates_one_owned_pending_case_and_signature_does_not_activate (test_account_management.AccountManagementTests.test_bd_handoff_creates_one_owned_pending_case_and_signature_does_not_activate) ... ok
+test_cancel_preserves_history_and_no_due_or_evidence_can_resume_it (test_account_management.AccountManagementTests.test_cancel_preserves_history_and_no_due_or_evidence_can_resume_it) ... ok
+test_competing_approvals_produce_one_activation_epoch_and_one_set_of_tasks (test_account_management.AccountManagementTests.test_competing_approvals_produce_one_activation_epoch_and_one_set_of_tasks) ... ok
+test_complete_readiness_requires_explicit_version_bound_owner_approval (test_account_management.AccountManagementTests.test_complete_readiness_requires_explicit_version_bound_owner_approval) ... ok
+test_duplicate_evidence_events_and_concurrent_intake_are_idempotent (test_account_management.AccountManagementTests.test_duplicate_evidence_events_and_concurrent_intake_are_idempotent) ... ok
+test_first_outcome_due_boundary_and_duplicate_tick_alert_once (test_account_management.AccountManagementTests.test_first_outcome_due_boundary_and_duplicate_tick_alert_once) ... ok
+test_future_evidence_timestamp_and_config_interval_validation (test_account_management.AccountManagementTests.test_future_evidence_timestamp_and_config_interval_validation) ... ok
+test_health_observed_before_activation_is_not_a_first_outcome (test_account_management.AccountManagementTests.test_health_observed_before_activation_is_not_a_first_outcome) ... ERROR
+test_health_unknown_without_evidence_stale_and_partial_evidence_never_supply_counts (test_account_management.AccountManagementTests.test_health_unknown_without_evidence_stale_and_partial_evidence_never_supply_counts) ... ok
+test_low_activation_tracking_repair_first_outcome_and_next_owned_cycle (test_account_management.AccountManagementTests.test_low_activation_tracking_repair_first_outcome_and_next_owned_cycle) ... ERROR
+test_material_record_terms_and_readiness_changes_cancel_old_tasks_and_require_reapproval (test_account_management.AccountManagementTests.test_material_record_terms_and_readiness_changes_cancel_old_tasks_and_require_reapproval) ... ok
+test_missing_notes_stale_state_and_unapproved_actions_have_no_effect (test_account_management.AccountManagementTests.test_missing_notes_stale_state_and_unapproved_actions_have_no_effect) ... ok
+test_optout_cancels_am_tasks_immediately_and_does_not_restore_bd_authority (test_account_management.AccountManagementTests.test_optout_cancels_am_tasks_immediately_and_does_not_restore_bd_authority) ... ok
+test_restart_preserves_pending_active_and_resolved_state_and_explicit_reset (test_account_management.AccountManagementTests.test_restart_preserves_pending_active_and_resolved_state_and_explicit_reset) ... ok
+test_source_hashes_preserve_immutable_evidence_and_rules_changes_fail_closed (test_account_management.AccountManagementTests.test_source_hashes_preserve_immutable_evidence_and_rules_changes_fail_closed) ... ok
+test_stale_mapping_missing_and_changed_terms_block_activation (test_account_management.AccountManagementTests.test_stale_mapping_missing_and_changed_terms_block_activation) ... ok
+test_weekly_health_review_reopens_missing_current_evidence_and_reschedules_after_verification (test_account_management.AccountManagementTests.test_weekly_health_review_reopens_missing_current_evidence_and_reschedules_after_verification) ... ERROR
+
+======================================================================
+ERROR: test_health_observed_before_activation_is_not_a_first_outcome (test_account_management.AccountManagementTests.test_health_observed_before_activation_is_not_a_first_outcome)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/shenghangwang/.codex/visualizations/2026/11/04/01a1a475-c70b-7342-89b1-f642577c991c/everflow-foundation/tests/test_account_management.py", line 231, in test_health_observed_before_activation_is_not_a_first_outcome
+    self.apply('healthy');self.decide('verify_outcome')
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shenghangwang/.codex/visualizations/2026/11/04/01a1a475-c70b-7342-89b1-f642577c991c/everflow-foundation/tests/test_account_management.py", line 36, in decide
+    return self.am.decide(a['id'],a['version'],decision,'Synthetic owner reviewed current evidence','Fixture hashes, approved terms and sandbox/readback checked')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shenghangwang/.codex/visualizations/2026/11/04/01a1a475-c70b-7342-89b1-f642577c991c/everflow-foundation/backend/account_management.py", line 257, in decide
+    self.task(c,self.account(c,account_id),"health_review",data["health_review_hours"],data["account_owner"])
+  File "/Users/shenghangwang/.codex/visualizations/2026/11/04/01a1a475-c70b-7342-89b1-f642577c991c/everflow-foundation/backend/account_management.py", line 140, in task
+    c.execute("INSERT INTO am_tasks VALUES(?,?,?,?,?,'scheduled',?,?,?,NULL)",(key,account["id"],account["epoch"],kind,owner,due,self.now(c),self.now(c)))
+sqlite3.IntegrityError: UNIQUE constraint failed: am_tasks.id
+
+======================================================================
+ERROR: test_low_activation_tracking_repair_first_outcome_and_next_owned_cycle (test_account_management.AccountManagementTests.test_low_activation_tracking_repair_first_outcome_and_next_owned_cycle)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/shenghangwang/.codex/visualizations/2026/11/04/01a1a475-c70b-7342-89b1-f642577c991c/everflow-foundation/tests/test_account_management.py", line 101, in test_low_activation_tracking_repair_first_outcome_and_next_owned_cycle
+    self.apply('tracking_fixed');state=self.decide('verify_outcome')
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shenghangwang/.codex/visualizations/2026/11/04/01a1a475-c70b-7342-89b1-f642577c991c/everflow-foundation/tests/test_account_management.py", line 36, in decide
+    return self.am.decide(a['id'],a['version'],decision,'Synthetic owner reviewed current evidence','Fixture hashes, approved terms and sandbox/readback checked')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shenghangwang/.codex/visualizations/2026/11/04/01a1a475-c70b-7342-89b1-f642577c991c/everflow-foundation/backend/account_management.py", line 257, in decide
+    self.task(c,self.account(c,account_id),"health_review",data["health_review_hours"],data["account_owner"])
+  File "/Users/shenghangwang/.codex/visualizations/2026/11/04/01a1a475-c70b-7342-89b1-f642577c991c/everflow-foundation/backend/account_management.py", line 140, in task
+    c.execute("INSERT INTO am_tasks VALUES(?,?,?,?,?,'scheduled',?,?,?,NULL)",(key,account["id"],account["epoch"],kind,owner,due,self.now(c),self.now(c)))
+sqlite3.IntegrityError: UNIQUE constraint failed: am_tasks.id
+
+======================================================================
+ERROR: test_weekly_health_review_reopens_missing_current_evidence_and_reschedules_after_verification (test_account_management.AccountManagementTests.test_weekly_health_review_reopens_missing_current_evidence_and_reschedules_after_verification)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/shenghangwang/.codex/visualizations/2026/11/04/01a1a475-c70b-7342-89b1-f642577c991c/everflow-foundation/tests/test_account_management.py", line 125, in test_weekly_health_review_reopens_missing_current_evidence_and_reschedules_after_verification
+    self.activate();self.apply('healthy');self.decide('verify_outcome')
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shenghangwang/.codex/visualizations/2026/11/04/01a1a475-c70b-7342-89b1-f642577c991c/everflow-foundation/tests/test_account_management.py", line 36, in decide
+    return self.am.decide(a['id'],a['version'],decision,'Synthetic owner reviewed current evidence','Fixture hashes, approved terms and sandbox/readback checked')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shenghangwang/.codex/visualizations/2026/11/04/01a1a475-c70b-7342-89b1-f642577c991c/everflow-foundation/backend/account_management.py", line 257, in decide
+    self.task(c,self.account(c,account_id),"health_review",data["health_review_hours"],data["account_owner"])
+  File "/Users/shenghangwang/.codex/visualizations/2026/11/04/01a1a475-c70b-7342-89b1-f642577c991c/everflow-foundation/backend/account_management.py", line 140, in task
+    c.execute("INSERT INTO am_tasks VALUES(?,?,?,?,?,'scheduled',?,?,?,NULL)",(key,account["id"],account["epoch"],kind,owner,due,self.now(c),self.now(c)))
+sqlite3.IntegrityError: UNIQUE constraint failed: am_tasks.id
+
+----------------------------------------------------------------------
+Ran 18 tests in 1.548s
+
+FAILED (errors=3)
