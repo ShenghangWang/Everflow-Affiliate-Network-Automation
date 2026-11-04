@@ -1,0 +1,24 @@
+{
+  "observed_at": "2026-11-04T04:17:53.556343+00:00",
+  "initial_revision": "9199ec782f3106117e517b7fa741d03f4039b84a",
+  "initial_worktree": "clean",
+  "original_remote": "none",
+  "configured_remote": "https://github.com/ShenghangWang/Everflow-Affiliate-Network-Automation.git",
+  "github_public": true,
+  "remote_heads_at_intake": [],
+  "backend_test_count": 44,
+  "backend_exit": 0,
+  "build_exit": 0,
+  "secret_pattern_scan": {
+    "historical_commits": 2,
+    "unique_blobs": 91,
+    "matches": 0,
+    "tracked_environment_files": 0
+  },
+  "browser": {
+    "pass": true,
+    "checks": 14,
+    "finished_at": "2026-11-04T04:18:35.601Z"
+  },
+  "previous_demo_db": "backed up under ignored .run if present; baseline will use a separate database"
+}

@@ -44,6 +44,6 @@ test_source_event_changed_recipient_or_payload_preserves_owned_record (test_work
 test_source_event_replay_same_normalized_payload_is_idempotent (test_workflow.WorkflowTests.test_source_event_replay_same_normalized_payload_is_idempotent) ... ok
 
 ----------------------------------------------------------------------
-Ran 44 tests in 1.516s
+Ran 44 tests in 1.655s
 
 OK

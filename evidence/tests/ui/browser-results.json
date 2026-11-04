@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-11-04T03:26:15.517Z",
+  "started_at": "2026-11-04T04:18:26.174Z",
   "base": "http://127.0.0.1:8000",
   "checks": [
     {
@@ -105,7 +105,7 @@
   "mode": "synthetic mock/template only",
   "browser": "149.0.7827.55",
   "browser_executable": "/Users/shenghangwang/Library/Caches/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-mac-x64/chrome-headless-shell",
-  "finished_at": "2026-11-04T03:26:24.053Z",
+  "finished_at": "2026-11-04T04:18:35.601Z",
   "pass": true,
   "final_summary": {
     "leads": [
@@ -148,7 +148,7 @@
         "attempts": 0
       },
       {
-        "id": "ACT-bef43c657c54923e",
+        "id": "ACT-34b7e2f3ff10a229",
         "kind": "standard_response",
         "status": "succeeded",
         "attempts": 1
