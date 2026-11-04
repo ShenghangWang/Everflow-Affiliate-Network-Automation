@@ -1,8 +1,8 @@
-> Current continuation: local execution and ordinary Git authentication are authorized by the user. The public project remote is https://github.com/ShenghangWang/Everflow-Affiliate-Network-Automation. Earlier isolation/cloud/broker requirements are superseded. Initial history was preserved; the previously reported 44 backend/API and 14 browser checks were reproduced before implementation resumed.
-
 # Everflow affiliate-network automation foundation
 
-Day 1 delivery candidate · 2026-11-04 · adopted work instruction: Engineering Delivery Brief v1.3. This engagement builds reusable BD, negotiation, onboarding, recurring AM and Ops capabilities. Insurance is an optional illustration, not the project target or a confirmed employer business model. The baseline uses synthetic B2B affiliate prospects; no consumer insurance workflow is required or included.
+Local prototype and Day 1 architecture · updated 2026-11-04 · adopted work instruction: Engineering Delivery Brief v1.3. This engagement builds reusable BD, negotiation, onboarding, recurring AM and Ops capabilities. Insurance is an optional illustration, not the project target or a confirmed employer business model. The baseline uses synthetic B2B affiliate prospects; no consumer insurance workflow is required or included.
+
+**Current verification:** 68 backend/API tests, 27 browser checks and six separate process-restart checks pass. The frontend build passes. Normal commits/pushes synchronize this existing working copy to the intended public [GitHub repository](https://github.com/ShenghangWang/Everflow-Affiliate-Network-Automation). The user superseded earlier isolation/cloud/broker requirements; execution continues locally under current permissions.
 
 ## Proposed acceptance card
 
@@ -22,7 +22,7 @@ Day 1 delivery candidate · 2026-11-04 · adopted work instruction: Engineering 
 
 ## Daily minimum commitments and ranked continuation
 
-The original repository contains only `.git` and no commits/code/instructions. All three supplied originals are readable and hashed. React and Python dependencies are installed. The local application launches, the frontend builds, 44 backend/API tests pass and 14 browser checks pass. Genuinely fresh setup/build and process-restart evidence is retained separately. No employer working window has been supplied: these floors are based on the inspected local environment, not a promise about unverified tenant delivery.
+At initial intake the original repository contained only `.git`; its accessible original sources were retained and hashed. The existing history is now preserved through the verified demo tags and normal public Git synchronization. The 44 backend/API +14 browser baseline was reproduced before the reconciliation increments. Current source/test manifests are in `evidence/tests/reconciliation-v2/`. Exact working window and sponsor checkpoint time remain TBC; local results do not promise unverified tenant delivery.
 
 | Day | Evidence-based minimum floor | Dependencies and extension |
 |---|---|---|
@@ -30,7 +30,7 @@ The original repository contains only `.git` and no commits/code/instructions. A
 | 2 | Connected React/Python fixture path with persisted state, deterministic authorization, reply/follow-up/handoff and tested failure handling | Local dependency installation/loopback launch must pass. Live credentials are not required for the mock path. Resolve principal checks before adding depth. |
 | 3 | Reproducible setup, relevant T01–T12 actual evidence, material defect resolution or explicit failure, capability/mode matrix and operating handover | Real provider contract/usage tests conditional on approved access. Shared production deployment is not promised by a local demo. |
 
-Verified additional work: generic BD path/recovery, source/outcome cohorts, synthetic channel/economics stress, owned internal case follow-through and source-event replay integrity. Ranked remaining queue (pull whenever ready): (1) fixture reconciliation discrepancy → owned finance issue → closure; (2) recurring AM activation/health follow-through; (3) validated integration configuration assistance; (4) authorized read-only Everflow snapshot; (5) genuine approved runtime language evaluation. Missing credentials do not block independent items. Optional example configuration is lower priority and adds no mandatory scope. Preserve the last verified revision while each additional increment is checked.
+Verified additional work: durable BD core/recovery, two-source cohorts and hypothetical economics, internal issue follow-through, source-event replay integrity, exact fixture reconciliation and the complete owned correction-to-resolution cycle. Ranked remaining queue: (1) fuller activation/recurring AM health cycle; (2) contract-tested integration mapping; (3) authorized read-only Everflow snapshot; (4) genuine approved runtime language evaluation. Pull dependency-ready work forward without waiting for another calendar day. Live effects and spending still need their applicable authority; optional insurance examples add no mandatory scope.
 
 ## Package index
 
@@ -42,7 +42,7 @@ Verified additional work: generic BD path/recovery, source/outcome cohorts, synt
 
 ## Working location
 
-The supplied project at `/Users/shenghangwang/Documents/ChatGPT/Everflow Affiliate Network Automation` is readable but a write probe failed with `PermissionError: [Errno 1] Operation not permitted`. This complete candidate is built in this session's permitted `everflow-foundation` directory; no files were changed in the original project. Final transfer/destination follows the written engagement agreement once its relevant terms and access are available. This access failure is distinct from an automatic approval rejection; no such rejection has been received.
+The existing working copy is `/Users/shenghangwang/.codex/visualizations/2026/11/04/01a1a475-c70b-7342-89b1-f642577c991c/everflow-foundation`. The original Documents directory rejected writes during intake; no replacement clone or destructive reset was used. The current user authorizes local execution/current permissions, existing Git authentication and routine non-forced commits/pushes to this repository. Earlier isolation/cloud/scope-receipt/custom-broker requirements are superseded. An approval-service interruption during a server launch was retained and later cleared through the normal approval route; it is not a remaining blocker. Contractual handover items remain governed by the supplied directions and the existing written agreement; unspecified obligations are unresolved.
 
 ## Run and verify
 
@@ -54,11 +54,13 @@ EVERFLOW_PYTHON=/Users/shenghangwang/.cache/codex-runtimes/codex-primary-runtime
 ./scripts/run.sh
 ```
 
-Open [local demo](http://127.0.0.1:8000). Use **Reset demo** to reimport the generic synthetic fixtures and reset the simulated clock. Draft → Run policy & mock send → +71h / +1h, or inject a payout FAQ, clear interest, opt-out or ambiguous reply. **Source & outcomes** shows provenance/cohorts and owned cases; **Six-role coverage** separates full design from implemented depth. Stop the server with **Ctrl+C** in its terminal. State persists in `data/demo.sqlite3` across restart; reset is an explicit destructive operation on synthetic demo data only.
+Open [local demo](http://127.0.0.1:8000). Use **Reset demo** to reimport the generic synthetic fixtures and reset the simulated clock. Draft → Run policy & mock send → +71h / +1h, or inject a payout FAQ, clear interest, opt-out or ambiguous reply. **Source & outcomes** shows provenance/cohorts and owned cases. **Reconciliation** compares fixture reports and records version-bound finance decisions; **Six-role coverage** separates full design from implemented depth. Stop the server with **Ctrl+C** in its terminal. State persists in `data/demo.sqlite3` across restart; reset is an explicit destructive operation on synthetic demo data only.
 
 ```sh
 .venv/bin/python scripts/check_backend.py
 npm --prefix frontend run build
+# Separate loopback test: temporary database, three server starts, two restarts.
+.venv/bin/python scripts/check_reconciliation_restart.py
 ```
 
 Optional browser check uses a Playwright installation plus its compatible Chromium (`PLAYWRIGHT_PACKAGE` and `CHROMIUM_EXECUTABLE` can select them): `node scripts/check_ui.mjs`. It resets synthetic demo data and requires the server on port 8000. Actual commands and results, including initial failures and recovered prerequisites, are in `delivery.md` and `evidence/tests/`.
@@ -67,16 +69,18 @@ Keep the demo on `127.0.0.1` with one worker. Do not publish this local unauthen
 
 ## Current checkpoint
 
-Complete M01–M06 / A01–A06 HLD and traceability are delivered. Current evidence: **44 backend/API tests**, **14 browser checks**, build and independent fresh setup/restart pass locally. The replaceable inference boundary is validated in template mode; genuine runtime quality, deadlines/token budgets and provider billing remain unverified. No live business effects or paid model calls occurred.
+Complete M01–M06 / A01–A06 architecture and traceability remain delivered. The local generic BD and reconciliation paths are verified; this does not claim all-six-role production implementation. Current checks: **68 backend/API**, **27 browser**, frontend build and **six process-restart checks**. Evidence and exact source hashes: `evidence/tests/reconciliation-v2/`. The earlier fresh-environment installation evidence remains historical at its own source manifest; the new restart test uses a temporary database and separate processes, not a new environment installation.
 
-Independent Codex R1 found three architecture gaps; all were accepted and resolved in design, with a genuine focused R2 follow-up. Gemini is **pending**, with an initial blind export matching Codex’s original R1 inputs. After Gemini’s first independent verdict, R2 is available for the corresponding update check. Overall Day 1 review/integration gate is **CONDITIONAL**; completed-package acceptance by the boss/business sponsor is pending, exact checkpoint time TBC.
+Independent Codex architecture R1 and focused R2 records remain genuine and unchanged; three findings are design-resolved, with future affected release tests recorded. Gemini remains **pending** with the common blind packet ready. No model/channel/Everflow runtime access is inferred from fixture success. T08–T10 genuine model quality/token/deadline/billing checks, tenant contracts, sponsor completed-package acceptance, checkpoint time and unspecified written-agreement handover items remain conditional/pending.
 
-The first verified demo is preserved at `f101944` / `demo-core-verified-r1`; the improved verified candidate is retained at `demo-verified-r2`. Frozen review packets are historical inputs and accurately preserve earlier implementation statuses; current results are in delivery.md. Next task: fixture reconciliation with exact evidence and owned resolution, as the ranked queue records. Existing written-agreement handover details remain unresolved; local archives are review conveniences, not additional contractual commitments or a completed external transfer.
+Preserved tags: `demo-core-verified-r1`, `demo-verified-r2`, `demo-reconciliation-r1` and `demo-reconciliation-r2`. The first reconciliation checkpoint is commit `bb5c424`; the latter tag identifies the improved tested cycle. Routine synchronization is authorized; no force-push or history rewrite is part of this workflow.
 
-## Fixture reconciliation increment
+## Fixture reconciliation and owned correction follow-through
 
-The generic **Reconciliation** workbench now implements aligned immutable synthetic reports → exact event/amount/status evidence → unsent discrepancy and overdue-reminder drafts → version-bound owned finance review. The default fixture reports USD 50.00 internally and USD 37.50 from the counterparty; event DEMO-E004 explains the USD 12.50 difference. These are assumed demonstration values, not company accounts or debt.
+The **Reconciliation** workbench implements aligned immutable synthetic reports → exact event/amount/status evidence → unsent discrepancy and overdue-reminder drafts → version-bound finance review. The default fixture reports USD 50.00 internally and USD 37.50 from the counterparty; event DEMO-E004 explains the USD 12.50 difference. These are assumed demonstration values, not company accounts or debt.
 
-A corrected report preserves original snapshots and decisions, reopens the case and rejects stale decisions. Incomplete/misaligned inputs keep amounts unavailable and cannot receive a final conclusion. Report/terms/rule hashes are retained in SQLite; repeated comparisons do not duplicate cases/drafts. Finance review does not send messages, settle balances, record payment or change payouts. Production finance identity and actual provider consistency remain unimplemented/conditional.
+Incomplete/misaligned inputs retain unknown amounts and cannot receive a final conclusion. Duplicate comparisons preserve one logical case/run; corrected reports retain old bytes/decisions and reopen review. Stale run, terms, facts or rule versions reject a finance decision. A zero net difference does not hide offsetting row discrepancies. Hashes resolve to retained report/terms/rule payloads in SQLite.
 
-Current increment verification: **62 backend/API tests and 23 browser checks pass**, plus frontend build. Evidence: `evidence/tests/reconciliation-v1/`. The original 44/14 baseline reproduction is retained under `evidence/tests/resume-baseline/`. The public remote received baseline commit `5670506`; further normal commits preserve all earlier work and demo tags. Gemini remains pending; no live model/integration capability is inferred from local checks.
+Requesting a correction creates a durable task for **Demo finance owner**. The default **24 elapsed hours** is a separately configurable, assumed fixture rule—not the B2B 72-hour follow-up rule or an employer SLA. **+24h** and **Tick** demonstrate due-time handling. Repeated ticks create one in-app alert. A complete corrected snapshot completes the prior task, reopens finance review, and requires new verification evidence to resolve. Both task and final decision survive real server restarts.
+
+Review never dispatches drafts, settles balances, records payment or changes payouts. Production finance identity, actual collection authority and mutable live-provider consistency remain prerequisites. The runtime is loopback-only with one worker; the demo is not a shared production service.

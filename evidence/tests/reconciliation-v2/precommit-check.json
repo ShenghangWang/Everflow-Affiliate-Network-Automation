@@ -1,0 +1,10 @@
+{
+  "observed_at_utc": "2026-11-04T04:46:51.939569+00:00",
+  "scope": "Project tracked and nonignored untracked file bytes before authorized public commit/push",
+  "files_scanned": 178,
+  "credential_pattern_findings": [],
+  "tracked_environment_files": [],
+  "source_manifest": "all matched",
+  "frozen_review_manifests": "R1/R2 both unchanged",
+  "limitation": "Finite credential-pattern check; not proof against every possible secret format"
+}

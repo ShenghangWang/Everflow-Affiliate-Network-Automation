@@ -1,6 +1,6 @@
 {
   "label": "Generic reconciliation demonstration — synthetic immutable reports and assumed rules; not employer accounts or commercial terms",
-  "rules_version": "synthetic-reconciliation-rules-v1",
+  "rules_version": "synthetic-reconciliation-rules-v2",
   "owner": "Demo finance owner",
   "review_threshold_percent": "5",
   "terms": {
@@ -25,12 +25,38 @@
     "billable_event": "synthetic contract-accepted tracked outcome",
     "status_basis": "final_billable_outcomes",
     "observed_at": "2026-11-03T09:00:00+00:00",
-    "snapshot": {"kind": "immutable_fixture", "id": "INTERNAL-W44-r1", "complete": true, "control_count": 4, "control_amount": "50.00"},
+    "snapshot": {
+      "kind": "immutable_fixture",
+      "id": "INTERNAL-W44-r1",
+      "complete": true,
+      "control_count": 4,
+      "control_amount": "50.00"
+    },
     "rows": [
-      {"event_id": "DEMO-E001", "occurred_at": "2026-10-27T10:00:00+00:00", "amount": "12.50", "status": "billable"},
-      {"event_id": "DEMO-E002", "occurred_at": "2026-10-28T10:00:00+00:00", "amount": "12.50", "status": "billable"},
-      {"event_id": "DEMO-E003", "occurred_at": "2026-10-29T10:00:00+00:00", "amount": "12.50", "status": "billable"},
-      {"event_id": "DEMO-E004", "occurred_at": "2026-10-30T10:00:00+00:00", "amount": "12.50", "status": "billable"}
+      {
+        "event_id": "DEMO-E001",
+        "occurred_at": "2026-10-27T10:00:00+00:00",
+        "amount": "12.50",
+        "status": "billable"
+      },
+      {
+        "event_id": "DEMO-E002",
+        "occurred_at": "2026-10-28T10:00:00+00:00",
+        "amount": "12.50",
+        "status": "billable"
+      },
+      {
+        "event_id": "DEMO-E003",
+        "occurred_at": "2026-10-29T10:00:00+00:00",
+        "amount": "12.50",
+        "status": "billable"
+      },
+      {
+        "event_id": "DEMO-E004",
+        "occurred_at": "2026-10-30T10:00:00+00:00",
+        "amount": "12.50",
+        "status": "billable"
+      }
     ]
   },
   "counterparty": {
@@ -47,12 +73,39 @@
     "billable_event": "synthetic contract-accepted tracked outcome",
     "status_basis": "final_billable_outcomes",
     "observed_at": "2026-11-03T09:00:00+00:00",
-    "snapshot": {"kind": "immutable_fixture", "id": "COUNTERPARTY-W44-r1", "complete": true, "control_count": 4, "control_amount": "37.50"},
+    "snapshot": {
+      "kind": "immutable_fixture",
+      "id": "COUNTERPARTY-W44-r1",
+      "complete": true,
+      "control_count": 4,
+      "control_amount": "37.50"
+    },
     "rows": [
-      {"event_id": "DEMO-E001", "occurred_at": "2026-10-27T10:00:00+00:00", "amount": "12.50", "status": "billable"},
-      {"event_id": "DEMO-E002", "occurred_at": "2026-10-28T10:00:00+00:00", "amount": "12.50", "status": "billable"},
-      {"event_id": "DEMO-E003", "occurred_at": "2026-10-29T10:00:00+00:00", "amount": "12.50", "status": "billable"},
-      {"event_id": "DEMO-E004", "occurred_at": "2026-10-30T10:00:00+00:00", "amount": "0.00", "status": "rejected"}
+      {
+        "event_id": "DEMO-E001",
+        "occurred_at": "2026-10-27T10:00:00+00:00",
+        "amount": "12.50",
+        "status": "billable"
+      },
+      {
+        "event_id": "DEMO-E002",
+        "occurred_at": "2026-10-28T10:00:00+00:00",
+        "amount": "12.50",
+        "status": "billable"
+      },
+      {
+        "event_id": "DEMO-E003",
+        "occurred_at": "2026-10-29T10:00:00+00:00",
+        "amount": "12.50",
+        "status": "billable"
+      },
+      {
+        "event_id": "DEMO-E004",
+        "occurred_at": "2026-10-30T10:00:00+00:00",
+        "amount": "0.00",
+        "status": "rejected"
+      }
     ]
-  }
+  },
+  "correction_followup_hours": 24
 }

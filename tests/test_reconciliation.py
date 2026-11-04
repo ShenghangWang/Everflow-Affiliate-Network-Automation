@@ -254,6 +254,87 @@ class ReconciliationWorkflowTests(unittest.TestCase):
         self.assertEqual(ReconciliationService(reopened).state()["cases"], [])
         self.assertEqual(len(reopened.state()["leads"]), 3)
 
+    def test_owned_correction_followup_due_boundary_repeat_tick_and_no_dispatch(self):
+        self.service.compare_fixture("partial")
+        state = self.decision(decision="request_correction")
+        self.assertEqual(state["tasks"][0]["status"], "scheduled")
+        self.assertEqual(state["tasks"][0]["owner"], "Demo finance owner")
+        core = self.w.state()
+        self.w.tick(23)
+        self.assertEqual(self.service.state()["tasks"][0]["status"], "scheduled")
+        self.w.tick(1)
+        self.assertEqual(self.service.state()["tasks"][0]["status"], "due")
+        self.w.tick(0)
+        events = [e for e in self.w.state()["audit"] if e["event"] == "reconciliation_followup_due"]
+        self.assertEqual(len(events), 1)
+        self.assertFalse(events[0]["detail"]["dispatch_enabled"])
+        self.assertEqual(self.service.state()["cases"][0]["status"], "awaiting_correction")
+        for key in ("messages", "actions", "authorizations", "policy", "cost"):
+            self.assertEqual(core[key], self.w.state()[key])
+
+    def test_corrected_partial_evidence_completes_old_task_but_requires_new_finance_review(self):
+        self.service.compare_fixture("partial")
+        self.decision(decision="request_correction")
+        self.w.tick(24)
+        state = self.service.compare_fixture("partial_corrected")
+        case = state["cases"][0]
+        self.assertEqual(len(state["cases"]), 1)
+        self.assertEqual(state["tasks"][0]["status"], "completed")
+        self.assertEqual(case["status"], "review_required")
+        self.assertEqual(state["runs"][-1]["result"]["result"], "matched")
+        self.assertEqual(len(state["decisions"]), 1)
+        self.decision(case)
+        self.w.tick(24)
+        self.assertEqual(self.service.state()["cases"][0]["status"], "resolved")
+        self.assertEqual(len([e for e in self.w.state()["audit"] if e["event"] == "reconciliation_followup_due"]), 1)
+
+    def test_new_correction_request_supersedes_old_task_and_restart_preserves_due_work(self):
+        self.service.compare_fixture("partial")
+        self.decision(decision="request_correction")
+        self.decision(decision="request_correction")
+        state = self.service.state()
+        self.assertEqual(sorted(t["status"] for t in state["tasks"]), ["cancelled", "scheduled"])
+        reopened = Workflow(self.path)
+        reopened.tick(24)
+        tasks = ReconciliationService(reopened).state()["tasks"]
+        self.assertEqual(sorted(t["status"] for t in tasks), ["cancelled", "due"])
+
+    def test_changed_fixture_terms_rules_or_facts_invalidates_pending_finance_decision(self):
+        for mutation in ("terms", "rules", "facts"):
+            with self.subTest(mutation=mutation):
+                self.w.reset()
+                state = self.service.compare_fixture("variance")
+                before = self.w.state()
+                data = load_fixture("variance")
+                if mutation == "terms": data["terms"]["due_at"] = "2026-11-09T00:00:00+00:00"
+                elif mutation == "rules": data["correction_followup_hours"] = 48
+                else: data["counterparty"]["revision"] = 9
+                with patch("backend.reconciliation.load_fixture", return_value=data):
+                    with self.assertRaises(StaleReconciliation): self.decision(state["cases"][0])
+                self.assertEqual(before, self.w.state())
+
+    def test_future_snapshot_is_blocked_and_followup_config_is_bounded(self):
+        data = load_fixture("variance")
+        data["counterparty"]["observed_at"] = "2026-11-06T00:00:00+00:00"
+        with patch("backend.reconciliation.load_fixture", return_value=data):
+            state = self.service.compare_fixture("variance")
+        self.assertEqual(state["runs"][0]["result"]["result"], "blocked")
+        self.assertEqual(state["runs"][0]["drafts"], [])
+        for hours in (0, -1, True, 169, "24"):
+            data = load_fixture("variance")
+            data["correction_followup_hours"] = hours
+            with patch("backend.reconciliation.load_fixture", return_value=data):
+                with self.assertRaises(ValueError): self.service.compare_fixture("variance")
+
+    def test_offsetting_event_variances_cannot_be_hidden_by_equal_report_totals(self):
+        data = load_fixture("matched")
+        data["counterparty"]["rows"][0]["amount"] = "10.00"
+        data["counterparty"]["rows"][1]["amount"] = "15.00"
+        result = compare_reports(data["internal"], data["counterparty"])
+        self.assertEqual(result["difference"], "0.00")
+        self.assertEqual(result["result"], "discrepant")
+        self.assertEqual(sum(bool(r["issues"]) for r in result["rows"]), 2)
+
     def test_http_path_blocks_extra_authority_and_rejects_stale_versions(self):
         app_module.workflow = self.w
         with TestClient(app_module.app) as client:

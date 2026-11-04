@@ -470,6 +470,7 @@ class Workflow:
                     continue
                 if self._authorize(c, row["id"]):
                     aids.append(row["id"])
+            ReconciliationService(self).check_due(c)
             self._audit(c, "scheduler_tick", due_actions=len(aids), advance_hours=advance_hours)
         for aid in aids:
             self.run_action(aid)

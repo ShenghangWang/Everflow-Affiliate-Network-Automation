@@ -1,0 +1,59 @@
+{
+  "observed_at_utc": "2026-11-04T04:46:22.837125+00:00",
+  "candidate_tag": "demo-reconciliation-r2",
+  "preserved_previous": "bb5c424 / demo-reconciliation-r1",
+  "backend_tests": 68,
+  "browser_checks": 27,
+  "process_restart_checks": 6,
+  "build": {
+    "command": "npm --prefix frontend run build",
+    "exit": 0,
+    "vite": "7.2.2",
+    "modules": 24,
+    "assets": [
+      "index-CMTVDqF-.css",
+      "index-B0yOtUJV.js"
+    ]
+  },
+  "source_sha256": {
+    "backend/__init__.py": "b0dd23c9d4f5b80f1315ce0a20c8b1ea82429240d038c5b8685f06380510a6a2",
+    "backend/app.py": "3801be5ba60bce79c3cebf955677d5af1af3471633131f4353c9e0253694fdcc",
+    "backend/domain.py": "9c7a08e0a613121fe61d3ceafecf627128dd6cab5e47f07764d1b0aebe4fdc70",
+    "backend/fixtures/generic.json": "a96d9f10e96557e543ad1dace80591027ed51f40ee3d2634e3d88f3bf1043b44",
+    "backend/fixtures/reconciliation.json": "4165d35c55c1b372a29736103165e702b6ce5fa0657694ed6a4d9dfce1869f4a",
+    "backend/fixtures/source_stress.json": "e96a0f1d042771d68bb2b6d0b855b36aeda69cd539f119265efef99d5f5fe558",
+    "backend/inference.py": "890093025356330d13b7c711dc604bced25d26e0bc05fcfe817d7e681c12ac44",
+    "backend/reconciliation.py": "710a9a103f42f409251e7d0f1ff35f57bd3e822c99ad65268efbfafa3836b34f",
+    "backend/scenarios.py": "9008e44e69e54b6d2f23d5aa33af2c27b9b9ecc44c3fc01a470af06d2b476975",
+    "frontend/index.html": "23451c7d4458a5b89d7be82d9cd91999494aeb8c9b81ed10e407935e3254dd8e",
+    "frontend/package-lock.json": "b2d0283028c1e9c53a37f7e74b8be430f54c836bf9b4646102b65974bd823043",
+    "frontend/package.json": "a6ccb0f0491f3cfa4deb360c39c6f9d4e1cc8275fdc80f68db8cffa327e4a777",
+    "frontend/src/Reconciliation.jsx": "3bb5de4963736d62f0cf199e20b0d870809686024173ba78b189db547adf0743",
+    "frontend/src/main.jsx": "2777befdc1665cd74cd6c1cc60dca72c4bd283948f17418ae755deb5cdde9302",
+    "frontend/src/style.css": "fec1409d5cbb21c80455a4869ecd16d24bf05574913376228d8927eb84807dac",
+    "frontend/vite.config.js": "3e868db78618d95e86e5ff8e4f8f167bf2f94bf99c9402777cd1b6b28361cb7c",
+    "requirements.lock": "befd28c899c76405a69f51b1a73aa363eae8ac9fba07e67b7e5aadd59522f0be",
+    "requirements.txt": "43f4743e95bc0e068dc5d8973abf9d82893bca87f91f4437485b36af124787f5",
+    "scripts/check_backend.py": "9d641f08fa2978dd89c208b9a0ffe6ac092fc9cd3182b078fd1029b3dd226a57",
+    "scripts/check_reconciliation_restart.py": "4ba417c59c9d3527feb7b5b8b8cece508dbdd4eba9ce438d4ac2ee9deaed36ac",
+    "scripts/check_ui.mjs": "5a4e72a19ba9356b04aaad474527606ef61119d60c640bac1d4c0e8f6dcf63fa",
+    "scripts/run.sh": "9fd05dd3ad09403985daab0b0dade12c6365553d191960b9aca08b33aa82496b",
+    "scripts/setup.sh": "2d1dd6fa6ed039f62a8453b72550b0111ce6412e172bae95ccc9ce04a65f1931",
+    "tests/test_api.py": "3e23d2d21a44e5cecd046eb68f5ebaae4cbc5c3f9a0f1bbd49d566bac584ba82",
+    "tests/test_reconciliation.py": "98f340f66b55beb6892be1545b5a0c83878f2f4345dd0adbc8efa552b70ed48f",
+    "tests/test_scenarios.py": "9b6c7cddb4bda7e6aa6c8c59c2f9648b05111ed8473f7d2671cce79635060a35",
+    "tests/test_workflow.py": "fe5e600bdd9c5f1645fc755ad6e3b9eca9839dc492f8de815bf60afed4d67521"
+  },
+  "visual_review": "Desktop finance follow-up due/resolved and mobile blocked report visually inspected; no page overflow/clipping observed",
+  "runtime": "loopback single-worker server using separate ignored .run/resume-baseline/verification.sqlite3; original data/demo.sqlite3 preserved",
+  "effects": {
+    "model_calls": 0,
+    "live_business_effects": 0,
+    "git_sync": "Ordinary authorized commits/pushes only"
+  },
+  "limits": [
+    "Immutable fixture checks do not establish mutable live provider snapshot completeness",
+    "No production finance identity/tenant isolation, real debt, payment/settlement or collection dispatch",
+    "Live runtime model quality/budgets and Everflow/channel contracts remain conditional; Gemini pending"
+  ]
+}

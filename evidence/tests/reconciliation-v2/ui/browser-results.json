@@ -1,0 +1,256 @@
+{
+  "started_at": "2026-11-04T04:44:01.474Z",
+  "base": "http://127.0.0.1:8000",
+  "checks": [
+    {
+      "name": "Generic baseline loads React with accurate modes",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "UI initial mock dispatch accepted with fact refs",
+      "pass": true,
+      "detail": [
+        {
+          "id": "ACT-ca1aaa429998418c",
+          "status": "succeeded",
+          "kind": "outreach"
+        },
+        {
+          "id": "ACT-0e733aa2faffc72e",
+          "status": "scheduled",
+          "kind": "followup"
+        }
+      ]
+    },
+    {
+      "name": "UI before72h leaves followup pending",
+      "pass": true,
+      "detail": "2026-11-07T01:00:00+00:00"
+    },
+    {
+      "name": "UI at72h dispatches one eligible followup",
+      "pass": true,
+      "detail": "2026-11-07T02:00:00+00:00"
+    },
+    {
+      "name": "Repeated tick does not duplicate logical followup",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "UI FAQ uses approved numeric terms and cancels followup",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "UI clear interest has accountable handoff",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Synthetic closure preserves handoff authority",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Two-source cohorts retain unknown economics",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "UI hypothetical source shock computes bounded distinct economics",
+      "pass": true,
+      "detail": {
+        "inputs": {
+          "affected_source": "traditional_referral",
+          "volume_shock_pct": "-50",
+          "acquisition_cost_change_pct": "25"
+        },
+        "delta": {
+          "expected_opportunities": "-500.0",
+          "expected_accepted": "-125.000",
+          "expected_billable": "-100.00000",
+          "revenue_usd": "-2000.0000000",
+          "contribution_usd": "-397.500000000"
+        }
+      }
+    },
+    {
+      "name": "Scenario calculations do not mutate authority or pipeline",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "UI reconciliation aligns reports and retains exact discrepancy evidence",
+      "pass": true,
+      "detail": {
+        "case_id": "REC-add95553e7d942e4",
+        "run_id": "CMP-28cabeffa824583c",
+        "difference": "12.50"
+      }
+    },
+    {
+      "name": "UI finance resolution binds current comparison and preserves evidence",
+      "pass": true,
+      "detail": {
+        "case_version": 2
+      }
+    },
+    {
+      "name": "Repeated fixture comparison does not duplicate or reopen resolved review",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Corrected report reopens owned review without discarding old finance decision",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Stale finance decision is rejected after report correction",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Corrected comparison receives a separate durable finance resolution",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Reconciliation review cannot send messages or change business authority",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "UI partial report keeps amounts unknown and omits collection drafts",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Mobile finance workbench has no page overflow",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Correction request creates a durable owned follow-up without dispatch",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Finance follow-up becomes due once and remains an owned in-app alert",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Complete correction closes old follow-up but still requires a new finance review",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Correction-to-resolution cycle retains ownership history and disables financial effects",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "UI separates six-role architecture from implementation",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Mobile layout has no page overflow",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "No browser JS/page errors",
+      "pass": true,
+      "detail": {
+        "console_errors": [],
+        "page_errors": []
+      }
+    }
+  ],
+  "console_errors": [],
+  "page_errors": [],
+  "mode": "synthetic mock/template only",
+  "browser": "149.0.7827.55",
+  "browser_executable": "/Users/shenghangwang/Library/Caches/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-mac-x64/chrome-headless-shell",
+  "finished_at": "2026-11-04T04:44:12.811Z",
+  "pass": true,
+  "final_summary": {
+    "leads": [
+      {
+        "id": "L001",
+        "stage": "contacted"
+      },
+      {
+        "id": "L002",
+        "stage": "handoff"
+      },
+      {
+        "id": "L003",
+        "stage": "needs_qualification"
+      }
+    ],
+    "actions": [
+      {
+        "id": "ACT-ca1aaa429998418c",
+        "kind": "outreach",
+        "status": "succeeded",
+        "attempts": 1
+      },
+      {
+        "id": "ACT-0e733aa2faffc72e",
+        "kind": "followup",
+        "status": "succeeded",
+        "attempts": 1
+      },
+      {
+        "id": "ACT-3943f5beb676c18e",
+        "kind": "outreach",
+        "status": "succeeded",
+        "attempts": 1
+      },
+      {
+        "id": "ACT-44da790669ab44e9",
+        "kind": "followup",
+        "status": "cancelled",
+        "attempts": 0
+      },
+      {
+        "id": "ACT-265d0b3ee751c81d",
+        "kind": "standard_response",
+        "status": "succeeded",
+        "attempts": 1
+      }
+    ],
+    "mode": {
+      "workflow": "deterministic",
+      "inference": "template-fixture",
+      "transport": "mock adapter",
+      "everflow": "not connected",
+      "live_effects": false
+    },
+    "model_calls": 0,
+    "reconciliation": {
+      "cases": [
+        {
+          "id": "REC-add95553e7d942e4",
+          "status": "resolved",
+          "owner": "Demo finance owner",
+          "version": 4
+        },
+        {
+          "id": "REC-f2ee5ac6122cab24",
+          "status": "resolved",
+          "owner": "Demo finance owner",
+          "version": 4
+        }
+      ],
+      "runs": 4,
+      "decisions": 4,
+      "external_effects": false
+    }
+  }
+}
