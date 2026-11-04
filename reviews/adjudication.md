@@ -1,6 +1,6 @@
 # Independent review adjudication
 
-2026-11-04. Original independent Codex review: `codex-original-D1-HLD-R1.md`; input D1-HLD-R1 (18 hashes matched). Reviewer exact model ID not exposed; fresh context, not a different model-family claim. Preserve that original verbatim. No Gemini review has occurred.
+2026-11-04. Original independent Codex review: `codex-original-D1-HLD-R1.md`; input D1-HLD-R1 (18 hashes matched). Reviewer exact model ID not exposed; fresh context, not a different model-family claim. Preserve that original verbatim. This is the historical Codex adjudication. Gemini R1 was subsequently received; its unchanged original and separate dispositions are linked in reviews/status.md.
 
 | Finding | Decision / evidence | Resulting change | Verification / status |
 |---|---|---|---|
@@ -10,4 +10,4 @@
 
 All three are substantive design defects, not preferences. No finding is rejected because the reviewers agree or the author prefers the prior design. Production tests are deliberately deferred to the affected implemented capability; the current BD core has no campaign-control/activation/report-collection adapter. The simpler one-process React/FastAPI/SQLite baseline is accepted and already the implementation shape. Broader factory implementation remains outside the minimum.
 
-Status: **all three findings resolved in design** by genuine focused Codex follow-up on D1-HLD-R2 (`codex-followup-D1-HLD-R2.md`, 18 hashes matched; no new material contradiction). Implementation/release checks remain pending for those future affected capabilities. Gemini pending; boss/business-sponsor completed-package acceptance pending. Day 1 review gate remains CONDITIONAL. Independent local tested increments continue without enabling any live effect.
+Status: **all three findings resolved in design** by genuine focused Codex follow-up on D1-HLD-R2 (`codex-followup-D1-HLD-R2.md`, 18 hashes matched; no new material contradiction). Implementation/release checks remain pending for those future affected capabilities. Overall Gemini review incomplete pending R2 follow-up and finding disposition; boss/business-sponsor completed-package acceptance pending. Day 1 review gate remains CONDITIONAL. Independent local tested increments continue without enabling any live effect.
