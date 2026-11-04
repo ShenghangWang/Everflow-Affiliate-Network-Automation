@@ -1,0 +1,24 @@
+{
+  "label": "Generic activation and account-health demonstration — synthetic evidence and assumed rules; not employer accounts or live authority",
+  "rules_version": "synthetic-am-rules-v1",
+  "readiness_max_age_hours": 24,
+  "health_max_age_hours": 24,
+  "first_outcome_check_hours": 24,
+  "health_review_hours": 168,
+  "issue_followup_hours": 24,
+  "account_owner": "Demo AM owner",
+  "activation_owner": "Demo onboarding owner",
+  "integration_owner": "Demo integration owner",
+  "fixtures": [
+    {"id":"signed_only", "label":"Signed intake · technical readiness missing", "kind":"readiness", "signature_verified":true, "checklist_complete":true, "mapping_version":null, "tested_mapping_version":null, "release_approved":false, "age_hours":0},
+    {"id":"ready", "label":"Complete current activation readiness", "kind":"readiness", "signature_verified":true, "checklist_complete":true, "mapping_version":"DEMO-MAPPING-v1", "tested_mapping_version":"DEMO-MAPPING-v1", "release_approved":true, "age_hours":0},
+    {"id":"stale_readiness", "label":"Stale technical readiness · approval blocked", "kind":"readiness", "signature_verified":true, "checklist_complete":true, "mapping_version":"DEMO-MAPPING-v1", "tested_mapping_version":"DEMO-MAPPING-v1", "release_approved":true, "age_hours":48},
+    {"id":"mapping_regression", "label":"Changed mapping without matching sandbox test", "kind":"readiness", "signature_verified":true, "checklist_complete":true, "mapping_version":"DEMO-MAPPING-v2", "tested_mapping_version":"DEMO-MAPPING-v1", "release_approved":false, "age_hours":0},
+    {"id":"healthy", "label":"Fresh health evidence · accepted outcome observed", "kind":"health", "complete":true, "accepted_outcomes":3, "tracking_ok":true, "repair_verified":false, "age_hours":0},
+    {"id":"low_activation", "label":"Fresh health evidence · no accepted outcome yet", "kind":"health", "complete":true, "accepted_outcomes":0, "tracking_ok":true, "repair_verified":false, "age_hours":0},
+    {"id":"tracking_fault", "label":"Fresh tracking-check failure · integration owner needed", "kind":"health", "complete":true, "accepted_outcomes":0, "tracking_ok":false, "repair_verified":false, "age_hours":0},
+    {"id":"tracking_fixed", "label":"Sandbox/readback repair and accepted outcome verified", "kind":"health", "complete":true, "accepted_outcomes":2, "tracking_ok":true, "repair_verified":true, "age_hours":0},
+    {"id":"stale_health", "label":"Stale account-health evidence · keep outcome unknown", "kind":"health", "complete":true, "accepted_outcomes":9, "tracking_ok":true, "repair_verified":false, "age_hours":48},
+    {"id":"partial_health", "label":"Incomplete account-health evidence · keep outcome unknown", "kind":"health", "complete":false, "accepted_outcomes":null, "tracking_ok":null, "repair_verified":false, "age_hours":0}
+  ]
+}

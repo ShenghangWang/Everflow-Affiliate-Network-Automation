@@ -1,0 +1,140 @@
+{
+  "label": "Generic DST billing-window demonstration — synthetic immutable reports and assumed rules; no employer data or live mapping",
+  "rules_version": "synthetic-dst-normalization-v1",
+  "owner": "Demo finance owner",
+  "review_threshold_percent": "5",
+  "terms": {
+    "version": "synthetic-reconciliation-terms-v1",
+    "recipient": "finance@counterparty.example",
+    "due_at": "2026-11-03T00:00:00+00:00",
+    "payment_status": "unpaid",
+    "payment_evidence": "Synthetic unpaid-ledger fixture; no bank or payment integration",
+    "label": "Assumed demo settlement information; no actual debt or dispatch authority"
+  },
+  "internal": {
+    "schema_version": 1,
+    "source": "synthetic_internal_ledger",
+    "report_id": "INTERNAL-DST-r1",
+    "revision": 1,
+    "account_id": "DEMO-DST-ACCOUNT",
+    "currency": "USD",
+    "unit": "currency_amount",
+    "reporting_timezone": "UTC",
+    "window_start": "2026-10-31T04:00:00+00:00",
+    "window_end": "2026-11-03T05:00:00+00:00",
+    "billable_event": "synthetic contract-accepted tracked outcome",
+    "status_basis": "final_billable_outcomes",
+    "observed_at": "2026-11-03T09:00:00+00:00",
+    "snapshot": {
+      "kind": "immutable_fixture",
+      "id": "INTERNAL-DST-source-r1",
+      "complete": true,
+      "control_count": 6,
+      "control_amount": "75.00"
+    },
+    "rows": [
+      {
+        "event_id": "DST-PRE",
+        "occurred_at": "2026-11-01T03:30:00+00:00",
+        "amount": "12.50",
+        "status": "billable"
+      },
+      {
+        "event_id": "DST-START",
+        "occurred_at": "2026-11-01T04:00:00+00:00",
+        "amount": "12.50",
+        "status": "billable"
+      },
+      {
+        "event_id": "DST-FOLD-A",
+        "occurred_at": "2026-11-01T05:30:00+00:00",
+        "amount": "12.50",
+        "status": "billable"
+      },
+      {
+        "event_id": "DST-FOLD-B",
+        "occurred_at": "2026-11-01T06:30:00+00:00",
+        "amount": "12.50",
+        "status": "billable"
+      },
+      {
+        "event_id": "DST-LAST",
+        "occurred_at": "2026-11-02T04:59:59+00:00",
+        "amount": "12.50",
+        "status": "billable"
+      },
+      {
+        "event_id": "DST-END",
+        "occurred_at": "2026-11-02T05:00:00+00:00",
+        "amount": "12.50",
+        "status": "billable"
+      }
+    ]
+  },
+  "counterparty": {
+    "schema_version": 1,
+    "source": "synthetic_counterparty_report",
+    "report_id": "COUNTERPARTY-DST-r1",
+    "revision": 1,
+    "account_id": "DEMO-DST-ACCOUNT",
+    "currency": "USD",
+    "unit": "currency_amount",
+    "reporting_timezone": "America/New_York",
+    "window_start": "2026-10-31T04:00:00+00:00",
+    "window_end": "2026-11-03T05:00:00+00:00",
+    "billable_event": "synthetic contract-accepted tracked outcome",
+    "status_basis": "final_billable_outcomes",
+    "observed_at": "2026-11-03T09:00:00+00:00",
+    "snapshot": {
+      "kind": "immutable_fixture",
+      "id": "COUNTERPARTY-DST-source-r1",
+      "complete": true,
+      "control_count": 6,
+      "control_amount": "75.00"
+    },
+    "rows": [
+      {
+        "event_id": "DST-PRE",
+        "occurred_at": "2026-10-31T23:30:00-04:00",
+        "amount": "12.50",
+        "status": "billable"
+      },
+      {
+        "event_id": "DST-START",
+        "occurred_at": "2026-11-01T00:00:00-04:00",
+        "amount": "12.50",
+        "status": "billable"
+      },
+      {
+        "event_id": "DST-FOLD-A",
+        "occurred_at": "2026-11-01T01:30:00-04:00",
+        "amount": "12.50",
+        "status": "billable"
+      },
+      {
+        "event_id": "DST-FOLD-B",
+        "occurred_at": "2026-11-01T01:30:00-05:00",
+        "amount": "12.50",
+        "status": "billable"
+      },
+      {
+        "event_id": "DST-LAST",
+        "occurred_at": "2026-11-01T23:59:59-05:00",
+        "amount": "12.50",
+        "status": "billable"
+      },
+      {
+        "event_id": "DST-END",
+        "occurred_at": "2026-11-02T00:00:00-05:00",
+        "amount": "12.50",
+        "status": "billable"
+      }
+    ]
+  },
+  "correction_followup_hours": 24,
+  "billing_window": {
+    "start_date": "2026-11-01",
+    "end_date": "2026-11-02",
+    "billing_timezone": "America/New_York"
+  }
+}

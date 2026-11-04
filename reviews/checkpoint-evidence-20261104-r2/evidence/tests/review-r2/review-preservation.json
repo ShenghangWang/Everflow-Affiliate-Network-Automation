@@ -1,0 +1,41 @@
+{
+  "verified_at_utc": "2026-11-04T07:17:35.506951+00:00",
+  "R1_verified_before_R2_saved": true,
+  "original_responses": {
+    "D1-HLD-R1": {
+      "file": "reviews/gemini-original-D1-HLD-R1.md",
+      "bytes": 25997,
+      "sha256": "b9b2e85cfd7a842e0d8180447b085301518610021d1ac62c747d36960c5e026f",
+      "receipt_recorded_at": "2026-11-04T14:45:02.619284+08:00",
+      "receipt_timezone": "Asia/Shanghai (UTC+08:00)",
+      "supplied_review_timestamp": null,
+      "model": "Gemini 4 Argon"
+    },
+    "D1-HLD-R2": {
+      "file": "reviews/gemini-followup-D1-HLD-R2.md",
+      "bytes": 13050,
+      "sha256": "3cce43ede54169d9b25f46097b7cb813028ac3b4e9a4bf7ae1896010923d736f",
+      "receipt_recorded_at": "2026-11-04T15:00:44.187177+08:00",
+      "receipt_timezone": "Asia/Shanghai (UTC+08:00)",
+      "supplied_review_timestamp": null,
+      "model": null
+    }
+  },
+  "original_Codex_reviews_unchanged": true,
+  "frozen_packets": {
+    "D1-HLD-R1": {
+      "manifest_sha256": "b86d01edab027ba492409c1fbd2ffa95c7a8463682fce757f9892b30f2dfbeed",
+      "content_files": 18,
+      "unchanged_against_HEAD": true
+    },
+    "D1-HLD-R2": {
+      "manifest_sha256": "14e0f0d2a54b78e42a0fd37030cd38e461f5a2eca179e241c5508f1545582e65",
+      "content_files": 18,
+      "unchanged_against_HEAD": true
+    }
+  },
+  "manual_exports_and_original_assignments_unchanged": true,
+  "review_completion": "All required original/follow-up responses received for frozen R1/R2",
+  "finding_resolution": "Separate combined ledger; conditional/open where noted",
+  "sponsor_acceptance": "pending"
+}

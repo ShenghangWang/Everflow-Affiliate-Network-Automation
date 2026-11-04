@@ -1,0 +1,39 @@
+{
+  "classification": "PROPOSED DESIGN",
+  "label": "Generic affiliate-network demonstration — synthetic data and assumed rules",
+  "now": "2026-11-04T02:00:00+00:00",
+  "policy": {
+    "version": "synthetic-policy-v1",
+    "enabled": true,
+    "owner": "Demo commercial owner",
+    "scope": "mock-only",
+    "expires_at": "2026-11-14T02:00:00+00:00",
+    "eligible_leads": ["L001", "L002", "L003"],
+    "allowed_actions": ["outreach", "standard_response", "followup"],
+    "max_standard_rounds": 2,
+    "max_followups": 1,
+    "max_transport_attempts": 2,
+    "followup_hours": 72,
+    "label": "Synthetic delegated policy; conveys no live authority"
+  },
+  "terms": {
+    "version": "synthetic-terms-v1",
+    "offer_id": "DEMO-OFFER-01",
+    "currency": "USD",
+    "payout": "12.50",
+    "billable_event": "buyer-accepted demonstration conversion",
+    "settlement": "Net 30 after an approved reconciliation",
+    "traffic": "Only sources explicitly approved by the demo commercial owner",
+    "label": "Synthetic approved facts, not employer commercial terms"
+  },
+  "sources": [
+    {"id": "partner_referral", "label": "Synthetic partner referral", "permission": "fixture only", "attribution_method": "supplied source ID"},
+    {"id": "event_list", "label": "Synthetic permitted event list", "permission": "fixture only", "attribution_method": "supplied source ID"}
+  ],
+  "leads": [
+    {"id": "L001", "organization": "Northstar Media", "contact": "Alex", "recipient": "alex@northstar.example", "profile": "A publisher exploring a new affiliate partnership", "source": "partner_referral", "external_id": "REF-001", "permitted": true, "fit_verified": true},
+    {"id": "L002", "organization": "Harbor Partners", "contact": "Morgan", "recipient": "morgan@harbor.example", "profile": "A partner requesting transparent reporting and settlement", "source": "event_list", "external_id": "EVENT-002", "permitted": true, "fit_verified": true},
+    {"id": "L003", "organization": "Cedar Growth", "contact": "Sam", "recipient": "sam@cedar.example", "profile": "A business prospect with incomplete qualification evidence", "source": "event_list", "external_id": "EVENT-003", "permitted": true, "fit_verified": false},
+    {"id": "L004", "organization": "NORTHSTAR MEDIA", "contact": "Alex", "recipient": " ALEX@NORTHSTAR.EXAMPLE ", "profile": "Duplicate referral from the second source", "source": "event_list", "external_id": "EVENT-004", "permitted": true, "fit_verified": true}
+  ]
+}

@@ -1,0 +1,9 @@
+# Current local checkpoint evidence supplement
+
+This separate bundle includes current application/fixture sources, test assertions and verifier scripts, dependency locks, actual logs/JSON, build hashes and browser screenshots. It does not amend either frozen D1-HLD-R1/R2 packet or imply that Codex/Gemini inspected this bundle. The review response cycle is complete for those frozen inputs; finding resolution/current readiness remains conditional and sponsor acceptance pending.
+
+Read reviews/combined-adjudication-D1-HLD-R2.md and delivery.md §16, then evidence/tests/review-r2/manifest.json. That record links the current tested source hashes, 105 backend/API/export tests, 45 browser checks, build and nine BD process checks (three starts/two SIGKILL restarts). The current runtime uses synthetic fixtures, template fallback and mock transport, with zero paid model calls or live business effects. Full six-role architecture is distinct from implemented depth.
+
+evidence/tests/fresh-setup.json/log and fresh-final-manifest.json are historical installation/recovery records at their own dates/source hashes, not a new installation of this revision. Backend/browser/process/build evidence in review-r2 is current at its recorded hashes. No clean foreign-machine or real-provider claim is made. Parent revision identifies the Git state before these working-source changes were committed; the exact included file hashes and resulting checkpoint tag bind the candidate.
+
+Use README.md for setup and scripts/check_backend.py, check_bd_restart.py and check_ui.mjs for relevant checks. Normal runtime/dependencies are not bundled: no .venv, node_modules, .env, credential store or live/demo database. Original assignment bytes and frozen architecture inputs remain preserved separately in the project. manifest.json hashes every included file; scripts/export_checkpoint_evidence.py --verify checks this immutable supplement without overwriting it.

@@ -1,0 +1,17 @@
+{
+  "started_at_utc": "2026-11-04T07:06:44.624011+00:00",
+  "finished_at_utc": "2026-11-04T07:06:46.895056+00:00",
+  "command": [
+    "npm",
+    "--prefix",
+    "frontend",
+    "run",
+    "build"
+  ],
+  "exit_code": 0,
+  "assets": {
+    "frontend/dist/assets/index-CMTVDqF-.css": "05e692c7b2f54dcf7138b8e5fb4825d513a0a4a1f7d3b733c37cd1b822b52d41",
+    "frontend/dist/assets/index-FiFk_mSs.js": "cacf70838cbc88aefba482d3987097dde19e5188408b1747aec9ee0b492a3af2",
+    "frontend/dist/index.html": "862018f863a3af2da58f4a439088be1a9daf14ddf692d10ae017af5ee7c24303"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "started_at": "2026-11-04T07:07:45.229Z",
+  "base": "http://127.0.0.1:8012",
+  "checks": [
+    {
+      "name": "Generic baseline loads React with accurate modes",
+      "pass": true,
+      "detail": {}
+    }
+  ],
+  "console_errors": [
+    "Failed to load resource: the server responded with a status of 403 (Forbidden)"
+  ],
+  "page_errors": [],
+  "mode": "synthetic mock/template only",
+  "browser": "149.0.7827.55",
+  "browser_executable": "/Users/shenghangwang/Library/Caches/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-mac-x64/chrome-headless-shell",
+  "pass": false,
+  "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText('Outreach draft · template fallback') to be visible\u001b[22m\n\n    at /Users/shenghangwang/.codex/visualizations/2026/11/04/01a1a475-c70b-7342-89b1-f642577c991c/everflow-foundation/scripts/check_ui.mjs:23:61"
+}

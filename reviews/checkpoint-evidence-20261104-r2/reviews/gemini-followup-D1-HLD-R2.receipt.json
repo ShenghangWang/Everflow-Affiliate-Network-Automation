@@ -1,0 +1,34 @@
+{
+  "provider": "Google Gemini",
+  "model": null,
+  "model_label_status": "Unknown; not supplied for R2; do not infer from user-reported R1 label",
+  "reviewed_input": "D1-HLD-R2",
+  "receipt_recorded_at": "2026-11-04T15:00:44.187177+08:00",
+  "receipt_timezone": "Asia/Shanghai (UTC+08:00)",
+  "receipt_recorded_at_utc": "2026-11-04T07:00:44.187177+00:00",
+  "receipt_time_basis": "Time supplied response was recorded in project; source message timestamp unavailable",
+  "supplied_review_timestamp": null,
+  "input_freeze_timestamp_in_response": "2026-11-04T03:17:07.234536+00:00",
+  "source_attachment": "/Users/shenghangwang/.codex/attachments/8fdf45fc-5f7d-439e-ad53-d23eb44f7dfc/Pasted text.txt",
+  "original_response_bytes": 13050,
+  "original_response_sha256": "3cce43ede54169d9b25f46097b7cb813028ac3b4e9a4bf7ae1896010923d736f",
+  "saved_file": "reviews/gemini-followup-D1-HLD-R2.md",
+  "original_response_start_byte": 1023,
+  "saved_file_sha256": "68c877916c995312c84a3df6a18c1ace7fc2a64bde7f5bce777a5c5b80e3d325",
+  "input_export_file": "reviews/manual-upload/Gemini-D1-HLD-R2-architecture-input.md",
+  "input_export_bytes": 295404,
+  "input_export_sha256": "17980856dbd8db5ab68f10e7b437a2141697097043ed6d1c51a3d1bd20ed5bd7",
+  "R1_original_verified_first": true,
+  "R1_saved_file_sha256": "5b93f9a7a54ed525467a70de4fa6e09c1f81b8f5f11bff50aa193c5777d99a1a",
+  "packet_verification": {
+    "D1-HLD-R1": {
+      "manifest_sha256": "b86d01edab027ba492409c1fbd2ffa95c7a8463682fce757f9892b30f2dfbeed",
+      "content_files_verified": 18
+    },
+    "D1-HLD-R2": {
+      "manifest_sha256": "14e0f0d2a54b78e42a0fd37030cd38e461f5a2eca179e241c5508f1545582e65",
+      "content_files_verified": 18
+    }
+  },
+  "analysis_record": "reviews/combined-adjudication-D1-HLD-R2.md"
+}

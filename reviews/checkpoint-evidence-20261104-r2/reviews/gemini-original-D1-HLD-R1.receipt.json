@@ -1,0 +1,31 @@
+{
+  "provider": "Google Gemini",
+  "model": "Gemini 4 Argon",
+  "model_label_provenance": "As reported by the user; not independently verified",
+  "reviewed_input": "D1-HLD-R1",
+  "receipt_recorded_at": "2026-11-04T14:45:02.619284+08:00",
+  "receipt_timezone": "Asia/Shanghai (UTC+08:00)",
+  "receipt_recorded_at_utc": "2026-11-04T06:45:02.619284+00:00",
+  "receipt_time_basis": "Time supplied response was recorded in project; source message timestamp unavailable",
+  "supplied_review_timestamp": null,
+  "input_freeze_timestamp_in_response": "2026-11-04T03:08:53.441903+00:00",
+  "source_attachment": "/Users/shenghangwang/.codex/attachments/b88fa882-b581-4ae8-b626-a5c69c868b8b/Pasted text.txt",
+  "original_response_bytes": 25997,
+  "original_response_sha256": "b9b2e85cfd7a842e0d8180447b085301518610021d1ac62c747d36960c5e026f",
+  "saved_file": "reviews/gemini-original-D1-HLD-R1.md",
+  "original_response_start_byte": 977,
+  "saved_file_sha256": "5b93f9a7a54ed525467a70de4fa6e09c1f81b8f5f11bff50aa193c5777d99a1a",
+  "input_export_file": "reviews/manual-upload/Gemini-D1-HLD-R1-architecture-input.md",
+  "input_export_sha256": "19b861fcf0268a6ec53b50826702b4ab2cc45595a9bdc8ee45c292b058928053",
+  "packet_verification": {
+    "D1-HLD-R1": {
+      "manifest_sha256": "b86d01edab027ba492409c1fbd2ffa95c7a8463682fce757f9892b30f2dfbeed",
+      "content_files_verified": 18
+    },
+    "D1-HLD-R2": {
+      "manifest_sha256": "14e0f0d2a54b78e42a0fd37030cd38e461f5a2eca179e241c5508f1545582e65",
+      "content_files_verified": 18
+    }
+  },
+  "analysis_record": "reviews/gemini-adjudication-D1-HLD-R1.md"
+}

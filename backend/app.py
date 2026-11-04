@@ -24,11 +24,20 @@ async def local_boundary(request: Request, call_next):
     if host not in ("127.0.0.1", "localhost", "testserver", "::1"):
         return JSONResponse({"detail": "This demo accepts loopback hosts only"}, status_code=403)
     origin = request.headers.get("origin")
-    # Reject browser cross-origin mutations, including local-looking origins on
-    # arbitrary ports. Vite is the one explicit local development exception.
+    # Accept the actual loopback server origin, including an explicit demo port.
+    # Vite is the only cross-origin development exception; other ports stay blocked.
     if origin and request.method not in ("GET", "HEAD", "OPTIONS"):
-        parsed = urlsplit(origin)
-        if parsed.scheme != "http" or parsed.hostname not in ("127.0.0.1", "localhost", "::1") or parsed.port not in (8000, 5173):
+        try:
+            parsed = urlsplit(origin)
+            clean = not (parsed.username or parsed.password or parsed.path or parsed.query or parsed.fragment)
+            same_origin = (parsed.scheme == request.url.scheme == "http" and parsed.hostname == host
+                           and (parsed.port or 80) == (request.url.port or 80))
+            vite_origin = (parsed.scheme == "http" and parsed.hostname in ("127.0.0.1", "localhost", "::1")
+                           and parsed.port == 5173)
+            permitted = clean and (same_origin or vite_origin)
+        except ValueError:
+            permitted = False
+        if not permitted:
             return JSONResponse({"detail": "Cross-origin mutation rejected"}, status_code=403)
     response = await call_next(request)
     response.headers["X-Content-Type-Options"] = "nosniff"

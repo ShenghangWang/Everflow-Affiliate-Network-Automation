@@ -1,0 +1,129 @@
+{
+  "recorded_at_utc": "2026-11-04T07:17:35.510457+00:00",
+  "candidate_tag": "demo-review-followthrough-r1",
+  "git_parent_at_verification": "595f7ba185c502563ad2deb59e414afe976ad46e",
+  "backend_tests": 105,
+  "browser_checks": 45,
+  "bd_process_checks": 9,
+  "build": "build.json/log: exit0,25 modules",
+  "sources_sha256": {
+    "backend/__init__.py": "b0dd23c9d4f5b80f1315ce0a20c8b1ea82429240d038c5b8685f06380510a6a2",
+    "backend/account_management.py": "edfb149503011b300438b2174d21c284485a867b643f7142e997d8c15d2d7253",
+    "backend/app.py": "20dc17d523fbf5b1835f310269ef228008e4a0c54a9842f031f722cd32bc3993",
+    "backend/domain.py": "7ccbb136bbd1a064110ea9f99dd724140edcce8941649d26b38e73262b30ec57",
+    "backend/fixtures/account_management.json": "f8569cb4353f45586adfcfcceb5abf1074bc3afb3c1265fb27a3e652922b4fef",
+    "backend/fixtures/generic.json": "a96d9f10e96557e543ad1dace80591027ed51f40ee3d2634e3d88f3bf1043b44",
+    "backend/fixtures/reconciliation.json": "4165d35c55c1b372a29736103165e702b6ce5fa0657694ed6a4d9dfce1869f4a",
+    "backend/fixtures/reconciliation_dst.json": "8174fa3642dea14dea107c39744b18b93a455cd6fbffccbb88e4ab77cb1bf8d8",
+    "backend/fixtures/source_stress.json": "e96a0f1d042771d68bb2b6d0b855b36aeda69cd539f119265efef99d5f5fe558",
+    "backend/inference.py": "890093025356330d13b7c711dc604bced25d26e0bc05fcfe817d7e681c12ac44",
+    "backend/reconciliation.py": "4632eea0c1ef40663be563c07c94ab74489780d1d24ed055a1a3a6d85c07f52d",
+    "backend/report_windows.py": "dd4368e4b2b465f4383a38c253289a2ec7faaed766d54e9da138dac4acd3fe63",
+    "backend/scenarios.py": "9008e44e69e54b6d2f23d5aa33af2c27b9b9ecc44c3fc01a470af06d2b476975",
+    "frontend/index.html": "23451c7d4458a5b89d7be82d9cd91999494aeb8c9b81ed10e407935e3254dd8e",
+    "frontend/package-lock.json": "b2d0283028c1e9c53a37f7e74b8be430f54c836bf9b4646102b65974bd823043",
+    "frontend/package.json": "a6ccb0f0491f3cfa4deb360c39c6f9d4e1cc8275fdc80f68db8cffa327e4a777",
+    "frontend/src/AccountManagement.jsx": "cd373824a5ce5241444283913cbe6c5e5abb49755a3941f7878a6cd83fbdfc34",
+    "frontend/src/Reconciliation.jsx": "c82255464ec0b1ec3157982f6de1914f4f6ecf8c0d1d3f5853146421991f447b",
+    "frontend/src/main.jsx": "44eaa9fa2713e812814829009a8157f8fbd52bda7df82a43a8a8856bfcebf08d",
+    "frontend/src/style.css": "fec1409d5cbb21c80455a4869ecd16d24bf05574913376228d8927eb84807dac",
+    "frontend/vite.config.js": "3e868db78618d95e86e5ff8e4f8f167bf2f94bf99c9402777cd1b6b28361cb7c",
+    "requirements.lock": "befd28c899c76405a69f51b1a73aa363eae8ac9fba07e67b7e5aadd59522f0be",
+    "requirements.txt": "43f4743e95bc0e068dc5d8973abf9d82893bca87f91f4437485b36af124787f5",
+    "scripts/check_am_restart.py": "00c98c68b0f2bdee52f55967a380032658074e2cfbd23892c0ac60636fc05e84",
+    "scripts/check_backend.py": "9d641f08fa2978dd89c208b9a0ffe6ac092fc9cd3182b078fd1029b3dd226a57",
+    "scripts/check_bd_restart.py": "7691e738e2aae9ae1dcc58092b12f077adc1e22fda06687ee46b35a0d33205d5",
+    "scripts/check_reconciliation_restart.py": "4ba417c59c9d3527feb7b5b8b8cece508dbdd4eba9ce438d4ac2ee9deaed36ac",
+    "scripts/check_ui.mjs": "9fd0dc20a4173eaff2595b9026c7b42a612606ad43db0438e760577bdd763cd4",
+    "scripts/export_checkpoint_evidence.py": "82385276916483b8db56c57a63e8c8ad104f7156d54932b097cf33df7ffbb13f",
+    "scripts/export_gemini_inputs.py": "52e73eb45fe82a1035ac3a2c34953b734f4445295ef03b36e73a8f539a75469e",
+    "scripts/run.sh": "9fd05dd3ad09403985daab0b0dade12c6365553d191960b9aca08b33aa82496b",
+    "scripts/setup.sh": "2d1dd6fa6ed039f62a8453b72550b0111ce6412e172bae95ccc9ce04a65f1931",
+    "tests/test_account_management.py": "a4793257ea87c4e1431318c730baac4e81fa0c8ec006fd2d2de5c821d1f7cb50",
+    "tests/test_api.py": "6f9c99f158386528eed6cd57df8c6a77df4f8f2bef2c7a6dd3201bca09098537",
+    "tests/test_reconciliation.py": "98f340f66b55beb6892be1545b5a0c83878f2f4345dd0adbc8efa552b70ed48f",
+    "tests/test_report_windows.py": "2b57c0d57e493feb3ef2ebacd4d724b6c98763e129a3cc266c81a753ae54cba5",
+    "tests/test_review_export.py": "968ea29df433dbb2ccd36e5acc5e8f994b0784cd0df24f17f65a4346230b9c5f",
+    "tests/test_scenarios.py": "9b6c7cddb4bda7e6aa6c8c59c2f9648b05111ed8473f7d2671cce79635060a35",
+    "tests/test_workflow.py": "1726adb53d04bba7fd67535adf824d78f97b94469727a203f0b16507ea7fdc5e"
+  },
+  "test_times": {
+    "backend": [
+      "2026-11-04T07:09:59.840469+00:00",
+      "2026-11-04T07:10:06.532493+00:00"
+    ],
+    "browser": [
+      "2026-11-04T07:10:32.133Z",
+      "2026-11-04T07:10:46.282Z"
+    ],
+    "process": [
+      "2026-11-04T07:10:29.607110+00:00",
+      "2026-11-04T07:10:31.575409+00:00"
+    ]
+  },
+  "browser_command": "DEMO_URL=http://127.0.0.1:8012 CHROMIUM_EXECUTABLE=installed-compatible-chromium bundled-node scripts/check_ui.mjs",
+  "browser_engine": "149.0.7827.55",
+  "browser_errors": {
+    "console": [],
+    "page": []
+  },
+  "visual_review": "Desktop/mobile DST finance screens inspected; no page overflow/clipped panels",
+  "process_termination": [
+    {
+      "pid": 63488,
+      "signal": "SIGKILL",
+      "exit_code": -9
+    },
+    {
+      "pid": 63489,
+      "signal": "SIGKILL",
+      "exit_code": -9
+    },
+    {
+      "pid": 63495,
+      "signal": "SIGTERM",
+      "exit_code": -15
+    }
+  ],
+  "runtime": "Separate ignored .run/review-r2/verification.sqlite3 on127.0.0.1:8012; original port8000/demo DB preserved",
+  "historical_install": "evidence/tests/fresh-setup.json/log and fresh-final-manifest.json retain original source/date; not rerun this revision",
+  "effects": {
+    "paid_model_calls": 0,
+    "external_business_effects": 0,
+    "transport": "SQLite mock receipts"
+  },
+  "limits": [
+    "Live provider query/schema/consistency/timezone contracts and actual billing definition unverified",
+    "No real signature/channel/campaign/financial execution or live paid model budget enforcement",
+    "Four review responses complete for frozen inputs; current implementation not independently approved; business policies/release checks and sponsor acceptance pending"
+  ],
+  "evidence_sha256": {
+    "backend-tests.json": "a5d81fbeac0b752b3ab7d11e1cb396edade3dda93277398d9103044dc62e9342",
+    "backend-tests.log": "6a9dea49c0d58775a8dc21027a7a5190686c21c8a1695da31c3e577867ddcfb3",
+    "bd-process.log": "5d4ecba9eb2daee8a75f41108c3bc1a62ff535e2ccf959a65ad688ab4e29ea7b",
+    "bd-restart.json": "26690034e3f0bba5f67683b176632e6d177a43b8e0be2e9412df3788f6d7c439",
+    "build.json": "b6eaf902ff528efa9ac62b2502000c1b871eaad3cd05f8b21a2465a2dc70e8a4",
+    "build.log": "62272da46cf4d7cca3b67d004063b494f79c164a6065a3a6b8b81da2ae65b17d",
+    "review-preservation.json": "d7b1b8110c9db834d1a77c23b6fce1366a01a49fa27588bbe9b834b2a564a44d",
+    "ui/01-generic-baseline.png": "eb6634e561f5866081698702166dd3c367824b61c5478d6d530d6e87bc97b9c8",
+    "ui/02-mock-dispatch.png": "e70118cede78b6ee90febb7c1dba8761844900ed28ee002172ec17d364b3ab83",
+    "ui/03-owned-handoff.png": "339765840ce72bed879b0b5d835eae3e5d7ada6bf7746ea7f81278d01574ec8f",
+    "ui/04-source-outcomes.png": "54d193294a44b9f5e0ea711f9d634a03c8c0772ae0169a36348e3014d1351b92",
+    "ui/05-role-coverage.png": "d6b93fca4fda0dbb2aa0d23dda5dc18b4ff04bc7371d7e7027af7a09d6eaf43f",
+    "ui/06-mobile.png": "29405e0417b0c21d92dd3e9ac2ba15347ee87e6dd10d18b8a1d434802c67af66",
+    "ui/07-reconciliation-variance.png": "fc1cdfac8b36ecc2f6907a7daef12002ba5446c32dc91b54892458116d52de09",
+    "ui/08-reconciliation-resolved.png": "01ac25b137c769312b599fb25a07e00896899b416e87fdc2408edd478e5b8fd2",
+    "ui/09-reconciliation-blocked.png": "7590524f3a858e6395811228772ef0d307a7c0f715c7f6825be458bb6badf47e",
+    "ui/10-reconciliation-mobile.png": "1a109c75f8b5763eddcb818a2f1e3a6c64cd679ce5cd1a591f06cc0ed55ff4b6",
+    "ui/11-finance-correction-due.png": "f1c0b77aeb2bf09cba0a968584ee3aa935698980e5589d31320854a8de1abab6",
+    "ui/12-finance-correction-resolved.png": "d5dc0e86913f3267dbb0adf59089c9a846b05d734b5f93b5ccbb12e4b3f96aa6",
+    "ui/13-am-tracking-owner.png": "29eedcc3a7115fcefdeb6e836e22ee7834c1711e5b862b39b592f1dfdd173ef1",
+    "ui/14-am-outcome-verified.png": "8a964605ec3b0548e1c5896ac6e857f032f6a96286df4fd9eb40b2ad19baac1e",
+    "ui/15-am-stale-evidence.png": "decb02540485e7396b4f6efe728aebb6a853725c7011a9f3f0ab78f00e920ba3",
+    "ui/16-am-mobile.png": "d33fe2f5d68c93e5daf00ae6d45a466d175d34d3fb38c37d5cc37bc368d0fce6",
+    "ui/17-dst-billing-window.png": "8ebee53000e02b2ff7413350eaed57d2b0d9ee8f87a61742310dc1b01dc12701",
+    "ui/18-dst-mobile.png": "739cb05b324e74deef7dfa83f296f90911d7cab46fb7062d8297308e6508852f",
+    "ui/browser-results.json": "a5f3ed6e07430be5e79880544ab6f2e8f3523b0f3b2e8c962df0559a8523007a",
+    "ui/prerequisite-failures.md": "cf689c117767738e8c73053996e5d7406f53b338e07a09dfdb3a47757e884464"
+  }
+}

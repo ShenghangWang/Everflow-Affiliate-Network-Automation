@@ -36,6 +36,15 @@ class APITests(unittest.TestCase):
         self.assertNotIn("api_key", str(state).lower())
         self.assertFalse(state["mode"]["live_effects"])
 
+    def test_same_origin_custom_loopback_port_rejects_other_origins_and_malformed_ports(self):
+        with TestClient(app_module.app, base_url="http://127.0.0.1:8012") as client:
+            self.assertEqual(client.post('/api/reset', headers={'origin': 'http://127.0.0.1:8012'}).status_code, 200)
+            for origin in ('http://127.0.0.1:8000', 'http://127.0.0.1:8013', 'http://localhost:8012',
+                           'http://127.0.0.1:invalid', 'http://user@127.0.0.1:8012', 'http://127.0.0.1:8012/path', 'null'):
+                with self.subTest(origin=origin):
+                    self.assertEqual(client.post('/api/reset', headers={'origin': origin}).status_code, 403)
+            self.assertEqual(client.post('/api/reset', headers={'origin': 'http://127.0.0.1:5173'}).status_code, 200)
+
     def test_payload_schema_and_live_recipient_rejected(self):
         self.assertEqual(self.client.post("/api/leads/L001/reply", json={"text": "hi", "event_id": "x", "execute": "shell"}).status_code, 400)
         self.assertEqual(self.client.post("/api/leads/L001/edit", json={"recipient": "someone@real.com"}).status_code, 400)

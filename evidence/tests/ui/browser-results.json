@@ -1,6 +1,6 @@
 {
-  "started_at": "2026-11-04T06:14:06.566Z",
-  "base": "http://127.0.0.1:8000",
+  "started_at": "2026-11-04T07:10:32.133Z",
+  "base": "http://127.0.0.1:8012",
   "checks": [
     {
       "name": "Generic baseline loads React with accurate modes",
@@ -223,6 +223,26 @@
       "detail": {}
     },
     {
+      "name": "UI normalizes different source timezones across the 25-hour billing day",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Repeated normalized comparison preserves one logical run",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Normalized evidence receives a bound finance decision without external effects",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Mobile normalized billing evidence has no page overflow",
+      "pass": true,
+      "detail": {}
+    },
+    {
       "name": "UI separates six-role architecture from implementation",
       "pass": true,
       "detail": {}
@@ -246,7 +266,7 @@
   "mode": "synthetic mock/template only",
   "browser": "149.0.7827.55",
   "browser_executable": "/Users/shenghangwang/Library/Caches/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-mac-x64/chrome-headless-shell",
-  "finished_at": "2026-11-04T06:14:20.085Z",
+  "finished_at": "2026-11-04T07:10:46.282Z",
   "pass": true,
   "final_summary": {
     "leads": [
@@ -289,7 +309,7 @@
         "attempts": 0
       },
       {
-        "id": "ACT-d5c0171d623f34e3",
+        "id": "ACT-fa4c3152b26d22f6",
         "kind": "standard_response",
         "status": "succeeded",
         "attempts": 1
@@ -331,10 +351,16 @@
           "status": "resolved",
           "owner": "Demo finance owner",
           "version": 4
+        },
+        {
+          "id": "REC-aeb387ff13931d55",
+          "status": "resolved",
+          "owner": "Demo finance owner",
+          "version": 2
         }
       ],
-      "runs": 4,
-      "decisions": 4,
+      "runs": 5,
+      "decisions": 5,
       "external_effects": false
     }
   }

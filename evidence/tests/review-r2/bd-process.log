@@ -1,0 +1,32 @@
+INFO:     Started server process [63488]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:53286 (Press CTRL+C to quit)
+INFO:     127.0.0.1:53298 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53300 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53302 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     Started server process [63489]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:53286 (Press CTRL+C to quit)
+INFO:     127.0.0.1:53312 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53314 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53316 - "POST /api/tick HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53318 - "POST /api/tick HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53320 - "POST /api/leads/L001/dispatch HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53322 - "POST /api/leads/L001/dispatch HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53324 - "POST /api/leads/L002/reply HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53326 - "POST /api/actions/ACT-3943f5beb676c18e/reconcile HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53328 - "POST /api/actions/ACT-3943f5beb676c18e/reconcile HTTP/1.1" 200 OK
+INFO:     Started server process [63495]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:53286 (Press CTRL+C to quit)
+INFO:     127.0.0.1:53342 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53344 - "GET /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53346 - "POST /api/tick HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53348 - "POST /api/tick HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [63495]

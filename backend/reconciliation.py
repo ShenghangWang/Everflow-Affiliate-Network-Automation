@@ -14,6 +14,7 @@ FIXTURE = Path(__file__).parent / "fixtures" / "reconciliation.json"
 TABLES = ("recon_tasks", "recon_decisions", "recon_runs", "recon_cases", "recon_snapshots")
 FIXTURES = [
     {"id": "variance", "label": "Aligned reports · USD 12.50 discrepancy"},
+    {"id": "dst_normalized", "label": "Different source timezones · DST billing window normalized"},
     {"id": "corrected", "label": "Corrected counterparty report · new version"},
     {"id": "partial_corrected", "label": "Complete correction after an incomplete report"},
     {"id": "matched", "label": "Aligned reports · all events match"},
@@ -62,6 +63,13 @@ def amount(value):
 def load_fixture(fixture_id):
     if fixture_id not in {f["id"] for f in FIXTURES}:
         raise ValueError("Unknown reconciliation fixture")
+    if fixture_id == "dst_normalized":
+        from .report_windows import billing_window, normalize_report
+        data = json.loads(FIXTURE.with_name("reconciliation_dst.json").read_text())
+        window = billing_window(**data.pop("billing_window"))
+        for side in ("internal", "counterparty"):
+            data[side] = normalize_report(data[side], window)
+        return data
     data = json.loads(FIXTURE.read_text())
     if fixture_id in ("corrected", "matched", "partial_corrected"):
         data["counterparty"]["rows"] = deepcopy(data["internal"]["rows"])
@@ -168,6 +176,10 @@ def check_report(report, side, as_of=None):
             raise ValueError("Amount mismatch")
     except (ValueError, TypeError):
         problems.append({"side": side, "code": "snapshot_control_mismatch"})
+    if "normalization" in report:
+        from .report_windows import normalization_matches
+        if not normalization_matches(report, as_of):
+            problems.append({"side": side, "code": "normalization_proof_mismatch"})
     return problems, rows, total if not problems else None
 
 
@@ -195,6 +207,9 @@ def compare_reports(internal, counterparty, threshold_percent="5", as_of=None):
             "threshold_percent": threshold_percent, "internal_total": None, "counterparty_total": None,
             "difference": None, "absolute_difference": None, "discrepancy_percent": None,
             "threshold_exceeded": None, "rows": [], "external_effects": False, "model_calls": 0}
+    base["normalization"] = {side: {k: v for k, v in report.get("normalization", {}).items() if k != "source_report"}
+                             for side, report in (("internal", internal), ("counterparty", counterparty))
+                             if isinstance(report.get("normalization"), dict)}
     if blockers:
         return {**base, "result": "blocked", "reason": "Incomplete, inconsistent or unaligned inputs; no final variance or collection draft"}
     rows = []
