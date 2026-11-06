@@ -149,6 +149,38 @@ try {
       && equivalent.ok() && JSON.stringify(equivalentState.am_actions) === JSON.stringify(refreshed.am_actions));
 
   await page.getByLabel('Requested commercial terms', {exact: true}).fill(requestedTerms);
+  const pricing = page.getByRole('region', {name: 'Read-only pricing preview', exact: true});
+  const price = pricing.getByLabel('Hypothetical advertiser price per lead', {exact: true});
+  const offerBeforePricing = await (await get('/api/v2/offers')).json();
+  const bdBeforePricing = await (await get(followthrough)).json();
+  for (const scenario of [
+    {price: '50.00', margin: 50, clears: true, label: 'Clears margin floor'},
+    {price: '30.00', margin: 100 / 6, clears: false, label: 'Below margin floor'},
+  ]) {
+    await price.fill(scenario.price);
+    const [response] = await Promise.all([
+      page.waitForResponse(response => response.url().startsWith(base + offer + '/pricing-preview?')
+        && response.request().method() === 'GET'),
+      pricing.getByRole('button', {name: 'Preview margin', exact: true}).click(),
+    ]);
+    if (!response.ok()) throw new Error('Pricing preview HTTP ' + response.status());
+    const preview = await response.json();
+    await pricing.getByText(scenario.label, {exact: true}).waitFor();
+    const displayed = await pricing.innerText();
+    check('Synthetic price ' + scenario.price + ' shows the expected margin and floor decision on the released version',
+      preview.config_version === released.offer.version && preview.currency === 'USD'
+        && preview.channel_payout === '25.00' && preview.margin_floor_pct === '20.00'
+        && Math.abs(Number(preview.margin_pct) - scenario.margin) < 0.005
+        && preview.clears_floor === scenario.clears
+        && displayed.includes('25.00') && displayed.includes('20.00')
+        && displayed.includes(scenario.margin.toFixed(2) + '%')
+        && new RegExp('version\\s+' + released.offer.version + '\\b', 'i').test(displayed));
+  }
+  check('Pricing previews preserve the Offer, its release, BD evidence and requested terms',
+    JSON.stringify(await (await get('/api/v2/offers')).json()) === JSON.stringify(offerBeforePricing)
+      && JSON.stringify(await (await get(followthrough)).json()) === JSON.stringify(bdBeforePricing)
+      && await page.getByLabel('Requested commercial terms', {exact: true}).inputValue() === requestedTerms);
+  await screenshot('03-read-only-pricing-preview.png');
   const {state: prepared} = await command('Prepare synthetic proposal');
   const proposal = prepared.proposals.at(-1);
   const proposalCard = page.getByRole('article', {name: 'Proposal ' + proposal.id});

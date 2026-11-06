@@ -217,6 +217,11 @@ def v2_offer_state():
     return OfferService(workflow).state()
 
 
+@app.get("/api/v2/offers/{offer_id}/pricing-preview")
+def v2_offer_pricing_preview(offer_id: str, advertiser_price: str):
+    return OfferService(workflow).pricing_preview(offer_id, advertiser_price)
+
+
 def offer_payload(payload, fields):
     if set(payload) != set(fields):
         raise ValueError("Only declared Offer workflow fields accepted; actor/live authority cannot be supplied")

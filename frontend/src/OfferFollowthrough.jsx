@@ -142,10 +142,12 @@ export default function OfferFollowthrough({offerId, onFinance}) {
       <section className="v2-panel v2-followthrough-records" aria-labelledby="offer-bd-heading">
         <h2 id="offer-bd-heading">BD proposal review</h2>
         <p>Current buyer outcomes and channel capacity inform the review. The draft retains approved synthetic clauses and requested commercial terms separately.</p>
+        <PricingPreview key={`${offerId}:${evidence.config_sha}`} offerId={offerId} />
         <form className="v2-form" onSubmit={prepareProposal}>
           <label>
             Requested commercial terms
-            <textarea required maxLength={2000} value={requestedTerms} onChange={event => setRequestedTerms(event.target.value)} />
+            <textarea aria-label="Requested commercial terms" required maxLength={2000}
+              value={requestedTerms} onChange={event => setRequestedTerms(event.target.value)} />
           </label>
           <button className="v2-primary" disabled={working || !evidence.bd_ready || !requestedTerms.trim()}>
             Prepare synthetic proposal
@@ -168,6 +170,62 @@ export default function OfferFollowthrough({offerId, onFinance}) {
       </section>
     </div>}
   </>;
+}
+
+function PricingPreview({offerId}) {
+  const [price, setPrice] = useState('');
+  const [result, setResult] = useState(null);
+  const [working, setWorking] = useState(false);
+  const [error, setError] = useState('');
+
+  function changePrice(event) {
+    setPrice(event.target.value);
+    setResult(null);
+    setError('');
+  }
+
+  async function previewMargin(event) {
+    event.preventDefault();
+    setWorking(true);
+    setResult(null);
+    setError('');
+    try {
+      const query = new URLSearchParams({advertiser_price: price.trim()});
+      const url = `/api/v2/offers/${encodeURIComponent(offerId)}/pricing-preview?${query}`;
+      setResult(await readProjection(url, {cache: 'no-store'}));
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setWorking(false);
+    }
+  }
+
+  return <section className="v2-evidence" aria-labelledby="offer-pricing-heading">
+    <h3 id="offer-pricing-heading">Read-only pricing preview</h3>
+    <p>Explore a hypothetical price using the stored channel payout. Results stay in this preview.</p>
+    <form className="v2-form" onSubmit={previewMargin}>
+      <label>
+        Hypothetical advertiser price per lead
+        <input inputMode="decimal" required maxLength={24} value={price} disabled={working} onChange={changePrice} />
+      </label>
+      <button disabled={working || !price.trim()}>Preview margin</button>
+    </form>
+    {error && <p role="alert">{error}</p>}
+    <div aria-live="polite">
+      {result && <>
+        <strong className={`v2-chip${result.clears_floor ? '' : ' warn'}`}>
+          {result.clears_floor ? 'Clears margin floor' : 'Below margin floor'}
+        </strong>
+        <dl>
+          <dt>Configuration version</dt><dd>{result.config_version}</dd>
+          <dt>Hypothetical advertiser price</dt><dd>{result.currency} {result.advertiser_price}</dd>
+          <dt>Channel payout</dt><dd>{result.currency} {result.channel_payout}</dd>
+          <dt>Margin (rounded)</dt><dd>{Number(result.margin_pct).toFixed(2)}%</dd>
+          <dt>Configured floor</dt><dd>{result.margin_floor_pct}%</dd>
+        </dl>
+      </>}
+    </div>
+  </section>;
 }
 
 function RecordHeading({title, current, status}) {

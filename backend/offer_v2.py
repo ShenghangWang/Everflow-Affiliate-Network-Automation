@@ -134,6 +134,27 @@ class OfferService:
         row = c.execute('SELECT payload FROM v2_offer_configs WHERE sha256=?', (offer['config_sha'],)).fetchone()
         return json.loads(row[0])
 
+    def pricing_preview(self, offer_id, advertiser_price):
+        price = _decimal(advertiser_price)
+        if price <= 0:
+            raise ValueError('Positive advertiser price required')
+        with self.w.db() as c:
+            c.execute('BEGIN')
+            offer = self._offer(c, offer_id)
+            config = self._config(c, offer)
+        price_text = format(price, '.2f')
+        preview_margin = margin({**config, 'revenue_cpl': price_text})
+        floor = config['margin_floor_pct']
+        return {
+            'config_version': offer['version'],
+            'currency': config['currency'],
+            'advertiser_price': price_text,
+            'channel_payout': format(_decimal(config['payout_cpl']), '.2f'),
+            'margin_pct': preview_margin,
+            'margin_floor_pct': floor,
+            'clears_floor': Decimal(preview_margin) >= Decimal(floor),
+        }
+
     def _version(self, offer, expected_version):
         if type(expected_version) is not int or expected_version < 1: raise ValueError('Positive configuration version required')
         if offer['version'] != expected_version: raise StaleOfferAction('Offer configuration changed; refresh exact version')
