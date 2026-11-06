@@ -1,12 +1,14 @@
+import {execFileSync} from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import {createRequire} from 'node:module';
 const require=createRequire(import.meta.url);
-let pw;
-try{pw=require('playwright')}catch{pw=require(process.env.PLAYWRIGHT_PACKAGE || '/Users/shenghangwang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright')}
-const out=path.resolve('evidence/tests/ui');fs.mkdirSync(out,{recursive:true});
+const pw=require(process.env.PLAYWRIGHT_PACKAGE||'playwright');
+const out=path.resolve('.run/day1-ui');fs.mkdirSync(out,{recursive:true});
 const base=process.env.DEMO_URL || 'http://127.0.0.1:8000';
-const results={started_at:new Date().toISOString(),base,checks:[],console_errors:[],page_errors:[],mode:'synthetic mock/template only'};
+const url=new URL(base);
+if(url.protocol!=='http:'||!['127.0.0.1','localhost','[::1]'].includes(url.hostname)||url.username||url.password)throw Error('Use a disposable loopback demo server');
+const results={revision:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),started_at:new Date().toISOString(),base,checks:[],console_errors:[],page_errors:[],mode:'synthetic mock/template only'};
 const browser=await pw.chromium.launch({headless:true,...(process.env.CHROMIUM_EXECUTABLE?{executablePath:process.env.CHROMIUM_EXECUTABLE}:{})});
 results.browser=browser.version();results.browser_executable=process.env.CHROMIUM_EXECUTABLE || 'Playwright default';
 try{
@@ -16,7 +18,7 @@ try{
  const state=async()=>{const r=await page.request.get(base+'/api/state');if(!r.ok())throw Error('State HTTP '+r.status());return r.json()};
  const check=(name,condition,detail)=>{results.checks.push({name,pass:!!condition,detail});if(!condition)throw Error(name+' failed: '+JSON.stringify(detail))};
  const click=async(locator)=>{await Promise.all([page.waitForResponse(r=>r.url().includes('/api/')&&r.request().method()==='POST'),locator.click()]);await page.waitForFunction(()=>!document.querySelector('button.primary')?.disabled||document.body.innerText.includes('Human case review'),{},{timeout:1000}).catch(()=>{});};
- await page.request.post(base+'/api/reset');await page.goto(base);await page.getByRole('heading',{name:'From prospect to owned outcome'}).waitFor();
+ await page.request.post(base+'/api/reset');await page.goto(new URL('/?baseline=1',base).href);await page.getByRole('heading',{name:'From prospect to owned outcome'}).waitFor();
  await page.screenshot({path:out+'/01-generic-baseline.png',fullPage:true});
  check('Generic baseline loads React with accurate modes',(await page.locator('body').innerText()).includes('offline template fallback'),{});
  await click(page.getByRole('button',{name:'Draft outreach',exact:true}));

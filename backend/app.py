@@ -15,6 +15,8 @@ from .account_management import AccountManagement, StaleAccountAction
 
 from .commercial import CommercialService
 
+from .offer_v2 import OfferService, StaleOfferAction
+
 ROOT = Path(__file__).resolve().parents[1]
 workflow = Workflow(os.environ.get("EVERFLOW_DEMO_DB", str(ROOT / "data" / "demo.sqlite3")))
 app = FastAPI(title="Affiliate Network Foundation — synthetic local demo", docs_url="/api/docs")
@@ -46,6 +48,11 @@ async def local_boundary(request: Request, call_next):
     response.headers["Cache-Control"] = "no-store"
     response.headers["Content-Security-Policy"] = "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; img-src 'self' data:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
     return response
+
+
+@app.exception_handler(StaleOfferAction)
+async def stale_offer_action(_request, exc):
+    return JSONResponse({"detail": str(exc)}, status_code=409)
 
 
 @app.exception_handler(StaleAccountAction)
@@ -202,6 +209,52 @@ def review_proposal(draft_id: str, payload: dict = Body(...)):
     if set(payload) != {"expected_version", "note", "evidence"}:
         raise ValueError("Proposal review requires version, note and verification evidence only")
     return CommercialService(workflow).review(draft_id, **payload)
+
+
+@app.get("/api/v2/offers")
+def v2_offer_state():
+    return OfferService(workflow).state()
+
+
+def offer_payload(payload, fields):
+    if set(payload) != set(fields):
+        raise ValueError("Only declared Offer workflow fields accepted; actor/live authority cannot be supplied")
+
+
+@app.post("/api/v2/offers/{offer_id}/configure")
+def v2_offer_configure(offer_id: str, payload: dict = Body(...)):
+    offer_payload(payload, ["expected_version", "change", "event_id"])
+    return OfferService(workflow).configure(offer_id, **payload)
+
+
+@app.post("/api/v2/offers/{offer_id}/test")
+def v2_offer_test(offer_id: str, payload: dict = Body(...)):
+    offer_payload(payload, ["expected_version", "scenario", "event_id"])
+    return OfferService(workflow).test(offer_id, **payload)
+
+
+@app.post("/api/v2/offers/{offer_id}/release")
+def v2_offer_release(offer_id: str, payload: dict = Body(...)):
+    offer_payload(payload, ["expected_version", "test_id", "note", "event_id"])
+    return OfferService(workflow).release(offer_id, **payload)
+
+
+@app.post("/api/v2/offers/{offer_id}/batch")
+def v2_offer_batch(offer_id: str, payload: dict = Body(...)):
+    offer_payload(payload, ["expected_version", "scenario", "event_id"])
+    return OfferService(workflow).run_batch(offer_id, **payload)
+
+
+@app.post("/api/v2/offers/{offer_id}/feedback")
+def v2_offer_feedback(offer_id: str, payload: dict = Body(...)):
+    offer_payload(payload, ["batch_id", "scenario", "event_id"])
+    return OfferService(workflow).feedback(offer_id, **payload)
+
+
+@app.post("/api/v2/offers/{offer_id}/reconcile")
+def v2_offer_reconcile(offer_id: str, payload: dict = Body(...)):
+    offer_payload(payload, ["batch_id", "expected_feedback_id", "note", "event_id"])
+    return OfferService(workflow).reconcile(offer_id, **payload)
 
 
 dist = ROOT / "frontend" / "dist"

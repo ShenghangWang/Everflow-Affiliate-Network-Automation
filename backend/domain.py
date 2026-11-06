@@ -19,6 +19,8 @@ from .account_management import AccountManagement, TABLES as AM_TABLES, ensure_s
 
 from .commercial import CommercialService, TABLES as COMMERCIAL_TABLES, ensure_schema as ensure_commercial_schema
 
+from .offer_v2 import OfferService, TABLES as OFFER_V2_TABLES, ensure_schema as ensure_offer_schema, ensure_seed as seed_offer
+
 FIXTURE = Path(__file__).parent / "fixtures" / "generic.json"
 PENDING = ("scheduled", "authorized", "executing")
 
@@ -81,8 +83,11 @@ class Workflow:
             ensure_recon_schema(c)
             ensure_am_schema(c)
             ensure_commercial_schema(c)
+            ensure_offer_schema(c)
         if not self.setting("now"):
             self.reset()
+        with self.tx() as c:
+            seed_offer(c)
 
     @contextmanager
     def db(self):
@@ -131,13 +136,14 @@ class Workflow:
     def reset(self):
         fixture = json.loads(FIXTURE.read_text())
         with self.tx() as c:
-            for table in (*COMMERCIAL_TABLES, *AM_TABLES, *RECON_TABLES, "leads", "provenance", "inbox", "actions", "authorizations", "attempts", "receipts", "messages", "audit", "issues", "draft_usage", "settings"):
+            for table in (*OFFER_V2_TABLES, *COMMERCIAL_TABLES, *AM_TABLES, *RECON_TABLES, "leads", "provenance", "inbox", "actions", "authorizations", "attempts", "receipts", "messages", "audit", "issues", "draft_usage", "settings"):
                 c.execute(f"DELETE FROM {table}")  # table is a code-owned allowlist
             for key in ("now", "policy", "terms", "sources", "label"):
                 self._set(c, key, fixture[key])
             self._set(c, "kill_switch", False)
             self._audit(c, "demo_reset", label=fixture["label"], live_effects=False)
             self._import(c, fixture["leads"])
+            seed_offer(c)
         return self.state()
 
     def _import(self, c, rows):
@@ -600,6 +606,7 @@ class Workflow:
             "reconciliation": ReconciliationService(self).state(c),
             "account_management": AccountManagement(self).state(c),
             "commercial": CommercialService(self).state(c),
+            "offer_v2": OfferService(self).state(c),
             "metrics": {"leads": len(leads), "qualified": sum(l["score"] >= 80 for l in leads),
                         "outreach_accepted": accepted, "replies": sum(l["replied"] for l in leads),
                         "replies_after_accepted_outreach": contacted_replies,

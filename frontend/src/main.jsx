@@ -4,6 +4,7 @@ import './style.css';
 import Reconciliation from './Reconciliation.jsx';
 import AccountManagement from './AccountManagement.jsx';
 import CommercialProposal from './CommercialProposal.jsx';
+import OfferV2 from './OfferV2.jsx';
 
 const nice = value => String(value ?? 'Unknown').replaceAll('_', ' ');
 const moment = value => value ? new Date(value).toISOString().replace('T',' ').replace('.000Z',' UTC').replace('Z',' UTC') : '—';
@@ -72,4 +73,4 @@ function StressScenario(){
 function IssueCard({issue:i,busy,onResolve}){const [resolution,setResolution]=useState(''),[evidence,setEvidence]=useState('');return <div className="ops-row"><h3>{nice(i.kind)} <Badge tone={i.status==='resolved'?'':'warn'}>{i.status}</Badge></h3><p>{i.summary}</p><p>{i.lead_id} · {i.owner}</p>{i.status!=='resolved'&&<form className="reply-form" onSubmit={e=>{e.preventDefault();onResolve(i.id,{resolution,evidence})}}><label htmlFor={'resolution-'+i.id}>Synthetic resolution</label><textarea id={'resolution-'+i.id} value={resolution} onChange={e=>setResolution(e.target.value)} maxLength={2000}/><label htmlFor={'evidence-'+i.id}>Verification evidence / reference</label><textarea id={'evidence-'+i.id} value={evidence} onChange={e=>setEvidence(e.target.value)} maxLength={2000}/><button disabled={busy||!resolution.trim()||!evidence.trim()}>Record synthetic closure</button></form>}</div>}
 function Metric({label,value,foot}){return <div className="metric"><div className="metric-label">{label}<span>↗</span></div><div className="metric-value">{value}</div><p className="metric-foot">{foot}</p></div>}
 
-createRoot(document.getElementById('root')).render(<App/>);
+createRoot(document.getElementById('root')).render(new URLSearchParams(window.location.search).get('baseline')==='1'?<App/>:<OfferV2/>);

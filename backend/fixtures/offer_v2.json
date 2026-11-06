@@ -1,0 +1,76 @@
+{
+  "label": "Local v2 one-Offer demonstration: synthetic identities, terms, capacity, proof and rules",
+  "rules_version": "synthetic-offer-launch-v1",
+  "offer_id": "OFR-SYN-1",
+  "advertiser": {
+    "id": "ADV-SYN-1",
+    "name": "Synthetic advertiser",
+    "intake_ref": "SYN-INTAKE-1"
+  },
+  "channel": {
+    "id": "CH-SYN-1",
+    "name": "Synthetic first-party channel",
+    "sub_id": "SUB-SYN-1"
+  },
+  "owners": {
+    "bd": "Demo advertiser BD owner",
+    "am": "Demo channel AM owner",
+    "adops": "Demo AdOps owner",
+    "launch": "Demo Offer release owner",
+    "finance": "Demo finance owner"
+  },
+  "config": {
+    "offer_name": "Synthetic generic service enquiry Offer",
+    "model": "CPL",
+    "currency": "USD",
+    "revenue_cpl": "40.00",
+    "payout_cpl": "25.00",
+    "daily_cap": 20,
+    "channel_capacity": 30,
+    "terms_version": "SYN-TERMS-1",
+    "terms_approved": true,
+    "mapping_version": "SYN-MAP-1",
+    "mapping_approved": true,
+    "channel_approved": true,
+    "platform": "everflow_mock",
+    "platform_offer_id": "EF-MOCK-OFR-SYN-1",
+    "platform_advertiser_id": "EF-MOCK-ADV-SYN-1",
+    "platform_affiliate_id": "EF-MOCK-CH-SYN-1",
+    "postback_event": "synthetic_qualified_lead",
+    "margin_floor_pct": "20.00",
+    "rule_classification": "Synthetic fixture only; no confirmed company pricing, return, payout or launch authority",
+    "configuration_version": 1
+  },
+  "batch_leads": [
+    {
+      "lead_id": "LEAD-SYN-1",
+      "certificate": "SYN-CERT-1",
+      "phone_verified": true,
+      "geo_match": true
+    },
+    {
+      "lead_id": "LEAD-SYN-2",
+      "certificate": "SYN-CERT-2",
+      "phone_verified": true,
+      "geo_match": true
+    },
+    {
+      "lead_id": "LEAD-SYN-3",
+      "certificate": null,
+      "phone_verified": true,
+      "geo_match": true
+    },
+    {
+      "lead_id": "LEAD-SYN-4",
+      "certificate": "SYN-CERT-4",
+      "phone_verified": false,
+      "geo_match": true
+    }
+  ],
+  "open_rules": [
+    "72-hour return clock: generation versus delivery; no production billing decision",
+    "Tier 1 volume/quality AND versus OR; no automatic tier repricing",
+    "Above upstream return cap: buyer billing versus downstream deduction; unresolved items remain finance review",
+    "All-cost margin including bonuses/reserves/returns requires approved business definition"
+  ]
+}
