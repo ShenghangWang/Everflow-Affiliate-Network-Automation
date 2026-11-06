@@ -16,6 +16,7 @@ from .account_management import AccountManagement, StaleAccountAction
 from .commercial import CommercialService
 
 from .offer_v2 import OfferService, StaleOfferAction
+from .offer_followthrough import OfferFollowthrough
 
 ROOT = Path(__file__).resolve().parents[1]
 workflow = Workflow(os.environ.get("EVERFLOW_DEMO_DB", str(ROOT / "data" / "demo.sqlite3")))
@@ -255,6 +256,35 @@ def v2_offer_feedback(offer_id: str, payload: dict = Body(...)):
 def v2_offer_reconcile(offer_id: str, payload: dict = Body(...)):
     offer_payload(payload, ["batch_id", "expected_feedback_id", "note", "event_id"])
     return OfferService(workflow).reconcile(offer_id, **payload)
+
+
+@app.get("/api/v2/offers/{offer_id}/followthrough")
+def offer_followthrough_state(offer_id: str):
+    return OfferFollowthrough(workflow).state(offer_id)
+
+
+@app.post("/api/v2/offers/{offer_id}/followthrough/proposals")
+def prepare_offer_proposal(offer_id: str, payload: dict = Body(...)):
+    offer_payload(payload, ["expected_evidence_sha", "requested_terms", "event_id"])
+    return OfferFollowthrough(workflow).prepare(offer_id, **payload)
+
+
+@app.post("/api/v2/offers/{offer_id}/followthrough/proposals/{proposal_id}/review")
+def review_offer_proposal(offer_id: str, proposal_id: str, payload: dict = Body(...)):
+    offer_payload(payload, ["expected_evidence_sha", "expected_version", "note", "event_id"])
+    return OfferFollowthrough(workflow).review(offer_id, proposal_id, **payload)
+
+
+@app.post("/api/v2/offers/{offer_id}/followthrough/am-actions")
+def open_offer_am_action(offer_id: str, payload: dict = Body(...)):
+    offer_payload(payload, ["expected_evidence_sha", "event_id"])
+    return OfferFollowthrough(workflow).open_action(offer_id, **payload)
+
+
+@app.post("/api/v2/offers/{offer_id}/followthrough/am-actions/{action_id}/resolve")
+def resolve_offer_am_action(offer_id: str, action_id: str, payload: dict = Body(...)):
+    offer_payload(payload, ["expected_evidence_sha", "expected_version", "note", "event_id"])
+    return OfferFollowthrough(workflow).resolve(offer_id, action_id, **payload)
 
 
 dist = ROOT / "frontend" / "dist"

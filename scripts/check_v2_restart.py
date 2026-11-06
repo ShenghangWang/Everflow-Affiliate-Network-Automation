@@ -92,6 +92,30 @@ try:
         state=call(offer+'/batch',batch_body);same=call(offer+'/batch',batch_body);batch=state['batches'][-1]
         check('Synthetic qualification rejects missing/failed evidence and duplicate intake cannot redeliver',state==same and batch['payload']['qualified_delivered']==2 and batch['payload']['rejected']==2 and len(state['batches'])==1)
         state=command('feedback',batch_id=batch['id'],scenario='buyer_outcomes',event_id='FEEDBACK-1')
+        flow = offer + '/followthrough'
+        evidence = call(flow)['evidence']
+        stamp = {'expected_evidence_sha': evidence['sha256']}
+        proposal = call(flow + '/proposals', {
+            **stamp, 'requested_terms': 'Request USD 999 and a higher cap',
+            'event_id': 'BD-PREPARE-1',
+        })['proposals'][0]
+        reviewed = call(flow + '/proposals/' + proposal['id'] + '/review', {
+            **stamp, 'expected_version': proposal['version'],
+            'note': 'Exact released Offer, capacity and buyer outcomes checked', 'event_id': 'BD-REVIEW-1',
+        })['proposals'][0]
+        check('BD reviews exact evidence and retains requested terms outside approved clauses',
+              reviewed['status'] == 'reviewed' and reviewed['current']
+              and 'USD 999' in reviewed['requested_terms'] and 'USD 999' not in reviewed['approved_clauses'])
+        am = call(flow + '/am-actions', {**stamp, 'event_id': 'AM-OPEN-1'})['am_actions'][0]
+        duplicate = call(flow + '/am-actions', {**stamp, 'event_id': 'AM-OPEN-2'})
+        check('One scoped AM issue survives an independent duplicate request',
+              len(duplicate['am_actions']) == 1 and duplicate['am_actions'][0]['id'] == am['id'])
+        resolution = call(flow + '/am-actions/' + am['id'] + '/resolve', {
+            **stamp, 'expected_version': am['version'], 'note': 'Reviewed and retained rejection reasons',
+            'event_id': 'AM-RESOLVE-1',
+        })['am_actions'][0]
+        check('AM records an owned resolution and a future synthetic review',
+              resolution['status'] == 'resolved' and resolution['next_review_at'] and not resolution['review_due'])
         state=command('reconcile',batch_id=batch['id'],expected_feedback_id=state['feedback'][-1]['id'],note='Matched synthetic buyer outcome references and configuration terms',event_id='FIN-1')
         preview=state['reconciliations'][-1]['payload']
         check('Buyer feedback produces a version-linked provisional finance review and three owned role recommendations',preview['status']=='reviewed_fixture' and preview['provisional_receivable_usd']=='80.00' and preview['provisional_channel_cost_usd']=='50.00' and {r['role'] for r in state['recommendations']}=={'BD','AM','AdOps'})
@@ -101,7 +125,16 @@ try:
         check('Ambiguous returns remain Finance-owned with unknown totals and no downstream deduction',preview['status']=='blocked_rules_decision' and preview['provisional_receivable_usd'] is None and preview['provisional_channel_cost_usd'] is None and len(state['reconciliations'])==2)
         call('/api/tick',{'advance_hours':24});state=call('/api/v2/offers')
         check('Current-day capacity is independent of historical batch quality after rollover',state['quality_capacity']['available_channel_capacity']==30 and state['quality_capacity']['capacity_window']['server_counted_delivered']==0 and state['quality_capacity']['quality_window']['batch_observed_at']!=state['quality_capacity']['capacity_window']['observed_at'])
+        owned_before = call(flow)
+        check('Dispute invalidates BD evidence and AM recurrence becomes due without new action',
+              not owned_before['evidence']['bd_ready'] and not owned_before['evidence']['am_ready']
+              and not owned_before['proposals'][0]['current']
+              and len(owned_before['am_actions']) == 1 and owned_before['am_actions'][0]['review_due'])
         before=state;stop(kill=True);start(db);after=call('/api/v2/offers')
+        owned_after = call(flow)
+        check('BD and AM history plus recurring review state survive SIGKILL/restart',
+              fingerprint(owned_before) == fingerprint(owned_after),
+              before_sha256=fingerprint(owned_before), after_sha256=fingerprint(owned_after))
         check('Release, qualification, buyer feedback and both finance outcomes survive SIGKILL/restart',fingerprint(before)==fingerprint(after),before_sha256=fingerprint(before),after_sha256=fingerprint(after))
         old_test=after['offer']['latest_test_id']
         state=command('configure',expected_version=version,change={'payout_cpl':'26.00'},event_id='TERMS-2');version=state['offer']['version']

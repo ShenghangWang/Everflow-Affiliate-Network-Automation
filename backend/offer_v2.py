@@ -288,6 +288,20 @@ class OfferService:
             self.w._audit(c, 'v2_synthetic_offer_delivery', offer_id, batch_id=batch_id, qualified=qualified, rejected=len(rows)-qualified, external_effect=False)
             return self.state(c)
 
+    def _finance_feedback(self, c, offer_id, batch_id):
+        # A retained dispute remains the effective Finance evidence until a
+        # decision exists. Older demo databases may contain later ordinary feedback.
+        latest = None
+        for row in c.execute(
+            'SELECT * FROM v2_offer_feedback WHERE offer_id=? AND batch_id=? ORDER BY rowid DESC',
+            (offer_id, batch_id),
+        ):
+            if latest is None:
+                latest = row
+            if json.loads(row['payload'])['status'] == 'finance_review_required':
+                return row
+        return latest
+
     def feedback(self, offer_id, batch_id, scenario, event_id):
         if scenario not in FEEDBACK_SCENARIOS: raise ValueError('Choose an allowlisted synthetic buyer outcome scenario')
         request = ['feedback', offer_id, batch_id, scenario]
@@ -296,6 +310,11 @@ class OfferService:
             self._offer(c, offer_id)
             batch = c.execute('SELECT * FROM v2_offer_batches WHERE id=? AND offer_id=?', (batch_id, offer_id)).fetchone()
             if batch is None: raise ValueError('Unknown Offer batch')
+            if scenario == 'buyer_outcomes':
+                # An ordinary outcome fixture cannot adjudicate a disputed return.
+                prior = self._finance_feedback(c, offer_id, batch_id)
+                if prior and json.loads(prior['payload'])['status'] == 'finance_review_required':
+                    raise StaleOfferAction('This batch has a Finance-owned return dispute; ordinary outcomes cannot clear the hold')
             delivered = [r for r in json.loads(batch['payload'])['rows'] if r['delivery_status'] == 'mock_buyer_accepted']
             if not delivered: raise ValueError('No delivered synthetic leads for outcome feedback')
             rows = [{'lead_id': row['lead_id'], 'connected': True, 'appointment': index == 0, 'closed_won': index == 0,
@@ -321,10 +340,10 @@ class OfferService:
             if self._replay(c, event_id, request): return self.state(c)
             self._offer(c, offer_id)
             batch = c.execute('SELECT * FROM v2_offer_batches WHERE id=? AND offer_id=?', (batch_id, offer_id)).fetchone()
-            feedback = c.execute('SELECT * FROM v2_offer_feedback WHERE batch_id=? AND offer_id=? ORDER BY rowid DESC LIMIT 1', (batch_id, offer_id)).fetchone()
+            feedback = self._finance_feedback(c, offer_id, batch_id)
             if batch is None or feedback is None: raise ValueError('Current delivered batch and buyer feedback are required')
             if feedback['id'] != expected_feedback_id:
-                raise StaleOfferAction('Buyer feedback changed; review the latest exact evidence before finance decision')
+                raise StaleOfferAction('Buyer feedback changed or is held; review the exact current Finance evidence')
             info = json.loads(batch['payload']);facts = json.loads(feedback['payload'])
             disputed = any(r['return_requested'] for r in facts['rows'])
             count = len(facts['rows'])
@@ -360,6 +379,7 @@ class OfferService:
         configs = [dict(r) for r in c.execute('SELECT * FROM v2_offer_configs ORDER BY version')]
         for row in configs: row['payload'] = json.loads(row['payload'])
         collections = {}
+        finance_feedback = {}
         for key, table, field in [('tests','v2_offer_tests','evidence'), ('releases','v2_offer_releases',None),
                                   ('batches','v2_offer_batches','payload'), ('feedback','v2_offer_feedback','payload'),
                                   ('reconciliations','v2_offer_reconciliations','payload')]:
@@ -371,9 +391,15 @@ class OfferService:
                     row['current_configuration'] = bool(batch_config and batch_config[0] == offer['config_sha'])
                 else:
                     row['current_configuration'] = row.get('config_sha', offer['config_sha']) == offer['config_sha']
+                if key in ('feedback', 'reconciliations'):
+                    batch_key = row['offer_id'], row['batch_id']
+                    if batch_key not in finance_feedback:
+                        effective = self._finance_feedback(c, *batch_key)
+                        finance_feedback[batch_key] = effective['id'] if effective else None
+                    if key == 'feedback':
+                        row['current_for_finance'] = finance_feedback[batch_key] == row['id']
                 if key == 'reconciliations':
-                    latest_feedback = c.execute('SELECT id FROM v2_offer_feedback WHERE batch_id=? ORDER BY rowid DESC LIMIT 1', (row['batch_id'],)).fetchone()
-                    row['current_feedback'] = bool(latest_feedback and latest_feedback[0] == row['feedback_id'])
+                    row['current_feedback'] = finance_feedback[batch_key] == row['feedback_id']
                     row['effective_status'] = row['payload']['status'] if row['current_feedback'] else 'historical_feedback_superseded'
                     row['next_action'] = row['payload']['next_action'] if row['current_feedback'] else 'Buyer feedback changed; finance owner must review the new feedback version'
             collections[key] = rows
@@ -389,7 +415,8 @@ class OfferService:
                             'available_channel_capacity': capacity_available}
         if collections['batches']:
             latest_batch = collections['batches'][-1];payload = latest_batch['payload']
-            matching_feedback = [f for f in collections['feedback'] if f['batch_id'] == latest_batch['id']]
+            matching_feedback = [f for f in collections['feedback']
+                                 if f['batch_id'] == latest_batch['id'] and f['current_for_finance']]
             quality = matching_feedback[-1]['payload'] if matching_feedback else None
             current = latest_batch['config_sha'] == offer['config_sha'] and release_current
             quality_rows = quality['rows'] if quality else []

@@ -12,8 +12,9 @@ flowchart LR
     D --> B[Buyer outcomes]
     B --> F[Finance review]
     B --> Q[Quality and capacity evidence]
-    Q --> BD[BD negotiation recommendation]
-    Q --> AM[AM channel recommendation]
+    Q --> BD[BD proposal review]
+    Q --> AM[AM action and recurring review]
+    D --> AM
     Q --> O[AdOps routing recommendation]
 ```
 
@@ -26,15 +27,25 @@ flowchart LR
 | Lead receipt to buyer delivery | AdOps | Qualification facts, rejection reasons and mock delivery outcome bound to the release and channel |
 | Delivery to outcomes | Buyer feedback owner | Outcome rows tied to the delivered batch, with a versioned feedback ID for corrections |
 | Outcomes to Finance | Finance | Retained delivery and feedback references, provisional totals for the normal fixture or an owned hold for disputed returns |
-| Outcomes and capacity to next actions | BD, AM and AdOps | Exact batch quality, current day capacity and named recommendations for commercial review, channel health and routing |
+| Outcomes and capacity to proposal review | BD | Current Offer evidence with complete buyer outcomes and approved clauses from the active configuration |
+| Rejections or outcomes to channel follow-through | AM | Scoped delivery evidence, owned action, resolution note and next review time |
+| Outcomes and capacity to routing recommendations | AdOps | Exact batch quality and current day capacity |
 
 ## State and authority
 
 React presents the Offer workflow and sends typed actions to FastAPI. The service checks expected configuration versions and records changes in a SQLite transaction. Configuration, test, release, batch, feedback and reconciliation records retain their references. A material configuration change or a new test requires fresh release evidence. Delivery requires the current exact release and consumes the daily cap and channel capacity across batches.
 
-A repeated event ID with the same request reuses the recorded operation. A changed request under that ID conflicts. A failed, unknown or superseded test cannot release a configuration. Buyer outcomes stay unknown until the relevant feedback arrives. A Finance preview requires the latest reviewed feedback ID for its batch. Later feedback supersedes the previous conclusion and retains its history.
+A repeated event ID with the same request reuses the recorded operation. A changed request under that ID conflicts. A failed, unknown or superseded test cannot release a configuration. Buyer outcomes stay unknown until the relevant feedback arrives. A Finance preview requires the latest reviewed feedback ID for its batch. Later feedback supersedes the previous conclusion and retains its history. An ordinary buyer outcome cannot clear a Finance-owned return hold. Finance can select a retained batch and review its exact feedback after newer deliveries arrive.
 
-Quality is measured on the exact synthetic batch. Capacity is the configured channel ceiling minus server-counted deliveries for the current UTC day. They have separate time windows. BD, AM and AdOps can see how those facts inform a recommendation. The current demo records those recommendations as local evidence and uses owner labels from the fixture.
+Quality is measured on the exact synthetic batch. Capacity is the configured channel ceiling minus server-counted deliveries for the current UTC day. They have separate time windows. AdOps can use the retained facts for a routing recommendation. Owner labels come from the fixture.
+
+## BD proposal review and AM follow-through
+
+The service assembles a versioned evidence reference from the active release, current delivery batch, latest matching buyer feedback and the current UTC day capacity snapshot. The reference carries the advertiser, Offer, channel and Sub-ID. The server checks the submitted evidence reference against its current records before applying a decision. The demo uses a 24-hour freshness limit for batch and feedback evidence.
+
+- **BD review.** Preparing a proposal requires fresh, complete buyer outcomes with no return dispute. Approved clauses come from the current configuration. Requested terms are stored separately for the owner to review. The decision binds the proposal and evidence versions. Material changes, including a corrected buyer outcome, require a fresh proposal review and keep the previous decision in history.
+- **AM action.** A delivery rejection can prompt action before buyer feedback arrives. Complete buyer outcomes can also prompt a channel review. The action carries its owner, supporting evidence and next step. The service reuses the same action for its batch and issue kind, with a refreshed evidence reference if the open action's evidence changes. Resolution records the owner's note against the current evidence and sets the next review 24 elapsed hours later on the synthetic clock.
+- **Finance hold.** A disputed return routes to Finance. The evidence gate blocks BD and AM decisions on the disputed version. A current Finance review can record the owned hold while the billing rules remain open.
 
 ## Integration boundaries
 

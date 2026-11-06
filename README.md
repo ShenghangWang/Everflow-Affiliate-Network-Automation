@@ -1,6 +1,6 @@
 # Everflow affiliate network automation
 
-Operate one synthetic Offer from advertiser intake and channel placement through configuration, release, delivery, buyer feedback and an owned Finance decision. The React and FastAPI demo shows which version was released, what the buyer reported and which role owns the next decision.
+Operate one synthetic Offer from advertiser intake and channel placement through configuration, release, delivery, buyer feedback, BD proposal review, AM resolution and an owned Finance decision. The React and FastAPI demo shows which version was released, what the buyer reported and which role owns the next decision.
 
 ## Run the Offer demo
 
@@ -17,7 +17,8 @@ Open [Offer operations](http://127.0.0.1:8020). The server uses one worker, a lo
 
 1. In **Launch readiness**, save a mapping change and run the mock platform test. Release the exact passing configuration with an owner note. A failed test blocks release, and editing terms or mappings requires fresh evidence.
 2. In **Quality & feedback**, run a mixed batch. The demo delivers two eligible synthetic leads and rejects two with missing or failed qualification evidence. Record the buyer outcomes.
-3. Record the Finance preview against the feedback reviewed. The normal fixture produces a provisional receivable and channel cost. A disputed return stays with Finance and holds both amounts pending a rule decision.
+3. In **BD & AM follow-through**, prepare and review a proposal against the current Offer evidence. Requested terms stay separate from the approved clauses. Open and resolve an AM action for the channel, with a recorded next review.
+4. Record the Finance preview against the feedback reviewed. The normal fixture produces a provisional receivable and channel cost. A disputed return stays with Finance and holds both amounts pending a rule decision.
 
 The [demo guide](docs/offer-demo.md) covers the walkthrough, disposable databases and the backend, browser, restart and build checks. The [architecture overview](architecture.md) maps responsibilities, evidence and release authority across the Offer cycle.
 
